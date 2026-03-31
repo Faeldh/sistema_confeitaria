@@ -27,7 +27,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>fundo_login.jpg</pixmap>
+     <pixmap>../../../aplicativo_confeitaria/fundo_login.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
