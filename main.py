@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import sys
 from PyQt5 import uic, QtWidgets
 
@@ -15,3 +16,6 @@ janela = menu()
 janela.show()
 
 sys.exit(app.exec())
+=======
+TESTE
+>>>>>>> a244873fee3d56b80a361de38a382d81daa1fbba
