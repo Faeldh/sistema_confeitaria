@@ -10,8 +10,6 @@ class menu(QtWidgets.QMainWindow, tela_menu):
         super().__init__()
         self.setupUi(self)
 
-
-
 app = QtWidgets.QApplication(sys.argv)
 janela = Login()
 janela.show()
