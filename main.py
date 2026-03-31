@@ -1,8 +1,9 @@
-<<<<<<< HEAD
 import sys
 from PyQt5 import uic, QtWidgets
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
+
+from login import Login
 
 class menu(QtWidgets.QMainWindow, tela_menu):
     def __init__(self):
@@ -12,10 +13,7 @@ class menu(QtWidgets.QMainWindow, tela_menu):
 
 
 app = QtWidgets.QApplication(sys.argv)
-janela = menu()
+janela = Login()
 janela.show()
 
 sys.exit(app.exec())
-=======
-TESTE
->>>>>>> a244873fee3d56b80a361de38a382d81daa1fbba
