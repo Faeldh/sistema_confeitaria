@@ -33,7 +33,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="txt_senha">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -43,7 +43,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_login">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -56,7 +56,7 @@
      <string>LOGIN</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="txt_nome">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -91,7 +91,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
