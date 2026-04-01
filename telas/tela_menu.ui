@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1274</width>
-    <height>736</height>
+    <width>1282</width>
+    <height>735</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -206,6 +206,9 @@
         <width>531</width>
         <height>471</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-color: rgb(0, 0, 0);</string>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -665,7 +668,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1274</width>
+     <width>1282</width>
      <height>21</height>
     </rect>
    </property>
