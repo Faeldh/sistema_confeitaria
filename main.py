@@ -5,8 +5,6 @@ from login import Login
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
-
-
 class menu(QtWidgets.QMainWindow, tela_menu):
     def __init__(self):
         super().__init__()
