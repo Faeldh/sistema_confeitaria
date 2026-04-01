@@ -33,7 +33,7 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>320</x>
       <y>30</y>
       <width>621</width>
       <height>41</height>
@@ -48,11 +48,18 @@
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>340</x>
        <y>10</y>
        <width>75</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Vendas</string>
@@ -67,6 +74,13 @@
        <height>23</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
       <string>Pedidos</string>
      </property>
@@ -76,9 +90,16 @@
       <rect>
        <x>250</x>
        <y>10</y>
-       <width>75</width>
+       <width>81</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Produtos</string>
@@ -87,11 +108,18 @@
     <widget class="QPushButton" name="pushButton_4">
      <property name="geometry">
       <rect>
-       <x>170</x>
+       <x>10</x>
        <y>10</y>
        <width>75</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Clientes</string>
@@ -100,11 +128,18 @@
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>330</x>
+       <x>170</x>
        <y>10</y>
        <width>75</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Receitas</string>
@@ -113,11 +148,18 @@
     <widget class="QPushButton" name="pushButton_6">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>430</x>
        <y>10</y>
-       <width>75</width>
+       <width>121</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
       <string>Fornecedores</string>
@@ -146,7 +188,7 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>80</y>
       <width>1221</width>
       <height>571</height>
