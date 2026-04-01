@@ -1,9 +1,11 @@
 import sys
 from PyQt5 import uic, QtWidgets
 
+from login import Login
+
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
-from login import Login
+
 
 class menu(QtWidgets.QMainWindow, tela_menu):
     def __init__(self):
