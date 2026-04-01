@@ -12,7 +12,7 @@ class Login(QtWidgets.QMainWindow, tela_login):
         self.btn_login.clicked.connect(self.verificar_login)
     
     def verificar_login(self):
-        nome = self.txt_mome.text()
+        nome = self.txt_nome.text()
         senha = self.txt_senha.text()
 
         conexao = conectar()
