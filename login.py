@@ -1,6 +1,6 @@
 from PyQt5 import uic, QtWidgets
 from conexao import conectar
-
+from main import menu
 
 tela_login = uic.loadUiType('telas/tela_login.ui')[0]
 
@@ -26,6 +26,11 @@ class Login(QtWidgets.QMainWindow, tela_login):
 
         if resultado:
             QtWidgets.QMessageBox.information(self, 'login', 'Login realizado com sucesso!')
+
+            self.menu = menu()
+            self.menu.show()
+
+            self.close()
 
         else:
             QtWidgets.QMessageBox.information(self, 'Erro', 'Usuário ou senha invalido')
