@@ -13,8 +13,8 @@ class Login(QtWidgets.QMainWindow, tela_login):
         self.btn_login.clicked.connect(self.verificar_login)
     
     def verificar_login(self):
-        
         print("CLICOU NO BOTÃO")
+
         nome = self.txt_nome.text().strip()
         senha = self.txt_senha.text().strip()
 
@@ -22,31 +22,29 @@ class Login(QtWidgets.QMainWindow, tela_login):
         print("Senha digitada:", senha)
 
         try:
+            print("Tentando conectar...")
             conexao = conectar()
+
+            print("Criando cursor...")
             cursor = conexao.cursor()
 
             comando = 'SELECT * FROM usuario WHERE nome=%s AND senha=%s'
             dados = (nome, senha)
 
+            print("Executando SQL...")
             cursor.execute(comando, dados)
+
+            print("Buscando resultado...")
             resultado = cursor.fetchone()
 
             print("Resultado do banco:", resultado)
 
             if resultado:
                 print("Login OK")
-                QtWidgets.QMessageBox.information(self, 'login', 'Login realizado com sucesso!')
-
-                from menu import Menu
-                self.menu = Menu()
-                self.menu.show()
-                self.hide()
             else:
                 print("Login falhou")
-                QtWidgets.QMessageBox.warning(self, 'Erro', 'Usuário ou senha inválido')
 
             conexao.close()
 
         except Exception as erro:
-            print("ERRO:", erro)
-            QtWidgets.QMessageBox.critical(self, 'Erro', f'Erro ao conectar:\n{erro}')
+            print("🔥 ERRO COMPLETO:", erro)
