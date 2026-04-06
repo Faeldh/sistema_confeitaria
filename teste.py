@@ -1,7 +1,5 @@
 import sys
 from PyQt5 import uic, QtWidgets
-from conexao import conectar
-
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 tela_login = uic.loadUiType('telas/tela_login.ui')[0]
@@ -11,10 +9,6 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-
-        janela = Menu()
-        janela.show()
-
 
 
 class Login(QtWidgets.QMainWindow, tela_login):
@@ -28,29 +22,16 @@ class Login(QtWidgets.QMainWindow, tela_login):
         nome = self.txt_nome.text()
         senha = self.txt_senha.text()
 
-        conexao = conectar()
-        cursor = conexao.cursor()
-
-        comando = 'SELECT * FROM usuario WHERE nome=%s AND senha=%s'
-        dados = (nome, senha)
-
-        cursor.execute(comando, dados)
-        resultado = cursor.fetchone()
-
-        if resultado:
-            print("Login OK")
+        # 🔹 LOGIN FAKE (para testes)
+        if nome == "admin" and senha == "123":
             QtWidgets.QMessageBox.information(self, 'Login', 'Login realizado com sucesso!')
 
-            
             self.menu = Menu()
             self.menu.show()
 
             self.hide()
-
         else:
             QtWidgets.QMessageBox.warning(self, 'Erro', 'Usuário ou senha inválido')
-
-        conexao.close()
 
 
 # Inicialização do app
