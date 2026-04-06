@@ -1,11 +1,13 @@
 import mysql.connector
 
-def conectar():
-    conexao = mysql.connector.connect(
-        host = 'localhost',
-        user = 'root',
-        password = '',
-        database = 'db_confeitaria'
-    )
+print("TESTE DIRETO...")
 
-    return conexao
+conexao = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="",
+    port=3306,
+    connection_timeout=5
+)
+
+print("CONECTOU!")
