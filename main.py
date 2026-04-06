@@ -1,21 +1,17 @@
 import sys
-from PyQt5 import QtWidgets
+from PyQt5 import uic, QtWidgets
 from login import Login
-from menu import Menu
+
+tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
+
+class Menu(QtWidgets.QMainWindow, tela_menu):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
 
 app = QtWidgets.QApplication(sys.argv)
+janela = Login()
+janela.show()
 
-login = Login()
-menu = Menu()
-
-# 🔥 função que troca de tela
-def abrir_menu():
-    login.hide()
-    menu.show()
-
-# conecta a função ao login
-login.abrir_menu = abrir_menu
-
-login.show()
 
 sys.exit(app.exec())
