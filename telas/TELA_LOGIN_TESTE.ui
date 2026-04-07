@@ -108,7 +108,7 @@
      <string>SENHA:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_login">
     <property name="geometry">
      <rect>
       <x>630</x>
