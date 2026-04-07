@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>806</width>
-    <height>565</height>
+    <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
      <string notr="true">background-color: rgb(153, 153, 153);</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="txt_nome">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -37,7 +37,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="txt_senha">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -45,6 +45,9 @@
       <width>181</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -105,6 +108,19 @@
      <string>SENHA:</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>370</y>
+      <width>56</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CONFIRMAR</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -112,7 +128,7 @@
      <x>0</x>
      <y>0</y>
      <width>806</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>

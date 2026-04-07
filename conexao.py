@@ -9,7 +9,7 @@ def conectar():
             user='root',
             password='',
             database='db_confeitaria',
-            port=3306
+            #port=3306
         )
 
         print("✅ Conectado com sucesso!")

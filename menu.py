@@ -6,3 +6,5 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+    
