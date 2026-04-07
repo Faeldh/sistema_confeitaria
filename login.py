@@ -1,6 +1,5 @@
 from PyQt5 import uic, QtWidgets
 from conexao import conectar
-from menu import Menu
 
 
 tela_login = uic.loadUiType('telas/tela_login.ui')[0]
@@ -13,38 +12,35 @@ class Login(QtWidgets.QMainWindow, tela_login):
         self.btn_login.clicked.connect(self.verificar_login)
     
     def verificar_login(self):
-        print("CLICOU NO BOTÃO")
+        nome = self.txt_nome.text()
+        senha = self.txt_senha.text()
 
-        nome = self.txt_nome.text().strip()
-        senha = self.txt_senha.text().strip()
+        conexao = conectar()
+        cursor = conexao.cursor()
 
         print("Nome digitado:", nome)
         print("Senha digitada:", senha)
 
-        try:
-            print("Tentando conectar...")
-            conexao = conectar()
+        comando = 'SELECT * FROM usuario WHERE nome=%s AND senha=%s'
 
-            print("Criando cursor...")
-            cursor = conexao.cursor()
+        dados = (nome, senha)
+        cursor.execute(comando, dados)
+        resultado = cursor.fetchone()
+        print("Resultado do banco:", resultado)
 
-            comando = 'SELECT * FROM usuario WHERE nome=%s AND senha=%s'
-            dados = (nome, senha)
+        if resultado:
+            print("Login OK")
+            QtWidgets.QMessageBox.information(self, 'login', 'Login realizado com sucesso!')
 
-            print("Executando SQL...")
-            cursor.execute(comando, dados)
+            from main import Menu
 
-            print("Buscando resultado...")
-            resultado = cursor.fetchone()
+            self.menu = Menu()
+            self.menu.show()
 
-            print("Resultado do banco:", resultado)
+            self.close()
 
-            if resultado:
-                print("Login OK")
-            else:
-                print("Login falhou")
+        else:
+            QtWidgets.QMessageBox.information(self, 'Erro', 'Usuário ou senha invalido')
 
-            conexao.close()
-
-        except Exception as erro:
-            print("🔥 ERRO COMPLETO:", erro)
+        
+        conexao.close()
