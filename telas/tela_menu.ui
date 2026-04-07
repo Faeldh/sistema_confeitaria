@@ -68,30 +68,44 @@ QTableView { background-color: white; border-radius: 10px; }
           <property name="title"><string>Cadastro de Clientes</string></property>
           <layout class="QFormLayout">
            <item row="0" column="0"><widget class="QLabel"><property name="text"><string>Nome:</string></property></widget></item>
-           <item row="0" column="1"><widget class="QLineEdit"/></item>
+           <item row="0" column="1"><widget class="QLineEdit" name="lineEditNome"/></item>
+
            <item row="1" column="0"><widget class="QLabel"><property name="text"><string>Telefone:</string></property></widget></item>
-           <item row="1" column="1"><widget class="QLineEdit"/></item>
-           <item row="2" column="0"><widget class="QLabel"><property name="text"><string>Data Nascimento:</string></property></widget></item>
-           <item row="2" column="1"><widget class="QDateEdit"/></item>
-           <item row="3" column="0"><widget class="QLabel"><property name="text"><string>CEP:</string></property></widget></item>
-           <item row="3" column="1"><widget class="QLineEdit"/></item>
-           <item row="4" column="0"><widget class="QLabel"><property name="text"><string>Rua:</string></property></widget></item>
-           <item row="4" column="1"><widget class="QLineEdit"/></item>
-           <item row="5" column="0"><widget class="QLabel"><property name="text"><string>Bairro:</string></property></widget></item>
-           <item row="5" column="1"><widget class="QLineEdit"/></item>
-           <item row="6" column="0"><widget class="QLabel"><property name="text"><string>Nº:</string></property></widget></item>
-           <item row="6" column="1"><widget class="QLineEdit"/></item>
-           <item row="7" column="0"><widget class="QLabel"><property name="text"><string>Complemento:</string></property></widget></item>
-           <item row="7" column="1"><widget class="QLineEdit"/></item>
-           <item row="8" column="0"><widget class="QLabel"><property name="text"><string>Cidade:</string></property></widget></item>
-           <item row="8" column="1"><widget class="QLineEdit"/></item>
-           <item row="9" column="0"><widget class="QLabel"><property name="text"><string>E-mail:</string></property></widget></item>
-           <item row="9" column="1"><widget class="QLineEdit"/></item>
-           <item row="10" column="0"><widget class="QLabel"><property name="text"><string>Observações:</string></property></widget></item>
-           <item row="10" column="1"><widget class="QTextEdit"/></item>
-           <item row="11" column="0"><widget class="QPushButton"><property name="text"><string>Salvar</string></property></widget></item>
-           <item row="11" column="1"><widget class="QPushButton"><property name="text"><string>Editar</string></property></widget></item>
-           <item row="12" column="0"><widget class="QPushButton"><property name="text"><string>Excluir</string></property></widget></item>
+           <item row="1" column="1"><widget class="QLineEdit" name="lineEditTelefone"/></item>
+
+           <item row="2" column="0"><widget class="QLabel"><property name="text"><string>CPF:</string></property></widget></item>
+           <item row="2" column="1"><widget class="QLineEdit" name="lineEditCPF"/></item>
+
+           <item row="3" column="0"><widget class="QLabel"><property name="text"><string>Data Nascimento:</string></property></widget></item>
+           <item row="3" column="1"><widget class="QDateEdit" name="dateEditNascimento"/></item>
+
+           <item row="4" column="0"><widget class="QLabel"><property name="text"><string>CEP:</string></property></widget></item>
+           <item row="4" column="1"><widget class="QLineEdit" name="lineEditCEP"/></item>
+
+           <item row="5" column="0"><widget class="QLabel"><property name="text"><string>Rua:</string></property></widget></item>
+           <item row="5" column="1"><widget class="QLineEdit" name="lineEditRua"/></item>
+
+           <item row="6" column="0"><widget class="QLabel"><property name="text"><string>Bairro:</string></property></widget></item>
+           <item row="6" column="1"><widget class="QLineEdit" name="lineEditBairro"/></item>
+
+           <item row="7" column="0"><widget class="QLabel"><property name="text"><string>Nº:</string></property></widget></item>
+           <item row="7" column="1"><widget class="QLineEdit" name="lineEditNumero"/></item>
+
+           <item row="8" column="0"><widget class="QLabel"><property name="text"><string>Complemento:</string></property></widget></item>
+           <item row="8" column="1"><widget class="QLineEdit" name="lineEditComplemento"/></item>
+
+           <item row="9" column="0"><widget class="QLabel"><property name="text"><string>Cidade:</string></property></widget></item>
+           <item row="9" column="1"><widget class="QLineEdit" name="lineEditCidade"/></item>
+
+           <item row="10" column="0"><widget class="QLabel"><property name="text"><string>E-mail:</string></property></widget></item>
+           <item row="10" column="1"><widget class="QLineEdit" name="lineEditEmail"/></item>
+
+           <item row="11" column="0"><widget class="QLabel"><property name="text"><string>Observações:</string></property></widget></item>
+           <item row="11" column="1"><widget class="QTextEdit" name="textEditObservacoes"/></item>
+
+           <item row="12" column="0"><widget class="QPushButton"><property name="text"><string>Salvar</string></property></widget></item>
+           <item row="12" column="1"><widget class="QPushButton"><property name="text"><string>Editar</string></property></widget></item>
+           <item row="13" column="0"><widget class="QPushButton"><property name="text"><string>Excluir</string></property></widget></item>
           </layout>
          </widget>
         </item>
@@ -110,7 +124,6 @@ QTableView { background-color: white; border-radius: 10px; }
       <!-- PEDIDOS -->
       <widget class="QWidget" name="pagePedidos">
        <layout class="QHBoxLayout">
-        <!-- ESQUERDA -->
         <item>
          <widget class="QGroupBox" name="groupBoxPedidos">
           <property name="title"><string>Pedidos</string></property>
@@ -126,7 +139,6 @@ QTableView { background-color: white; border-radius: 10px; }
           </layout>
          </widget>
         </item>
-        <!-- DIREITA -->
         <item>
          <layout class="QVBoxLayout">
           <item><widget class="QLineEdit" name="lineEditPesquisaPedido"><property name="placeholderText"><string>Pesquisar pedido...</string></property></widget></item>
@@ -139,7 +151,6 @@ QTableView { background-color: white; border-radius: 10px; }
       <!-- RECEITAS -->
       <widget class="QWidget" name="pageReceitas">
        <layout class="QHBoxLayout">
-        <!-- FORM -->
         <item>
          <widget class="QGroupBox" name="groupBoxReceitas">
           <property name="title"><string>Cadastro de Receitas</string></property>
@@ -152,7 +163,6 @@ QTableView { background-color: white; border-radius: 10px; }
           </layout>
          </widget>
         </item>
-        <!-- TABELA -->
         <item>
          <layout class="QVBoxLayout">
           <item><widget class="QLineEdit" name="lineEditPesquisaReceita"><property name="placeholderText"><string>Pesquisar receita...</string></property></widget></item>
@@ -165,7 +175,6 @@ QTableView { background-color: white; border-radius: 10px; }
       <!-- MASSAS E RECHEIOS -->
       <widget class="QWidget" name="pageMassas">
        <layout class="QHBoxLayout">
-        <!-- FORM -->
         <item>
          <widget class="QGroupBox" name="groupBoxMassas">
           <property name="title"><string>Massas e Recheios</string></property>
@@ -176,7 +185,6 @@ QTableView { background-color: white; border-radius: 10px; }
           </layout>
          </widget>
         </item>
-        <!-- TABELA -->
         <item>
          <layout class="QVBoxLayout">
           <item><widget class="QLineEdit" name="lineEditPesquisaMassa"><property name="placeholderText"><string>Pesquisar massa/recheio...</string></property></widget></item>
@@ -189,7 +197,6 @@ QTableView { background-color: white; border-radius: 10px; }
       <!-- PRODUTOS -->
       <widget class="QWidget" name="pageProdutos">
        <layout class="QHBoxLayout">
-        <!-- FORM -->
         <item>
          <widget class="QGroupBox" name="groupBoxProdutos">
           <property name="title"><string>Cadastro de Produtos</string></property>
@@ -208,7 +215,6 @@ QTableView { background-color: white; border-radius: 10px; }
           </layout>
          </widget>
         </item>
-        <!-- TABELA -->
         <item>
          <layout class="QVBoxLayout">
           <item><widget class="QLineEdit" name="lineEditPesquisaProduto"><property name="placeholderText"><string>Pesquisar produto...</string></property></widget></item>
@@ -221,7 +227,6 @@ QTableView { background-color: white; border-radius: 10px; }
       <!-- VENDAS -->
       <widget class="QWidget" name="pageVendas">
        <layout class="QHBoxLayout">
-        <!-- FORM -->
         <item>
          <widget class="QGroupBox" name="groupBoxVendas">
           <property name="title"><string>Registro de Vendas</string></property>
@@ -238,7 +243,6 @@ QTableView { background-color: white; border-radius: 10px; }
           </layout>
          </widget>
         </item>
-        <!-- TABELA -->
         <item>
          <layout class="QVBoxLayout">
           <item><widget class="QLineEdit" name="lineEditPesquisaVendas"><property name="placeholderText"><string>Pesquisar venda...</string></property></widget></item>
@@ -251,7 +255,6 @@ QTableView { background-color: white; border-radius: 10px; }
       <!-- FORNECEDORES -->
       <widget class="QWidget" name="pageFornecedores">
        <layout class="QHBoxLayout">
-        <!-- FORM -->
         <item>
          <widget class="QGroupBox" name="groupBoxFornecedores">
           <property name="title"><string>Cadastro de Fornecedores</string></property>
@@ -265,7 +268,6 @@ QTableView { background-color: white; border-radius: 10px; }
           </layout>
          </widget>
         </item>
-        <!-- TABELA -->
         <item>
          <layout class="QVBoxLayout">
           <item><widget class="QLineEdit" name="lineEditPesquisaFornecedor"><property name="placeholderText"><string>Pesquisar fornecedor...</string></property></widget></item>
@@ -280,7 +282,6 @@ QTableView { background-color: white; border-radius: 10px; }
 
    </layout>
   </widget>
-
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
