@@ -13,21 +13,24 @@ class cadastro(QtWidgets.QMainWindow):
     def salvar(self):
         nome = self.txt_nome.text()
         telefone = self.txt_telefone.text()
-        data_nascimento = self.txt_data.text()
-        cep = self.txt_cep.text()
+        data = self.dateEdit.date()
+        data_format = data.toString()
+        #cpf = self_spf.text().replace(".", "").replace("-", "")
+        cep = self.txt_cep.text().replace(".", "").replace("-", "")
         rua = self.txt_rua.text()
         bairro = self.txt_bairro.text()
         n = self.txt_n.text()
         complemento = self.txt_complemento.text()
+        cidade = self.txt_cidade.text()
         email = self.txt_email.text()
         observacoes = self.txt_obs.text()
 
         conexao = conectar()
         cursor = conexao.cursor()
 
-        sql = 'INSERT INTO cliente(nome, telefone, cep, rua, bairro, n, complemento, email, observacoes) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s, %s)'
+        sql = 'INSERT INTO cliente(nome, telefone, data_format, cep, rua, bairro, n, complemento, cidade, email, observacoes) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 
-        dados = (nome, telefone, cep, rua, bairro, n, complemento, email, observacoes)
+        dados = (nome, telefone, data_format, cep, rua, bairro, n, complemento,cidade, email, observacoes)
         cursor.execute(sql, dados)
 
         conexao.commit()
