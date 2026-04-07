@@ -32,7 +32,7 @@ class Login(QtWidgets.QMainWindow, tela_login):
             print("Login OK")
             QtWidgets.QMessageBox.information(self, 'login', 'Login realizado com sucesso!')
 
-            from main import Menu
+            from menu import Menu
 
             self.menu = Menu()
             self.menu.show()
