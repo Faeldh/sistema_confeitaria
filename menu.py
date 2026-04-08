@@ -10,13 +10,13 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.setupUi(self)
 
                # 🔁 NAVEGAÇÃO ENTRE PÁGINAS
-        self.btn_ir_cadastro.clicked.connect(
+        '''self.btn_ir_cadastro.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.page_cadastro)
-        )
+        )'''
 
-        self.btn_voltar.clicked.connect(
+        '''self.btn_voltar.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.page_home)
-        )
+        )'''
 
         # 💾 SALVAR CADASTRO
         self.btn_salvar.clicked.connect(self.salvar_cliente)
