@@ -8,3 +8,5 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.setupUi(self)
 
     
+
+    
