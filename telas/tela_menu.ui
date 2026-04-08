@@ -42,57 +42,48 @@ QTableView { background-color: white; border-radius: 10px; }
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QPushButton" name="btnClientes">
-          <property name="text">
-           <string>Clientes</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnPedidos">
-          <property name="text">
-           <string>Pedidos</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnReceitas">
-          <property name="text">
-           <string>Receitas</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnMassas">
-          <property name="text">
-           <string>Massas e Recheios</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnProdutos">
-          <property name="text">
-           <string>Produtos</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnVendas">
-          <property name="text">
-           <string>Vendas</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnFornecedores">
-          <property name="text">
-           <string>Fornecedores</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      <layout class="QHBoxLayout">
+    <item>
+        <widget class="QPushButton" name="btnClientes">
+            <property name="text"><string>Clientes</string></property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="btnPedidos">
+            <property name="text"><string>Pedidos</string></property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="btnReceitas">
+            <property name="text"><string>Receitas</string></property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="btnMassas">
+            <property name="text"><string>Massas e Recheios</string></property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="btnProdutos">
+            <property name="text"><string>Produtos</string></property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="btnVendas">
+            <property name="text"><string>Vendas</string></property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="btnControleFinanceiro">
+            <property name="text"><string>Controle Financeiro</string></property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="btnFornecedores">
+            <property name="text"><string>Fornecedores</string></property>
+        </widget>
+    </item>
+</layout>
       </item>
      </layout>
     </item>
@@ -270,397 +261,626 @@ QTableView { background-color: white; border-radius: 10px; }
        </layout>
       </widget>
       <widget class="QWidget" name="pagePedidos">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxPedidos">
-          <property name="title">
-           <string>Pedidos</string>
-          </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Cliente:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="comboBox"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Produto:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QComboBox" name="comboBox"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Entrega:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QDateEdit" name="dateEdit"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Salvar Pedido</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Excluir</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaPedido">
-            <property name="placeholderText">
-             <string>Pesquisar pedido...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewPedidos"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
+ <layout class="QHBoxLayout">
+
+  <!-- Lado esquerdo: cadastro do pedido -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxCadastroPedido">
+    <property name="title"><string>Cadastro de Pedido</string></property>
+    <layout class="QFormLayout">
+
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelCliente"><property name="text"><string>Cliente:</string></property></widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="comboBoxCliente"/>
+     </item>
+
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelProduto"><property name="text"><string>Produto (ID + Nome):</string></property></widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="comboBoxProduto"/>
+     </item>
+
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelQuantidade"><property name="text"><string>Quantidade:</string></property></widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSpinBox" name="spinBoxQuantidade"/>
+     </item>
+
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelTamanho"><property name="text"><string>Tamanho:</string></property></widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="lineEditTamanho"/>
+     </item>
+
+     <item row="4" column="0">
+      <widget class="QLabel" name="labelSabor"><property name="text"><string>Sabor:</string></property></widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="lineEditSabor"/>
+     </item>
+
+     <item row="5" column="0">
+      <widget class="QLabel" name="labelAdicionais"><property name="text"><string>Adicionais:</string></property></widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="lineEditAdicionais"/>
+     </item>
+
+     <item row="6" column="0">
+      <widget class="QPushButton" name="btnAdicionarProduto">
+       <property name="text"><string>Adicionar Produto</string></property>
       </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPushButton" name="btnRemoverProduto">
+       <property name="text"><string>Remover Produto</string></property>
+      </widget>
+     </item>
+
+     <item row="7" column="0">
+      <widget class="QLabel" name="labelDataEntrega"><property name="text"><string>Data de Entrega:</string></property></widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QDateEdit" name="dateEditEntrega"/>
+     </item>
+
+     <item row="8" column="0">
+      <widget class="QLabel" name="labelObservacoes"><property name="text"><string>Observações:</string></property></widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QTextEdit" name="txtObservacoes"/>
+     </item>
+
+     <item row="9" column="0">
+      <widget class="QLabel" name="labelStatus"><property name="text"><string>Status do Pedido:</string></property></widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QComboBox" name="comboBoxStatus">
+       <item><property name="text"><string>Pendente</string></property></item>
+       <item><property name="text"><string>Em produção</string></property></item>
+       <item><property name="text"><string>Entregue</string></property></item>
+      </widget>
+     </item>
+
+     <item row="10" column="0">
+      <widget class="QPushButton" name="btnSalvarPedido"><property name="text"><string>Salvar Pedido</string></property></widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QPushButton" name="btnEditarPedido"><property name="text"><string>Editar Pedido</string></property></widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QPushButton" name="btnExcluirPedido"><property name="text"><string>Excluir Pedido</string></property></widget>
+     </item>
+
+     <!-- Lista de produtos do pedido -->
+     <item row="12" column="0" colspan="2">
+      <widget class="QTableWidget" name="tableWidgetItensPedido">
+       <property name="columnCount"><number>6</number></property>
+       <column>
+        <property name="text"><string>ID Produto</string></property>
+       </column>
+       <column>
+        <property name="text"><string>Produto</string></property>
+       </column>
+       <column>
+        <property name="text"><string>Quantidade</string></property>
+       </column>
+       <column>
+        <property name="text"><string>Tamanho</string></property>
+       </column>
+       <column>
+        <property name="text"><string>Sabor</string></property>
+       </column>
+       <column>
+        <property name="text"><string>Adicionais</string></property>
+       </column>
+      </widget>
+     </item>
+
+    </layout>
+   </widget>
+  </item>
+
+  <!-- Lado direito: pesquisa de pedidos -->
+  <item>
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QLineEdit" name="lineEditPesquisaPedido">
+      <property name="placeholderText"><string>Pesquisar pedido...</string></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="tableViewPedidos">
+      <property name="columnCount"><number>6</number></property>
+      <column><property name="text"><string>Cliente</string></property></column>
+      <column><property name="text"><string>Produtos</string></property></column>
+      <column><property name="text"><string>Quantidade</string></property></column>
+      <column><property name="text"><string>Preço Total</string></property></column>
+      <column><property name="text"><string>Data Entrega</string></property></column>
+      <column><property name="text"><string>Status</string></property></column>
+     </widget>
+    </item>
+   </layout>
+  </item>
+
+ </layout>
+</widget>
       <widget class="QWidget" name="pageReceitas">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxReceitas">
-          <property name="title">
-           <string>Cadastro de Receitas</string>
-          </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Nome:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Descrição:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QTextEdit" name="textEdit"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Salvar</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaReceita">
-            <property name="placeholderText">
-             <string>Pesquisar receita...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewReceitas"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
+ <layout class="QHBoxLayout">
+  <!-- Lado esquerdo: formulário e botões -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxReceitas">
+    <property name="title"><string>Cadastro de Receitas</string></property>
+    <layout class="QFormLayout">
+     <item row="0" column="0"><widget class="QLabel" name="labelNomeReceita"><property name="text"><string>Nome:</string></property></widget></item>
+     <item row="0" column="1"><widget class="QLineEdit" name="txt_nomeReceita"/></item>
+
+     <item row="1" column="0"><widget class="QLabel" name="labelIngredientes"><property name="text"><string>Ingredientes:</string></property></widget></item>
+     <item row="1" column="1"><widget class="QTextEdit" name="txt_ingredientes"/></item>
+
+     <item row="2" column="0"><widget class="QLabel" name="labelModoPreparo"><property name="text"><string>Modo de Preparo:</string></property></widget></item>
+     <item row="2" column="1"><widget class="QTextEdit" name="txt_modoPreparo"/></item>
+
+     <item row="3" column="0"><widget class="QPushButton" name="btn_salvarReceita"><property name="text"><string>Salvar</string></property></widget></item>
+     <item row="3" column="1"><widget class="QPushButton" name="btn_editarReceita"><property name="text"><string>Editar</string></property></widget></item>
+     <item row="4" column="0"><widget class="QPushButton" name="btn_excluirReceita"><property name="text"><string>Excluir</string></property></widget></item>
+    </layout>
+   </widget>
+  </item>
+
+  <!-- Lado direito: pesquisa e tabela -->
+  <item>
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QLineEdit" name="lineEditPesquisaReceita">
+      <property name="placeholderText"><string>Pesquisar receita...</string></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableViewReceitas"/>
+    </item>
+   </layout>
+  </item>
+ </layout>
+</widget>
+     <widget class="QWidget" name="pageControleProducao">
+ <layout class="QHBoxLayout">
+  <!-- Lado esquerdo: Cadastro de Tarefas -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxTarefas">
+    <property name="title">
+     <string>Cadastro de Tarefas</string>
+    </property>
+    <layout class="QFormLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelProduto">
+       <property name="text">
+        <string>Produto / Item:</string>
+       </property>
       </widget>
-      <widget class="QWidget" name="pageMassas">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxMassas">
-          <property name="title">
-           <string>Massas e Recheios</string>
-          </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Nome:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Salvar</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaMassa">
-            <property name="placeholderText">
-             <string>Pesquisar massa/recheio...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewMassas"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="txtProduto"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelTipo">
+       <property name="text">
+        <string>Tipo:</string>
+       </property>
       </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="comboTipo">
+       <item><property name="text"><string>Massa</string></property></item>
+       <item><property name="text"><string>Recheio</string></property></item>
+       <item><property name="text"><string>Bolo</string></property></item>
+       <item><property name="text"><string>Doce</string></property></item>
+       <item><property name="text"><string>Outro</string></property></item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelQuantidade">
+       <property name="text">
+        <string>Quantidade:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSpinBox" name="spinQuantidade"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelData">
+       <property name="text">
+        <string>Data de Produção:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDateEdit" name="dateProducao"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="labelHora">
+       <property name="text">
+        <string>Hora de Produção:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QTimeEdit" name="timeProducao"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="labelObs">
+       <property name="text">
+        <string>Observações:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QTextEdit" name="txtObservacoes"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QPushButton" name="btnAdicionarTarefa">
+       <property name="text"><string>Adicionar</string></property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPushButton" name="btnEditarTarefa">
+       <property name="text"><string>Editar</string></property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QPushButton" name="btnExcluirTarefa">
+       <property name="text"><string>Excluir</string></property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </item>
+
+  <!-- Lado direito: Agenda -->
+  <item>
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QLineEdit" name="linePesquisarTarefas">
+      <property name="placeholderText"><string>Pesquisar tarefa...</string></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableAgenda"/>
+    </item>
+   </layout>
+  </item>
+ </layout>
+</widget>
       <widget class="QWidget" name="pageProdutos">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxProdutos">
-          <property name="title">
-           <string>Cadastro de Produtos</string>
-          </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Produto:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Categoria:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Tamanho:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Preço:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Salvar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Editar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Excluir</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaProduto">
-            <property name="placeholderText">
-             <string>Pesquisar produto...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewProdutos"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
+ <layout class="QHBoxLayout">
+  <!-- Lado esquerdo: formulário -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxProdutos">
+    <property name="title"><string>Cadastro de Produtos</string></property>
+    <layout class="QFormLayout">
+     <item row="0" column="0"><widget class="QLabel" name="labelProduto"><property name="text"><string>Produto:</string></property></widget></item>
+     <item row="0" column="1"><widget class="QLineEdit" name="txt_produto"/></item>
+
+     <item row="1" column="0"><widget class="QLabel" name="labelCategoria"><property name="text"><string>Categoria:</string></property></widget></item>
+     <item row="1" column="1"><widget class="QLineEdit" name="txt_categoria"/></item>
+
+     <item row="2" column="0"><widget class="QLabel" name="labelTamanho"><property name="text"><string>Tamanho:</string></property></widget></item>
+     <item row="2" column="1"><widget class="QLineEdit" name="txt_tamanho"/></item>
+
+     <item row="3" column="0"><widget class="QLabel" name="labelPreco"><property name="text"><string>Preço:</string></property></widget></item>
+     <item row="3" column="1"><widget class="QLineEdit" name="txt_preco"/></item>
+
+     <item row="4" column="0"><widget class="QLabel" name="labelSabores"><property name="text"><string>Sabores Disponíveis:</string></property></widget></item>
+     <item row="4" column="1"><widget class="QTextEdit" name="txt_sabores"/></item>
+
+     <item row="5" column="0"><widget class="QLabel" name="labelDescricao"><property name="text"><string>Descrição:</string></property></widget></item>
+     <item row="5" column="1"><widget class="QTextEdit" name="txt_descricao"/></item>
+
+     <item row="6" column="0"><widget class="QPushButton" name="btn_salvarProduto"><property name="text"><string>Salvar</string></property></widget></item>
+     <item row="6" column="1"><widget class="QPushButton" name="btn_editarProduto"><property name="text"><string>Editar</string></property></widget></item>
+     <item row="7" column="0"><widget class="QPushButton" name="btn_excluirProduto"><property name="text"><string>Excluir</string></property></widget></item>
+    </layout>
+   </widget>
+  </item>
+
+  <!-- Lado direito: pesquisa -->
+  <item>
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QLineEdit" name="lineEditPesquisaProduto">
+      <property name="placeholderText"><string>Pesquisar produto...</string></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableViewProdutos"/>
+    </item>
+   </layout>
+  </item>
+ </layout>
+</widget>
+     <widget class="QWidget" name="pageVendas">
+ <layout class="QHBoxLayout">
+  <!-- Lado esquerdo: Registro de Venda -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxVendas">
+    <property name="title">
+     <string>Registro de Vendas</string>
+    </property>
+    <layout class="QFormLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelCliente">
+       <property name="text"><string>Cliente:</string></property>
       </widget>
-      <widget class="QWidget" name="pageVendas">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxVendas">
-          <property name="title">
-           <string>Registro de Vendas</string>
-          </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Cliente:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="comboBox"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Produto:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QComboBox" name="comboBox"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Quantidade:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Data:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QDateEdit" name="dateEdit"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Registrar Venda</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaVendas">
-            <property name="placeholderText">
-             <string>Pesquisar venda...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewVendas"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="comboBoxCliente"/>
+     </item>
+
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelProdutos">
+       <property name="text"><string>Produtos:</string></property>
       </widget>
-      <widget class="QWidget" name="pageFornecedores">
+     </item>
+     <item row="1" column="1">
+      <!-- Lista de produtos adicionados à venda -->
+      <widget class="QTableWidget" name="tableWidgetProdutos">
+       <property name="columnCount">
+        <number>5</number>
+       </property>
+       <property name="horizontalHeaderLabels">
+        <string>Produto;Quantidade;Tamanho;Sabor;Adicionais</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="2" column="0">
+      <widget class="QPushButton" name="btnAdicionarProduto">
+       <property name="text"><string>Adicionar Produto</string></property>
+      </widget>
+     </item>
+
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelData">
+       <property name="text"><string>Data da Venda:</string></property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDateEdit" name="dateEditVenda"/>
+     </item>
+
+     <item row="4" column="0">
+      <widget class="QLabel" name="labelTotal">
+       <property name="text"><string>Total:</string></property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="lineEditTotal"/>
+     </item>
+
+     <item row="5" column="0">
+      <widget class="QLabel" name="labelStatus">
+       <property name="text"><string>Status:</string></property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="comboBoxStatus">
+       <item>
+        <property name="text"><string>Pago</string></property>
+       </item>
+       <item>
+        <property name="text"><string>Pendente</string></property>
+       </item>
+       <item>
+        <property name="text"><string>Parcial</string></property>
+       </item>
+      </widget>
+     </item>
+
+     <!-- Botões -->
+     <item row="6" column="0">
+      <widget class="QPushButton" name="btnRegistrarVenda">
+       <property name="text"><string>Registrar Venda</string></property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPushButton" name="btnEditarVenda">
+       <property name="text"><string>Editar Venda</string></property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QPushButton" name="btnExcluirVenda">
+       <property name="text"><string>Excluir Venda</string></property>
+      </widget>
+     </item>
+
+    </layout>
+   </widget>
+  </item>
+
+  <!-- Lado direito: Pesquisa e Tabela de Vendas -->
+  <item>
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QLineEdit" name="lineEditPesquisaVendas">
+      <property name="placeholderText"><string>Pesquisar venda...</string></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableViewVendas"/>
+    </item>
+   </layout>
+  </item>
+ </layout>
+</widget>
+<widget class="QWidget" name="pageControleFinanceiro">
+ <layout class="QHBoxLayout">
+  <!-- Lado esquerdo: Inserir entrada financeira -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxEntradas">
+    <property name="title">
+     <string>Registrar Entrada</string>
+    </property>
+    <layout class="QFormLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelCliente">
+       <property name="text"><string>Cliente / Pedido:</string></property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="txtClienteFinanceiro"/>
+     </item>
+
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelSinal">
+       <property name="text"><string>Sinal Recebido:</string></property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QDoubleSpinBox" name="spinSinal">
+       <property name="prefix"><string>R$ </string></property>
+       <property name="maximum"><double>1000000.00</double></property>
+       <property name="decimals"><number>2</number></property>
+      </widget>
+     </item>
+
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelRestante">
+       <property name="text"><string>Restante a Receber:</string></property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QDoubleSpinBox" name="spinRestante">
+       <property name="prefix"><string>R$ </string></property>
+       <property name="maximum"><double>1000000.00</double></property>
+       <property name="decimals"><number>2</number></property>
+      </widget>
+     </item>
+
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelDataEntrada">
+       <property name="text"><string>Data:</string></property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QDateEdit" name="dateEntrada"/>
+     </item>
+
+     <item row="4" column="0">
+      <widget class="QPushButton" name="btnAdicionarEntrada">
+       <property name="text"><string>Adicionar Entrada</string></property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPushButton" name="btnExcluirEntrada">
+       <property name="text"><string>Excluir</string></property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </item>
+
+  <!-- Lado direito: Tabela e totais -->
+  <item>
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QLineEdit" name="linePesquisarFinanceiro">
+      <property name="placeholderText"><string>Pesquisar entrada...</string></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableFinanceiro"/>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBoxTotais">
+      <property name="title"><string>Totais</string></property>
+      <layout class="QFormLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelTotalDia">
+         <property name="text"><string>Total do Dia:</string></property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="lblTotalDia">
+         <property name="text"><string>R$ 0,00</string></property>
+        </widget>
+       </item>
+
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelTotalMes">
+         <property name="text"><string>Total do Mês:</string></property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="lblTotalMes">
+         <property name="text"><string>R$ 0,00</string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </item>
+ </layout>
+</widget>
+     <widget class="QWidget" name="pageFornecedores">
        <layout class="QHBoxLayout">
+        <!-- Lado esquerdo: formulário -->
         <item>
          <widget class="QGroupBox" name="groupBoxFornecedores">
-          <property name="title">
-           <string>Cadastro de Fornecedores</string>
-          </property>
+          <property name="title"><string>Cadastro de Fornecedores</string></property>
           <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Nome:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Telefone:</string>
-             </property>
-            </widget>
-           </item>
+           <item row="0" column="0"><widget class="QLabel" name="labelNome"><property name="text"><string>Nome:</string></property></widget></item>
+           <item row="0" column="1"><widget class="QLineEdit" name="txt_nomeFornecedor"/></item>
+           <item row="1" column="0"><widget class="QLabel" name="labelTipo"><property name="text"><string>Tipo de fornecedor:</string></property></widget></item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Salvar</string>
-             </property>
+            <widget class="QComboBox" name="combo_tipoFornecedor">
+             <item><property name="text"><string>Ingredientes</string></property></item>
+             <item><property name="text"><string>Decoração</string></property></item>
+             <item><property name="text"><string>Embalagens</string></property></item>
+             <item><property name="text"><string>Outros</string></property></item>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Excluir</string>
-             </property>
-            </widget>
-           </item>
+           <item row="2" column="0"><widget class="QLabel" name="labelCpfCnpj"><property name="text"><string>CPF/CNPJ:</string></property></widget></item>
+           <item row="2" column="1"><widget class="QLineEdit" name="txt_cpfCnpj"/></item>
+           <item row="3" column="0"><widget class="QLabel" name="labelTelefone"><property name="text"><string>Telefone:</string></property></widget></item>
+           <item row="3" column="1"><widget class="QLineEdit" name="txt_telefoneFornecedor"/></item>
+           <item row="4" column="0"><widget class="QLabel" name="labelEmail"><property name="text"><string>E-mail:</string></property></widget></item>
+           <item row="4" column="1"><widget class="QLineEdit" name="txt_emailFornecedor"/></item>
+           <item row="5" column="0"><widget class="QLabel" name="labelRua"><property name="text"><string>Rua:</string></property></widget></item>
+           <item row="5" column="1"><widget class="QLineEdit" name="txt_ruaFornecedor"/></item>
+           <item row="6" column="0"><widget class="QLabel" name="labelN"><property name="text"><string>N°:</string></property></widget></item>
+           <item row="6" column="1"><widget class="QLineEdit" name="txt_numFornecedor"/></item>
+           <item row="7" column="0"><widget class="QLabel" name="labelBairro"><property name="text"><string>Bairro:</string></property></widget></item>
+           <item row="7" column="1"><widget class="QLineEdit" name="txt_bairroFornecedor"/></item>
+           <item row="8" column="0"><widget class="QLabel" name="labelCidade"><property name="text"><string>Cidade:</string></property></widget></item>
+           <item row="8" column="1"><widget class="QLineEdit" name="txt_cidadeFornecedor"/></item>
+           <item row="9" column="0"><widget class="QLabel" name="labelComplemento"><property name="text"><string>Complemento:</string></property></widget></item>
+           <item row="9" column="1"><widget class="QLineEdit" name="txt_complementoFornecedor"/></item>
+           <item row="10" column="0"><widget class="QLabel" name="labelInfoAdicionais"><property name="text"><string>Informações adicionais:</string></property></widget></item>
+           <item row="10" column="1"><widget class="QTextEdit" name="txt_infoAdicionais"/></item>
+           <item row="11" column="0"><widget class="QPushButton" name="btn_salvarFornecedor"><property name="text"><string>Salvar</string></property></widget></item>
+           <item row="11" column="1"><widget class="QPushButton" name="btn_editarFornecedor"><property name="text"><string>Editar</string></property></widget></item>
+           <item row="12" column="0"><widget class="QPushButton" name="btn_excluirFornecedor"><property name="text"><string>Excluir</string></property></widget></item>
           </layout>
          </widget>
         </item>
+
+        <!-- Lado direito: pesquisa e tabela -->
         <item>
          <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaFornecedor">
-            <property name="placeholderText">
-             <string>Pesquisar fornecedor...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewFornecedores"/>
-          </item>
+          <item><widget class="QLineEdit" name="lineEditPesquisaFornecedor"><property name="placeholderText"><string>Pesquisar fornecedor...</string></property></widget></item>
+          <item><widget class="QTableView" name="tableViewFornecedores"/></item>
          </layout>
         </item>
        </layout>
       </widget>
+
      </widget>
     </item>
    </layout>
