@@ -6,6 +6,28 @@ from conexao import conectar
         #self.btn_salvar.clicked.connect(self.salvar)
         #self.btn_excluir.clicked.connect(self.excluir)
         #self.btn_editar.clicked.connect(self.editar)
+
+def validar_cpf(cpf):
+    if len(cpf) != 11 or cpf == cpf[0] * 11:
+        return False
+
+    # 1º dígito
+    soma = sum(int(cpf[i]) * (10 - i) for i in range(9))
+    dig1 = (soma * 10 % 11) % 10
+
+    # 2º dígito
+    soma = sum(int(cpf[i]) * (11 - i) for i in range(10))
+    dig2 = (soma * 10 % 11) % 10
+
+    return cpf[-2:] == f"{dig1}{dig2}"
+
+def configurar_campos(self):
+    # máscara CPF
+    self.txt_cpf.setInputMask("000.000.000-00")
+
+    # remover borda vermelha ao digitar
+    self.txt_nome.textChanged.connect(lambda: self.txt_nome.setStyleSheet(""))
+    self.txt_cpf.textChanged.connect(lambda: self.txt_cpf.setStyleSheet(""))
     
 def salvar(self):
     nome = self.txt_nome.text()
@@ -21,6 +43,36 @@ def salvar(self):
     cidade = self.txt_cidade.text()
     email = self.txt_email.text()
     observcoes = self.txt_obs.toPlainText()
+
+    self.txt_nome.setStyleSheet("")
+    self.txt_cpf.setStyleSheet("")
+
+    erros = []
+
+    if not nome:
+        erros.append("Nome")
+        self.txt_nome.setStyleSheet("border: 2px solid red;")
+
+    if not cpf:
+        erros.append("CPF")
+        self.txt_cpf.setStyleSheet("border: 2px solid red;")
+
+    elif not validar_cpf(cpf):
+        QtWidgets.QMessageBox.warning(self, 'Erro', 'CPF inválido!')
+        self.txt_cpf.setStyleSheet("border: 2px solid red;")
+        self.txt_cpf.setFocus()
+        return
+
+    if erros:
+        mensagem = "Preencha os campos obrigatórios:\n- " + "\n- ".join(erros)
+        QtWidgets.QMessageBox.warning(self, 'Atenção', mensagem)
+
+        if not nome:
+            self.txt_nome.setFocus()
+        elif not cpf:
+            self.txt_cpf.setFocus()
+
+        return
 
     conexao = conectar()
     cursor = conexao.cursor()
