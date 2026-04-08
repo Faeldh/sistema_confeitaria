@@ -32,11 +32,11 @@ class cadastro(QtWidgets.QMainWindow):
 
         dados = (nome, telefone, data_format,cpf, cep, rua, bairro, n, complemento,cidade, email, observacoes)
         cursor.execute(sql, dados)
-        resultado = cursor.fetchone()
-        print("Resultado do banco:", resultado)
 
-        if resultado:
-            print("Login OK")
+        conexao.commit()
+
+        if cursor.rowcount > 0:
+            print("Cadastro OK")
             QtWidgets.QMessageBox.information(self, 'Cadastro', 'Cadastro realizado com sucesso!')
 
             from menu import Menu
@@ -45,8 +45,5 @@ class cadastro(QtWidgets.QMainWindow):
             self.menu.show()
 
             self.close()
-
         else:
             QtWidgets.QMessageBox.information(self, 'Erro', 'Usuário não cadastrado')
-
-        conexao.commit()
