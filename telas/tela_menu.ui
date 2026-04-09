@@ -108,67 +108,101 @@ QTableView { background-color: white; border-radius: 10px; }
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="pageClientes">
+     <widget class="QWidget" name="pageClientes">
  <layout class="QHBoxLayout">
 
-  <!-- Lado esquerdo -->
+  <!-- LADO ESQUERDO -->
   <item>
    <widget class="QGroupBox" name="groupBoxClientes">
     <property name="title">
      <string>Cadastro de Clientes</string>
     </property>
-    <layout class="QFormLayout">
 
-     <item row="0" column="0"><widget class="QLabel"><property name="text"><string>Nome:</string></property></widget></item>
-     <item row="0" column="1"><widget class="QLineEdit" name="txt_nome"/></item>
+    <layout class="QVBoxLayout">
 
-     <item row="1" column="0"><widget class="QLabel"><property name="text"><string>Telefone:</string></property></widget></item>
-     <item row="1" column="1"><widget class="QLineEdit" name="txt_telefone"/></item>
+     <!-- FORMULÁRIO -->
+     <item>
+      <layout class="QFormLayout">
 
-     <item row="2" column="0"><widget class="QLabel"><property name="text"><string>CPF:</string></property></widget></item>
-     <item row="2" column="1"><widget class="QLineEdit" name="txt_cpf"/></item>
+       <item row="0" column="0"><widget class="QLabel"><property name="text"><string>Nome:</string></property></widget></item>
+       <item row="0" column="1"><widget class="QLineEdit" name="txt_nome"/></item>
 
-     <item row="3" column="0"><widget class="QLabel"><property name="text"><string>Data Nascimento:</string></property></widget></item>
-     <item row="3" column="1"><widget class="QDateEdit" name="dateEditNascimento"/></item>
+       <item row="1" column="0"><widget class="QLabel"><property name="text"><string>Telefone:</string></property></widget></item>
+       <item row="1" column="1"><widget class="QLineEdit" name="txt_telefone"/></item>
 
-     <item row="4" column="0"><widget class="QLabel"><property name="text"><string>CEP:</string></property></widget></item>
-     <item row="4" column="1"><widget class="QLineEdit" name="txt_cep"/></item>
+       <item row="2" column="0"><widget class="QLabel"><property name="text"><string>CPF:</string></property></widget></item>
+       <item row="2" column="1"><widget class="QLineEdit" name="txt_cpf"/></item>
 
-     <item row="5" column="0"><widget class="QLabel"><property name="text"><string>Rua:</string></property></widget></item>
-     <item row="5" column="1"><widget class="QLineEdit" name="txt_rua"/></item>
+       <item row="3" column="0"><widget class="QLabel"><property name="text"><string>Data Nascimento:</string></property></widget></item>
+       <item row="3" column="1"><widget class="QDateEdit" name="dateEditNascimento"/></item>
 
-     <item row="6" column="0"><widget class="QLabel"><property name="text"><string>Bairro:</string></property></widget></item>
-     <item row="6" column="1"><widget class="QLineEdit" name="txt_bairro"/></item>
+       <item row="4" column="0"><widget class="QLabel"><property name="text"><string>CEP:</string></property></widget></item>
+       <item row="4" column="1"><widget class="QLineEdit" name="txt_cep"/></item>
 
-     <item row="7" column="0"><widget class="QLabel"><property name="text"><string>Nº:</string></property></widget></item>
-     <item row="7" column="1"><widget class="QLineEdit" name="txt_n"/></item>
+       <item row="5" column="0"><widget class="QLabel"><property name="text"><string>Rua:</string></property></widget></item>
+       <item row="5" column="1"><widget class="QLineEdit" name="txt_rua"/></item>
 
-     <item row="8" column="0"><widget class="QLabel"><property name="text"><string>Complemento:</string></property></widget></item>
-     <item row="8" column="1"><widget class="QLineEdit" name="txt_complemento"/></item>
+       <item row="6" column="0"><widget class="QLabel"><property name="text"><string>Bairro:</string></property></widget></item>
+       <item row="6" column="1"><widget class="QLineEdit" name="txt_bairro"/></item>
 
-     <item row="9" column="0"><widget class="QLabel"><property name="text"><string>Cidade:</string></property></widget></item>
-     <item row="9" column="1"><widget class="QLineEdit" name="txt_cidade"/></item>
+       <item row="7" column="0"><widget class="QLabel"><property name="text"><string>Nº:</string></property></widget></item>
+       <item row="7" column="1"><widget class="QLineEdit" name="txt_n"/></item>
 
-     <item row="10" column="0"><widget class="QLabel"><property name="text"><string>E-mail:</string></property></widget></item>
-     <item row="10" column="1"><widget class="QLineEdit" name="txt_email"/></item>
+       <item row="8" column="0"><widget class="QLabel"><property name="text"><string>Complemento:</string></property></widget></item>
+       <item row="8" column="1"><widget class="QLineEdit" name="txt_complemento"/></item>
 
-     <item row="11" column="0"><widget class="QLabel"><property name="text"><string>Observações:</string></property></widget></item>
-     <item row="11" column="1"><widget class="QTextEdit" name="txt_obs"/></item>
+       <item row="9" column="0"><widget class="QLabel"><property name="text"><string>Cidade:</string></property></widget></item>
+       <item row="9" column="1"><widget class="QLineEdit" name="txt_cidade"/></item>
 
-     <item row="12" column="0"><widget class="QPushButton" name="btn_salvar"><property name="text"><string>Salvar</string></property></widget></item>
-     <item row="12" column="1"><widget class="QPushButton"><property name="text"><string>Editar</string></property></widget></item>
+       <item row="10" column="0"><widget class="QLabel"><property name="text"><string>E-mail:</string></property></widget></item>
+       <item row="10" column="1"><widget class="QLineEdit" name="txt_email"/></item>
 
-     <item row="13" column="0"><widget class="QPushButton"><property name="text"><string>Excluir</string></property></widget></item>
+       <item row="11" column="0"><widget class="QLabel"><property name="text"><string>Observações:</string></property></widget></item>
+       <item row="11" column="1"><widget class="QTextEdit" name="txt_obs"/></item>
+
+      </layout>
+     </item>
+
+     <!-- BOTÕES -->
+     <item>
+      <layout class="QHBoxLayout">
+       
+       <item>
+        <widget class="QPushButton" name="btn_salvar">
+         <property name="text">
+          <string>Salvar</string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QPushButton" name="btn_editar">
+         <property name="text">
+          <string>Editar</string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QPushButton" name="btn_excluir">
+         <property name="text">
+          <string>Excluir</string>
+         </property>
+        </widget>
+       </item>
+
+      </layout>
+     </item>
 
     </layout>
    </widget>
   </item>
 
-  <!-- Lado direito -->
+  <!-- LADO DIREITO -->
   <item>
    <layout class="QVBoxLayout">
 
-    <!-- 🔎 PESQUISA + 🔄 ATUALIZAR -->
+    <!-- PESQUISA -->
     <item>
      <widget class="QWidget" name="widgetPesquisaCliente">
       <layout class="QHBoxLayout">
@@ -207,7 +241,7 @@ QTableView { background-color: white; border-radius: 10px; }
      </widget>
     </item>
 
-    <!-- Tabela -->
+    <!-- TABELA -->
     <item>
      <widget class="QTableView" name="tableViewClientes"/>
     </item>
