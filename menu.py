@@ -2,7 +2,7 @@ from PyQt5 import uic, QtWidgets
 
 import cadastro_cliente 
 
-tela_menu = uic.loadUiType('telas/tela_menu2.ui')[0]
+tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
 class Menu(QtWidgets.QMainWindow, tela_menu):
     def __init__(self):
@@ -20,9 +20,15 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
         # 💾 SALVAR CADASTRO
         self.btn_salvar.clicked.connect(self.salvar_cliente)
+        self.btn_atualizar.clicked.connect(self.atualizar_lista)
+
+        cadastro_cliente.atualizar(self)
 
     def salvar_cliente(self):
         cadastro_cliente.salvar(self)
+    
+    def atualizar_lista(self):
+        cadastro_cliente.atualizar(self)
 
     
 
