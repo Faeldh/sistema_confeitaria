@@ -13,8 +13,12 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
         )
 
-        self.btn_pedido.clicked.connect(
+        self.btn_pedidos.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pagePedidos)
+        )
+
+        self.btn_receitas.clieckd.connect(
+            lambda: self.stackedWidget.setCurrentWindget(self.pageReceitas)
         )
 
         '''self.btn_clientes.clicked.connect(

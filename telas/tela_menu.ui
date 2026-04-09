@@ -58,14 +58,14 @@ QTableView { background-color: white; border-radius: 10px; }
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnReceitas">
+         <widget class="QPushButton" name="btn_receitas">
           <property name="text">
            <string>Receitas</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnMassas">
+         <widget class="QPushButton" name="btn_producao">
           <property name="text">
            <string>Produção</string>
           </property>
@@ -79,21 +79,21 @@ QTableView { background-color: white; border-radius: 10px; }
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnVendas">
+         <widget class="QPushButton" name="btn_vendas">
           <property name="text">
            <string>Vendas</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnControleFinanceiro">
+         <widget class="QPushButton" name="btn_controle_financeiro">
           <property name="text">
            <string>Controle Financeiro</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnFornecedores">
+         <widget class="QPushButton" name="btn_fornecedores">
           <property name="text">
            <string>Fornecedores</string>
           </property>
