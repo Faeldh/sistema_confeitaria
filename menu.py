@@ -9,16 +9,19 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         super().__init__()
         self.setupUi(self)
 
-               # 🔁 NAVEGAÇÃO ENTRE PÁGINAS
-        '''self.btn_ir_cadastro.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.page_cadastro)
+        self.btn_clientes.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
+        )
+
+        self.btn_produtos.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.pagePedidos)
+        )
+
+        '''self.btn_clientes.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_clientes)
         )'''
 
-        '''self.btn_voltar.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.page_home)
-        )'''
-
-        # 💾 SALVAR CADASTRO
+        
         self.btn_salvar.clicked.connect(self.salvar_cliente)
         self.btn_atualizar.clicked.connect(self.atualizar_lista)
 

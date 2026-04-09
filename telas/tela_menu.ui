@@ -44,7 +44,7 @@ QTableView { background-color: white; border-radius: 10px; }
       <item>
        <layout class="QHBoxLayout">
         <item>
-         <widget class="QPushButton" name="btnClientes">
+         <widget class="QPushButton" name="btn_clientes">
           <property name="text">
            <string>Clientes</string>
           </property>
@@ -72,7 +72,7 @@ QTableView { background-color: white; border-radius: 10px; }
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnProdutos">
+         <widget class="QPushButton" name="btn_produtos">
           <property name="text">
            <string>Produtos</string>
           </property>
@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
