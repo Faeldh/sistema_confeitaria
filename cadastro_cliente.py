@@ -11,7 +11,7 @@ def atualizar(self):
     cursor.execute(sql)
     resultado = cursor.fetchall()
 
-    self.tableViewClientes.setRowCount(0)
+    '''self.tableViewClientes.setRowCount(0)
 
     for row_num, row_data in enumerate(resultado):
         self.tableViewClientes.insertRow(row_num)
@@ -21,7 +21,7 @@ def atualizar(self):
                 row_num,
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
-            )
+            )'''
 
 
 
