@@ -14,10 +14,10 @@ def atualizar(self):
     self.tableWidget.setRowCount(0)
 
     for row_num, row_data in enumerate(resultado):
-        self.tableWidget.insertRow(row_num)
+        self.tableViewClientes.insertRow(row_num)
 
         for col_num, dado in enumerate(row_data):
-            self.tableWidget.setItem(
+            self.tableViewClientes.setItem(
                 row_num,
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
