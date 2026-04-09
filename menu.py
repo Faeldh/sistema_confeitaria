@@ -2,7 +2,7 @@ from PyQt5 import uic, QtWidgets
 
 import cadastro_cliente 
 
-tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
+tela_menu = uic.loadUiType('telas/tela_menu2.ui')[0]
 
 class Menu(QtWidgets.QMainWindow, tela_menu):
     def __init__(self):
