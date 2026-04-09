@@ -1,12 +1,27 @@
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtCore import QDate
 from conexao import conectar
+    
 
+def atualizar(self):
+    conexao = conectar()
+    cursor = conexao.cursor()
 
-        #self.btn_salvar.clicked.connect(self.salvar)
-        #self.btn_excluir.clicked.connect(self.excluir)
-        #self.btn_editar.clicked.connect(self.editar)
+    sql = 'SELECT id, nome, cpf, telefone  FROM cliente'
+    cursor.execute(sql)
+    resultado = cursor.fetchall()
 
+    self.tableWidget.setRowCount(0)
+
+    for row_num, row_data in enumerate(resultado):
+        self.tableWidget.insertRow(row_num)
+
+        for col_num, dado in enumerate(row_data):
+            self.tableWidget.setItem(
+                row_num,
+                col_num,
+                QtWidgets.QTableWidgetItem(str(dado))
+            )
 
 
 
