@@ -51,7 +51,7 @@ QTableView { background-color: white; border-radius: 10px; }
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnPedidos">
+         <widget class="QPushButton" name="btn_pedidos">
           <property name="text">
            <string>Pedidos</string>
           </property>
