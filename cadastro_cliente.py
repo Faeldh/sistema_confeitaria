@@ -7,6 +7,10 @@ from conexao import conectar
         #self.btn_excluir.clicked.connect(self.excluir)
         #self.btn_editar.clicked.connect(self.editar)
 
+
+
+
+
 def validar_cpf(cpf):
     if len(cpf) != 11 or cpf == cpf[0] * 11:
         return False
