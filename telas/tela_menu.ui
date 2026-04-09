@@ -109,173 +109,114 @@ QTableView { background-color: white; border-radius: 10px; }
        <number>0</number>
       </property>
       <widget class="QWidget" name="pageClientes">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxClientes">
-          <property name="title">
-           <string>Cadastro de Clientes</string>
-          </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Nome:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="txt_nome"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Telefone:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="txt_telefone"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>CPF:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="txt_cpf"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Data Nascimento:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QDateEdit" name="dateEditNascimento"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>CEP:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="txt_cep"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Rua:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="txt_rua"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Bairro:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="txt_bairro"/>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Nº:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="txt_n"/>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Complemento:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLineEdit" name="txt_complemento"/>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Cidade:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLineEdit" name="txt_cidade"/>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>E-mail:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="1">
-            <widget class="QLineEdit" name="txt_email"/>
-           </item>
-           <item row="11" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Observações:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="1">
-            <widget class="QTextEdit" name="txt_obs"/>
-           </item>
-           <item row="12" column="0">
-            <widget class="QPushButton" name="btn_salvar">
-             <property name="text">
-              <string>Salvar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="1">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Editar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="0">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Excluir</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaCliente">
-            <property name="placeholderText">
-             <string>Pesquisar cliente...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewClientes"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
+ <layout class="QHBoxLayout">
+
+  <!-- Lado esquerdo -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxClientes">
+    <property name="title">
+     <string>Cadastro de Clientes</string>
+    </property>
+    <layout class="QFormLayout">
+
+     <item row="0" column="0"><widget class="QLabel"><property name="text"><string>Nome:</string></property></widget></item>
+     <item row="0" column="1"><widget class="QLineEdit" name="txt_nome"/></item>
+
+     <item row="1" column="0"><widget class="QLabel"><property name="text"><string>Telefone:</string></property></widget></item>
+     <item row="1" column="1"><widget class="QLineEdit" name="txt_telefone"/></item>
+
+     <item row="2" column="0"><widget class="QLabel"><property name="text"><string>CPF:</string></property></widget></item>
+     <item row="2" column="1"><widget class="QLineEdit" name="txt_cpf"/></item>
+
+     <item row="3" column="0"><widget class="QLabel"><property name="text"><string>Data Nascimento:</string></property></widget></item>
+     <item row="3" column="1"><widget class="QDateEdit" name="dateEditNascimento"/></item>
+
+     <item row="4" column="0"><widget class="QLabel"><property name="text"><string>CEP:</string></property></widget></item>
+     <item row="4" column="1"><widget class="QLineEdit" name="txt_cep"/></item>
+
+     <item row="5" column="0"><widget class="QLabel"><property name="text"><string>Rua:</string></property></widget></item>
+     <item row="5" column="1"><widget class="QLineEdit" name="txt_rua"/></item>
+
+     <item row="6" column="0"><widget class="QLabel"><property name="text"><string>Bairro:</string></property></widget></item>
+     <item row="6" column="1"><widget class="QLineEdit" name="txt_bairro"/></item>
+
+     <item row="7" column="0"><widget class="QLabel"><property name="text"><string>Nº:</string></property></widget></item>
+     <item row="7" column="1"><widget class="QLineEdit" name="txt_n"/></item>
+
+     <item row="8" column="0"><widget class="QLabel"><property name="text"><string>Complemento:</string></property></widget></item>
+     <item row="8" column="1"><widget class="QLineEdit" name="txt_complemento"/></item>
+
+     <item row="9" column="0"><widget class="QLabel"><property name="text"><string>Cidade:</string></property></widget></item>
+     <item row="9" column="1"><widget class="QLineEdit" name="txt_cidade"/></item>
+
+     <item row="10" column="0"><widget class="QLabel"><property name="text"><string>E-mail:</string></property></widget></item>
+     <item row="10" column="1"><widget class="QLineEdit" name="txt_email"/></item>
+
+     <item row="11" column="0"><widget class="QLabel"><property name="text"><string>Observações:</string></property></widget></item>
+     <item row="11" column="1"><widget class="QTextEdit" name="txt_obs"/></item>
+
+     <item row="12" column="0"><widget class="QPushButton" name="btn_salvar"><property name="text"><string>Salvar</string></property></widget></item>
+     <item row="12" column="1"><widget class="QPushButton"><property name="text"><string>Editar</string></property></widget></item>
+
+     <item row="13" column="0"><widget class="QPushButton"><property name="text"><string>Excluir</string></property></widget></item>
+
+    </layout>
+   </widget>
+  </item>
+
+  <!-- Lado direito -->
+  <item>
+   <layout class="QVBoxLayout">
+
+    <!-- 🔎 PESQUISA + 🔄 ATUALIZAR -->
+    <item>
+     <widget class="QWidget" name="widgetPesquisaCliente">
+      <layout class="QHBoxLayout">
+
+       <item>
+        <widget class="QLineEdit" name="lineEditPesquisaCliente">
+         <property name="placeholderText">
+          <string>Pesquisar cliente...</string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QPushButton" name="btnPesquisarCliente">
+         <property name="text">
+          <string>🔎</string>
+         </property>
+         <property name="maximumWidth">
+          <number>40</number>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QPushButton" name="btnAtualizarCliente">
+         <property name="text">
+          <string>🔄</string>
+         </property>
+         <property name="maximumWidth">
+          <number>40</number>
+         </property>
+        </widget>
+       </item>
+
+      </layout>
+     </widget>
+    </item>
+
+    <!-- Tabela -->
+    <item>
+     <widget class="QTableView" name="tableViewClientes"/>
+    </item>
+
+   </layout>
+  </item>
+
+ </layout>
+</widget>
       <widget class="QWidget" name="pagePedidos">
        <layout class="QHBoxLayout">
         <item>
@@ -312,7 +253,14 @@ QTableView { background-color: white; border-radius: 10px; }
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QSpinBox" name="spinBoxQuantidade"/>
+            <widget class="QSpinBox" name="spinBoxQuantidade">
+ <property name="maximum">
+  <number>10000</number>
+ </property>
+ <property name="minimum">
+  <number>1</number>
+ </property>
+</widget>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="labelTamanho">
