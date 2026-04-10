@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1533,10 +1533,7 @@ QTableWidget#tableWidgetFornecedores QHeaderView::section {
     border: none;
     font-weight: bold;
 }
-       
-QPushButton {
-    min-width: 90px;
-}</string>
+       </string>
             </property>
             <property name="columnCount">
              <number>11</number>
