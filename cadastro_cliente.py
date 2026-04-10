@@ -11,13 +11,13 @@ def atualizar(self):
     cursor.execute(sql)
     resultado = cursor.fetchall()
 
-    '''self.tableViewClientes.setRowCount(0)
+    '''self.tableWidgetClientes.setRowCount(0)
 
     for row_num, row_data in enumerate(resultado):
-        self.tableViewClientes.insertRow(row_num)
+        self.tableWidgetClientes.insertRow(row_num)
 
         for col_num, dado in enumerate(row_data):
-            self.tableViewClientes.setItem(
+            self.tableWidgetClientes.setItem(
                 row_num,
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
