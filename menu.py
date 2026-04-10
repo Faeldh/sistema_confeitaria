@@ -10,6 +10,9 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.setupUi(self)
 
         self.tableWidgetClientes.verticalHeader().setVisible(False)
+        self.tableWidgetClientes.itemSelectionChanged.connect(self.carregar_cliente)
+        self.tableWidgetClientes.itemDoubleClicked.connect(self.carregar_cliente)
+        self.tableWidgetClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         self.btn_clientes.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
@@ -61,4 +64,38 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
     
 
-    #teste
+    def carregar_cliente(self):
+        linha = self.tableWidgetClientes.currentRow()
+
+        if linha == -1:
+            return
+        
+        id = self.tableWidgetClientes.item(linha, 0).text()
+        nome = self.tableWidgetClientes.item(linha, 1).text()
+        telefone = self.tableWidgetClientes.item(linha, 2).text()
+        data_format = self.tableWidgetClientes.item(linha, 3).text()
+        cpf = self.tableWidgetClientes.item(linha, 4).text()
+        cep = self.tableWidgetClientes.item(linha, 5).text()
+        rua = self.tableWidgetClientes.item(linha, 6).text()
+        bairro = self.tableWidgetClientes.item(linha, 7).text()
+        n = self.tableWidgetClientes.item(linha, 8).text()
+        complemento = self.tableWidgetClientes.item(linha, 9).text()
+        cidade = self.tableWidgetClientes.item(linha, 10).text()
+        email = self.tableWidgetClientes.item(linha, 11).text()
+        observcoes = self.tableWidgetClientes.item(linha, 12).text()
+
+        self.txt_nome.setText(nome)
+        self.txt_telefone.setText(telefone)
+        self.dateEditNascimento.date(data_format)
+        self.txt_cpf.setText(cpf)
+        self.txt_cep.setText(cep)
+        self.txt_rua.setText(rua)
+        self.txt_bairro.setText(bairro)
+        self.txt_n.setText(n)
+        self.txt_complemento.setText(complemento)
+        self.txt_cidade.setText(cidade)
+        self.txt_email.setText(email)
+        self.txt_observcoes.setText(observcoes)
+
+
+        self.id = id
