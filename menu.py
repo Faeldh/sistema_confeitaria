@@ -17,8 +17,28 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: self.stackedWidget.setCurrentWidget(self.pagePedidos)
         )
 
-        self.btn_receitas.clieckd.connect(
+        self.btn_receitas.cliecked.connect(
             lambda: self.stackedWidget.setCurrentWindget(self.pageReceitas)
+        )
+
+        self.btn_producao.clicked.connect(
+            lambda: self.stackedWindget.setCurrentWidget(self.pageControleProducao)
+        )
+
+        self.btn_produtos.clicked.connect(
+            lambda: self.stackedWidget.setcurrentWidget(self.pageProdutos)
+        )
+
+        self.btn_vendas.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.pageVendas)
+        )
+
+        self.btn_controle_financeiro.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.pageControleProducao)
+        )
+
+        self.btn_fornecedores.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.pageFornecedores)
         )
 
         '''self.btn_clientes.clicked.connect(
