@@ -1337,158 +1337,166 @@ QTableWidget {
           <property name="title">
            <string>Cadastro de Fornecedores</string>
           </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Nome:</string>
-             </property>
-            </widget>
+          <layout class="QVBoxLayout">
+           <item>
+            <layout class="QFormLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Nome:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="txt_nomeFornecedor"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Tipo de fornecedor:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="combo_tipoFornecedor">
+               <item>
+                <property name="text">
+                 <string>Ingredientes</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Decoração</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Embalagens</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Outros</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>CPF/CNPJ:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="txt_cpfCnpj"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Telefone:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="txt_telefoneFornecedor"/>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>E-mail:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="txt_emailFornecedor"/>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Rua:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="txt_ruaFornecedor"/>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>N°:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QLineEdit" name="txt_numFornecedor"/>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Bairro:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1">
+              <widget class="QLineEdit" name="txt_bairroFornecedor"/>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Cidade:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="1">
+              <widget class="QLineEdit" name="txt_cidadeFornecedor"/>
+             </item>
+             <item row="9" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Complemento:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="1">
+              <widget class="QLineEdit" name="txt_complementoFornecedor"/>
+             </item>
+             <item row="10" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Informações adicionais:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="10" column="1">
+              <widget class="QTextEdit" name="txt_infoAdicionais"/>
+             </item>
+            </layout>
            </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="txt_nomeFornecedor"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Tipo de fornecedor:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QComboBox" name="combo_tipoFornecedor">
+           <item>
+            <layout class="QHBoxLayout">
              <item>
-              <property name="text">
-               <string>Ingredientes</string>
-              </property>
+              <widget class="QPushButton" name="btn_salvarFornecedor">
+               <property name="text">
+                <string>Salvar</string>
+               </property>
+              </widget>
              </item>
              <item>
-              <property name="text">
-               <string>Decoração</string>
-              </property>
+              <widget class="QPushButton" name="btn_editarFornecedor">
+               <property name="text">
+                <string>Editar</string>
+               </property>
+              </widget>
              </item>
              <item>
-              <property name="text">
-               <string>Embalagens</string>
-              </property>
+              <widget class="QPushButton" name="btn_excluirFornecedor">
+               <property name="text">
+                <string>Excluir</string>
+               </property>
+              </widget>
              </item>
-             <item>
-              <property name="text">
-               <string>Outros</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>CPF/CNPJ:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="txt_cpfCnpj"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Telefone:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="txt_telefoneFornecedor"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>E-mail:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="txt_emailFornecedor"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Rua:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="txt_ruaFornecedor"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>N°:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="txt_numFornecedor"/>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Bairro:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="txt_bairroFornecedor"/>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Cidade:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLineEdit" name="txt_cidadeFornecedor"/>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Complemento:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLineEdit" name="txt_complementoFornecedor"/>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Informações adicionais:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="1">
-            <widget class="QTextEdit" name="txt_infoAdicionais"/>
-           </item>
-           <item row="11" column="0">
-            <widget class="QPushButton" name="btn_salvarFornecedor">
-             <property name="text">
-              <string>Salvar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="1">
-            <widget class="QPushButton" name="btn_editarFornecedor">
-             <property name="text">
-              <string>Editar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0">
-            <widget class="QPushButton" name="btn_excluirFornecedor">
-             <property name="text">
-              <string>Excluir</string>
-             </property>
-            </widget>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -1496,17 +1504,47 @@ QTableWidget {
         <item>
          <layout class="QVBoxLayout">
           <item>
-           <widget class="QLineEdit" name="lineEditPesquisaFornecedor">
-            <property name="placeholderText">
-             <string>Pesquisar fornecedor...</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLineEdit" name="lineEditPesquisaFornecedor">
+              <property name="placeholderText">
+               <string>Pesquisar fornecedor...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_pesquisaFornecedor">
+              <property name="text">
+               <string>🔎</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_atualizarFornecedor">
+              <property name="text">
+               <string>🔄</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QTableWidget" name="tableWidgetFornecedores">
             <property name="styleSheet">
-             <string notr="true">
-QTableWidget#tableWidgetFornecedores {
+             <string notr="true">QMainWindow { background-color: #F5F5F5; }
+QPushButton { background-color: #3F4A2F; color: #E6D2A2; border-radius: 10px; padding: 8px; font-weight: bold; }
+
+QPushButton:hover { background-color: #2E3723; }
+
+QLineEdit, QTextEdit, QComboBox, QDateEdit { border: 2px solid #3F4A2F; border-radius: 8px; padding: 5px; background-color: white; }
+
+QGroupBox { border: 2px solid #3F4A2F; border-radius: 10px; margin-top: 10px; font-weight: bold; }
+
+QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; color: #3F4A2F; }
+
+QTableView { background-color: white; border-radius: 10px; }
+
+QTableWidget {
     background-color: white;
     gridline-color: #3F4A2F;
     border: 2px solid #3F4A2F;
@@ -1517,23 +1555,22 @@ QTableWidget#tableWidgetFornecedores {
     alternate-background-color: #F0F0F0;
 }
 
-QTableWidget#tableWidgetFornecedores::item {
+QTableWidget::item {
     padding: 6px;
 }
 
-QTableWidget#tableWidgetFornecedores::item:selected {
+QTableWidget::item:selected {
     background-color: #3F4A2F;
     color: #E6D2A2;
 }
 
-QTableWidget#tableWidgetFornecedores QHeaderView::section {
+QTableWidget QHeaderView::section {
     background-color: #3F4A2F;
     color: #E6D2A2;
     padding: 6px;
     border: none;
     font-weight: bold;
-}
-       </string>
+}</string>
             </property>
             <property name="columnCount">
              <number>11</number>
