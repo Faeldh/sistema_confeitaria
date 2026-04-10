@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -296,7 +296,39 @@ QTableView { background-color: white; border-radius: 10px; }
            </layout>
           </item>
           <item>
-           <widget class="QTableView" name="tableViewClientes"/>
+           <widget class="QTableWidget" name="tableWidgetClientes">
+            <property name="rowCount">
+             <number>0</number>
+            </property>
+            <property name="columnCount">
+             <number>5</number>
+            </property>
+            <column>
+             <property name="text">
+              <string>Nome</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Telefone</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>CPF</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Cidade</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>E-mail</string>
+             </property>
+            </column>
+           </widget>
           </item>
          </layout>
         </item>
