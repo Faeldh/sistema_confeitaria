@@ -297,6 +297,38 @@ QTableView { background-color: white; border-radius: 10px; }
           </item>
           <item>
            <widget class="QTableWidget" name="tableWidgetClientes">
+            <property name="styleSheet">
+             <string notr="true">QTableWidget#tableWidgetClientes {
+    background-color: white;
+    gridline-color: #3F4A2F;
+    border: 2px solid #3F4A2F;
+    border-radius: 10px;
+    selection-background-color: #3F4A2F;
+    selection-color: #E6D2A2;
+    font-size: 12px;
+}
+
+QTableWidget#tableWidgetClientes::item {
+    padding: 6px;
+}
+
+QTableWidget#tableWidgetClientes::item:selected {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+}
+
+QTableWidget#tableWidgetClientes QHeaderView::section {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+    padding: 6px;
+    border: none;
+    font-weight: bold;
+}
+
+QTableWidget#tableWidgetClientes {
+    alternate-background-color: #F0F0F0;
+}</string>
+            </property>
             <property name="rowCount">
              <number>0</number>
             </property>
@@ -320,7 +352,7 @@ QTableView { background-color: white; border-radius: 10px; }
             </column>
             <column>
              <property name="text">
-              <string>Data Nascimento</string>
+              <string>Nascimento</string>
              </property>
             </column>
             <column>
