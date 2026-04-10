@@ -7,11 +7,11 @@ def atualizar(self):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    sql = 'SELECT id, nome, cpf, telefone  FROM cliente'
+    sql = 'SELECT id, nome, cpf, telefone, email  FROM cliente'
     cursor.execute(sql)
     resultado = cursor.fetchall()
 
-    '''self.tableWidgetClientes.setRowCount(0)
+    self.tableWidgetClientes.setRowCount(0)
 
     for row_num, row_data in enumerate(resultado):
         self.tableWidgetClientes.insertRow(row_num)
@@ -21,7 +21,7 @@ def atualizar(self):
                 row_num,
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
-            )'''
+            )
 
 
 
