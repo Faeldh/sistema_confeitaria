@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1339,7 +1339,7 @@ QTableWidget {
           </property>
           <layout class="QFormLayout">
            <item row="0" column="0">
-            <widget class="QLabel" name="labelNome">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Nome:</string>
              </property>
@@ -1349,7 +1349,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_nomeFornecedor"/>
            </item>
            <item row="1" column="0">
-            <widget class="QLabel" name="labelTipo">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Tipo de fornecedor:</string>
              </property>
@@ -1380,7 +1380,7 @@ QTableWidget {
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="labelCpfCnpj">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>CPF/CNPJ:</string>
              </property>
@@ -1390,7 +1390,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_cpfCnpj"/>
            </item>
            <item row="3" column="0">
-            <widget class="QLabel" name="labelTelefone">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Telefone:</string>
              </property>
@@ -1400,7 +1400,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_telefoneFornecedor"/>
            </item>
            <item row="4" column="0">
-            <widget class="QLabel" name="labelEmail">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>E-mail:</string>
              </property>
@@ -1410,7 +1410,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_emailFornecedor"/>
            </item>
            <item row="5" column="0">
-            <widget class="QLabel" name="labelRua">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Rua:</string>
              </property>
@@ -1420,7 +1420,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_ruaFornecedor"/>
            </item>
            <item row="6" column="0">
-            <widget class="QLabel" name="labelN">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>N°:</string>
              </property>
@@ -1430,7 +1430,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_numFornecedor"/>
            </item>
            <item row="7" column="0">
-            <widget class="QLabel" name="labelBairro">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Bairro:</string>
              </property>
@@ -1440,7 +1440,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_bairroFornecedor"/>
            </item>
            <item row="8" column="0">
-            <widget class="QLabel" name="labelCidade">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Cidade:</string>
              </property>
@@ -1450,7 +1450,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_cidadeFornecedor"/>
            </item>
            <item row="9" column="0">
-            <widget class="QLabel" name="labelComplemento">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Complemento:</string>
              </property>
@@ -1460,7 +1460,7 @@ QTableWidget {
             <widget class="QLineEdit" name="txt_complementoFornecedor"/>
            </item>
            <item row="10" column="0">
-            <widget class="QLabel" name="labelInfoAdicionais">
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Informações adicionais:</string>
              </property>
@@ -1503,7 +1503,100 @@ QTableWidget {
            </widget>
           </item>
           <item>
-           <widget class="QTableView" name="tableViewFornecedores"/>
+           <widget class="QTableWidget" name="tableWidgetFornecedores">
+            <property name="styleSheet">
+             <string notr="true">
+QTableWidget#tableWidgetFornecedores {
+    background-color: white;
+    gridline-color: #3F4A2F;
+    border: 2px solid #3F4A2F;
+    border-radius: 10px;
+    selection-background-color: #3F4A2F;
+    selection-color: #E6D2A2;
+    font-size: 12px;
+    alternate-background-color: #F0F0F0;
+}
+
+QTableWidget#tableWidgetFornecedores::item {
+    padding: 6px;
+}
+
+QTableWidget#tableWidgetFornecedores::item:selected {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+}
+
+QTableWidget#tableWidgetFornecedores QHeaderView::section {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+    padding: 6px;
+    border: none;
+    font-weight: bold;
+}
+       
+QPushButton {
+    min-width: 90px;
+}</string>
+            </property>
+            <property name="columnCount">
+             <number>11</number>
+            </property>
+            <column>
+             <property name="text">
+              <string>Nome</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Tipo</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>CPF/CNPJ</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Telefone</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>E-mail</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Rua</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>N°</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Bairro</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Cidade</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Complemento</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Informações</string>
+             </property>
+            </column>
+           </widget>
           </item>
          </layout>
         </item>
