@@ -2,6 +2,41 @@ from PyQt5 import uic, QtWidgets
 from PyQt5.QtCore import QDate
 from conexao import conectar
     
+def buscar_por_id(self, id_cliente):
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = """
+    SELECT nome, telefone, cpf, data_format, cep, rua, bairro, n, complemento, cidade, email, observacoes
+    FROM cliente
+    WHERE id = %s
+    """
+
+    cursor.execute(sql, (id_cliente,))
+    resultado = cursor.fetchone()
+
+    if resultado:
+        self.txt_nome.setText(resultado[0])
+        self.txt_telefone.setText(resultado[1])
+        self.txt_cpf.setText(resultado[2])
+
+        # data
+        from PyQt5.QtCore import QDate
+        data = QDate.fromString(resultado[3], 'yyyy-MM-dd')
+        self.dateEditNascimento.setDate(data)
+
+        self.txt_cep.setText(resultado[4])
+        self.txt_rua.setText(resultado[5])
+        self.txt_bairro.setText(resultado[6])
+        self.txt_n.setText(resultado[7])
+        self.txt_complemento.setText(resultado[8])
+        self.txt_cidade.setText(resultado[9])
+        self.txt_email.setText(resultado[10])
+        self.txt_obs.setPlainText(resultado[11])
+
+        self.id_cliente = id_cliente
+
+
 
 def atualizar(self):
     conexao = conectar()
