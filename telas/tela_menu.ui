@@ -301,7 +301,7 @@ QTableView { background-color: white; border-radius: 10px; }
              <number>0</number>
             </property>
             <property name="columnCount">
-             <number>5</number>
+             <number>12</number>
             </property>
             <column>
              <property name="text">
@@ -320,12 +320,47 @@ QTableView { background-color: white; border-radius: 10px; }
             </column>
             <column>
              <property name="text">
+              <string>Data Nascimento</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>CEP</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Rua</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Bairro</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>N°</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Complemento</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
               <string>Cidade</string>
              </property>
             </column>
             <column>
              <property name="text">
               <string>E-mail</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Observações</string>
              </property>
             </column>
            </widget>
