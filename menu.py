@@ -9,6 +9,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         super().__init__()
         self.setupUi(self)
 
+        self.tableWidgetClientes.verticalHeader().setVisible(False)
+
         self.btn_clientes.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
         )

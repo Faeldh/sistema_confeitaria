@@ -22,6 +22,8 @@ def atualizar(self):
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
             )
+    self.tableWidgetClientes.resizeColumnsToContents()
+    self.tableWidgetClientes.horizontalHeader().setStretchLastSection(True)
 
 
 
