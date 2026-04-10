@@ -26,7 +26,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         )
 
         self.btn_produtos.clicked.connect(
-            lambda: self.stackedWidget.setcurrentWidget(self.pageProdutos)
+            lambda: self.stackedWidget.setCurrentWidget(self.pageProdutos)
         )
 
         self.btn_vendas.clicked.connect(
