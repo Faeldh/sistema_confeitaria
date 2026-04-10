@@ -46,9 +46,6 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: self.stackedWidget.setCurrentWidget(self.pageFornecedores)
         )
 
-        '''self.btn_clientes.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.page_clientes)
-        )'''
 
         
         self.btn_salvar.clicked.connect(self.salvar_cliente)
