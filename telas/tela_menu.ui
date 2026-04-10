@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1303</width>
-    <height>765</height>
+    <height>773</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -654,57 +654,65 @@ QTableWidget#tableWidgetClientes {
           <property name="title">
            <string>Cadastro de Receitas</string>
           </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="labelNomeReceita">
-             <property name="text">
-              <string>Nome:</string>
-             </property>
-            </widget>
+          <layout class="QVBoxLayout">
+           <item>
+            <layout class="QFormLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Nome:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="txt_nomeReceita"/>
+             </item>
+            </layout>
            </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="txt_nomeReceita"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="labelIngredientes">
+           <item>
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Ingredientes:</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item>
             <widget class="QTextEdit" name="txt_ingredientes"/>
            </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="labelModoPreparo">
+           <item>
+            <widget class="QLabel" name="label">
              <property name="text">
               <string>Modo de Preparo:</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item>
             <widget class="QTextEdit" name="txt_modoPreparo"/>
            </item>
-           <item row="3" column="0">
-            <widget class="QPushButton" name="btn_salvarReceita">
-             <property name="text">
-              <string>Salvar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QPushButton" name="btn_editarReceita">
-             <property name="text">
-              <string>Editar</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QPushButton" name="btn_excluirReceita">
-             <property name="text">
-              <string>Excluir</string>
-             </property>
-            </widget>
+           <item>
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QPushButton" name="btn_salvarReceita">
+               <property name="text">
+                <string>Salvar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_editarReceita">
+               <property name="text">
+                <string>Editar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_excluirReceita">
+               <property name="text">
+                <string>Excluir</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -712,14 +720,98 @@ QTableWidget#tableWidgetClientes {
         <item>
          <layout class="QVBoxLayout">
           <item>
-           <widget class="QLineEdit" name="lineEditPesquisaReceita">
-            <property name="placeholderText">
-             <string>Pesquisar receita...</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLineEdit" name="lineEditPesquisaReceita">
+              <property name="placeholderText">
+               <string>Pesquisar receita...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnPesquisarReceita">
+              <property name="text">
+               <string>🔎</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnAtualizarReceita">
+              <property name="text">
+               <string>🔄</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QTableView" name="tableViewReceitas"/>
+           <widget class="QTableWidget" name="tableWidgetReceitas">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QTableWidget#tableWidgetReceitas {
+    background-color: white;
+    gridline-color: #3F4A2F;
+    border: 2px solid #3F4A2F;
+    border-radius: 10px;
+    selection-background-color: #3F4A2F;
+    selection-color: #E6D2A2;
+    font-size: 12px;
+    alternate-background-color: #F0F0F0;
+}
+
+QTableWidget#tableWidgetReceitas::item {
+    padding: 6px;
+}
+
+QTableWidget#tableWidgetReceitas::item:selected {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+}
+
+QTableWidget#tableWidgetReceitas QHeaderView::section {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+    padding: 6px;
+    border: none;
+    font-weight: bold;
+}
+
+QTableWidget {
+    outline: none;
+}
+
+</string>
+            </property>
+            <property name="columnCount">
+             <number>3</number>
+            </property>
+            <column>
+             <property name="text">
+              <string>Nome</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Ingredientes</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Modo de Preparo</string>
+             </property>
+            </column>
+           </widget>
           </item>
          </layout>
         </item>
