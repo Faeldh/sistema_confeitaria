@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -333,16 +333,21 @@ QTableWidget#tableWidgetClientes {
              <number>0</number>
             </property>
             <property name="columnCount">
-             <number>12</number>
+             <number>5</number>
             </property>
             <column>
              <property name="text">
-              <string>Nome</string>
+              <string>ID</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Telefone</string>
+              <string>NOME</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>TELEFONE</string>
              </property>
             </column>
             <column>
@@ -352,47 +357,7 @@ QTableWidget#tableWidgetClientes {
             </column>
             <column>
              <property name="text">
-              <string>Nascimento</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>CEP</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Rua</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Bairro</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>N°</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Complemento</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Cidade</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>E-mail</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Observações</string>
+              <string>EMAIL</string>
              </property>
             </column>
            </widget>
