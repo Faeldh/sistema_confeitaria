@@ -7,7 +7,7 @@ def buscar_por_id(self, id_cliente):
     cursor = conexao.cursor()
 
     sql = """
-    SELECT nome, telefone, cpf, data_format, cep, rua, bairro, n, complemento, cidade, email, observacoes
+    SELECT nome, telefone, cpf, data_format, cep, rua, bairro, n, complemento, cidade, email, observcoes
     FROM cliente
     WHERE id = %s
     """
@@ -20,10 +20,18 @@ def buscar_por_id(self, id_cliente):
         self.txt_telefone.setText(resultado[1])
         self.txt_cpf.setText(resultado[2])
 
-        # data
         from PyQt5.QtCore import QDate
-        data = QDate.fromString(resultado[3], 'yyyy-MM-dd')
-        self.dateEditNascimento.setDate(data)
+
+        data = resultado[3]
+
+        if isinstance(data, (str,)):
+            data_convertida = QDate.fromString(data, 'yyyy-MM-dd')
+            self.dateEditNascimento.setDate(data_convertida)
+
+        elif data:  # datetime.date
+            self.dateEditNascimento.setDate(
+                QDate(data.year, data.month, data.day)
+            )
 
         self.txt_cep.setText(resultado[4])
         self.txt_rua.setText(resultado[5])
