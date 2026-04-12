@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>6</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1930,6 +1930,39 @@ QHeaderView::section {
 
 QHeaderView::section:hover {
     background-color: #2E3723;
+}
+
+
+
+QScrollBar:vertical {
+    background: #F5F5F5;
+    width: 10px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #3F4A2F;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #2E3723;
+}
+
+
+QScrollBar:horizontal {
+    background: #F5F5F5;
+    height: 10px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #3F4A2F;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #2E3723;
 }</string>
             </property>
             <property name="columnCount">
