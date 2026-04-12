@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -896,206 +896,326 @@ QTableWidget {
        </layout>
       </widget>
       <widget class="QWidget" name="pageControleProducao">
- <layout class="QVBoxLayout">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QGroupBox" name="groupBoxDashboardProducao">
+          <property name="title">
+           <string>Resumo da Produção</string>
+          </property>
+          <layout class="QHBoxLayout">
+           <item>
+            <widget class="QLabel" name="lblPendentes">
+             <property name="text">
+              <string>🟡 Pendentes: 0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblProducao">
+             <property name="text">
+              <string>🔵 Em Produção: 0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblFinalizados">
+             <property name="text">
+              <string>🟢 Finalizados: 0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblAtrasados">
+             <property name="text">
+              <string>🔴 Atrasados: 0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnAtualizarProducao">
+             <property name="text">
+              <string>🔄 Atualizar</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QDateEdit" name="dateFiltroProducao"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboFiltroTipo">
+            <item>
+             <property name="text">
+              <string>Todos</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Bolo</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Doce</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Salgado</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Massa</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboFiltroStatus">
+            <item>
+             <property name="text">
+              <string>Todos</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Pendente</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Em Produção</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Finalizado</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Atrasado</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnFiltrarProducao">
+            <property name="text">
+             <string>Filtrar</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QTableWidget" name="tableProducao">
+            <property name="styleSheet">
+             <string notr="true">QTableWidget#tableProducao {
+    background-color: white;
+    border: 2px solid #3F4A2F;
+    border-radius: 10px;
+    gridline-color: #3F4A2F;
 
-  <!-- ===================== PAINEL RESUMO ===================== -->
-  <item>
-   <widget class="QGroupBox" name="groupBoxDashboardProducao">
-    <property name="title">
-     <string>Resumo da Produção</string>
-    </property>
+    alternate-background-color: #F0F0F0;
+    selection-background-color: #3F4A2F;
+    selection-color: #E6D2A2;
 
-    <layout class="QHBoxLayout">
+    font-size: 12px;
+    color: #2E3723;
+}
 
-     <item>
-      <widget class="QLabel" name="lblPendentes">
-       <property name="text">
-        <string>🟡 Pendentes: 0</string>
-       </property>
+/* Espaçamento interno das células */
+QTableWidget#tableProducao::item {
+    padding: 6px;
+}
+
+/* Hover (quando passa o mouse) */
+QTableWidget#tableProducao::item:hover {
+    background-color: #E6D2A2;
+    color: #3F4A2F;
+}
+
+/* Linha selecionada */
+QTableWidget#tableProducao::item:selected {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+}
+
+/* Cabeçalho */
+QTableWidget#tableProducao QHeaderView::section {
+    background-color: #3F4A2F;
+    color: #E6D2A2;
+    padding: 8px;
+    border: none;
+    font-weight: bold;
+}
+
+/* Hover no cabeçalho */
+QTableWidget#tableProducao QHeaderView::section:hover {
+    background-color: #2E3723;
+}
+
+/* Remove borda feia de foco */
+QTableWidget#tableProducao {
+    outline: none;
+}
+
+/* Scrollbar vertical */
+QScrollBar:vertical {
+    background: #F5F5F5;
+    width: 10px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #3F4A2F;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #2E3723;
+}
+
+/* Scrollbar horizontal */
+QScrollBar:horizontal {
+    background: #F5F5F5;
+    height: 10px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #3F4A2F;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #2E3723;
+}</string>
+            </property>
+            <property name="columnCount">
+             <number>9</number>
+            </property>
+            <column>
+             <property name="text">
+              <string>Pedido</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Produto</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Tipo</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Qtd</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Prioridade</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Status</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Início</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Entrega</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Responsável</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBoxDetalhesProducao">
+            <property name="title">
+             <string>Detalhes da Produção</string>
+            </property>
+            <layout class="QVBoxLayout">
+             <item>
+              <widget class="QLabel" name="lblDetalheProduto">
+               <property name="text">
+                <string>Selecione uma produção</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="txtDetalhesProducao"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblTempoEstimado">
+               <property name="text">
+                <string>Tempo estimado: --</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout">
+               <item>
+                <widget class="QPushButton" name="btnIniciarProducao">
+                 <property name="text">
+                  <string>▶ Iniciar</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnPausarProducao">
+                 <property name="text">
+                  <string>⏸ Pausar</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout">
+               <item>
+                <widget class="QPushButton" name="btnFinalizarProducao">
+                 <property name="text">
+                  <string>✔ Finalizar</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnAtrasarProducao">
+                 <property name="text">
+                  <string>⚠ Atraso</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
-     </item>
-
-     <item>
-      <widget class="QLabel" name="lblProducao">
-       <property name="text">
-        <string>🔵 Em Produção: 0</string>
-       </property>
-      </widget>
-     </item>
-
-     <item>
-      <widget class="QLabel" name="lblFinalizados">
-       <property name="text">
-        <string>🟢 Finalizados: 0</string>
-       </property>
-      </widget>
-     </item>
-
-     <item>
-      <widget class="QLabel" name="lblAtrasados">
-       <property name="text">
-        <string>🔴 Atrasados: 0</string>
-       </property>
-      </widget>
-     </item>
-
-     <item>
-      <widget class="QPushButton" name="btnAtualizarProducao">
-       <property name="text">
-        <string>🔄 Atualizar</string>
-       </property>
-      </widget>
-     </item>
-
-    </layout>
-   </widget>
-  </item>
-
-  <!-- ===================== FILTROS ===================== -->
-  <item>
-   <layout class="QHBoxLayout">
-
-    <item>
-     <widget class="QDateEdit" name="dateFiltroProducao"/>
-    </item>
-
-    <item>
-     <widget class="QComboBox" name="comboFiltroTipo">
-      <item><property name="text"><string>Todos</string></property></item>
-      <item><property name="text"><string>Bolo</string></property></item>
-      <item><property name="text"><string>Doce</string></property></item>
-      <item><property name="text"><string>Salgado</string></property></item>
-      <item><property name="text"><string>Massa</string></property></item>
-     </widget>
-    </item>
-
-    <item>
-     <widget class="QComboBox" name="comboFiltroStatus">
-      <item><property name="text"><string>Todos</string></property></item>
-      <item><property name="text"><string>Pendente</string></property></item>
-      <item><property name="text"><string>Em Produção</string></property></item>
-      <item><property name="text"><string>Finalizado</string></property></item>
-      <item><property name="text"><string>Atrasado</string></property></item>
-     </widget>
-    </item>
-
-    <item>
-     <widget class="QPushButton" name="btnFiltrarProducao">
-      <property name="text">
-       <string>Filtrar</string>
-      </property>
-     </widget>
-    </item>
-
-   </layout>
-  </item>
-
-  <!-- ===================== CONTEÚDO PRINCIPAL ===================== -->
-  <item>
-   <layout class="QHBoxLayout">
-
-    <!-- ===================== TABELA PRINCIPAL ===================== -->
-    <item>
-     <widget class="QTableWidget" name="tableProducao">
-      <property name="columnCount">
-       <number>9</number>
-      </property>
-
-      <column><property name="text"><string>Pedido</string></property></column>
-      <column><property name="text"><string>Produto</string></property></column>
-      <column><property name="text"><string>Tipo</string></property></column>
-      <column><property name="text"><string>Qtd</string></property></column>
-      <column><property name="text"><string>Prioridade</string></property></column>
-      <column><property name="text"><string>Status</string></property></column>
-      <column><property name="text"><string>Início</string></property></column>
-      <column><property name="text"><string>Entrega</string></property></column>
-      <column><property name="text"><string>Responsável</string></property></column>
-
-     </widget>
-    </item>
-
-    <!-- ===================== DETALHES ===================== -->
-    <item>
-     <widget class="QGroupBox" name="groupBoxDetalhesProducao">
-      <property name="title">
-       <string>Detalhes da Produção</string>
-      </property>
-
-      <layout class="QVBoxLayout">
-
-       <item>
-        <widget class="QLabel" name="lblDetalheProduto">
-         <property name="text">
-          <string>Selecione uma produção</string>
-         </property>
-        </widget>
-       </item>
-
-       <item>
-        <widget class="QTextEdit" name="txtDetalhesProducao"/>
-       </item>
-
-       <item>
-        <widget class="QLabel" name="lblTempoEstimado">
-         <property name="text">
-          <string>Tempo estimado: --</string>
-         </property>
-        </widget>
-       </item>
-
-       <item>
-        <layout class="QHBoxLayout">
-
-         <item>
-          <widget class="QPushButton" name="btnIniciarProducao">
-           <property name="text">
-            <string>▶ Iniciar</string>
-           </property>
-          </widget>
-         </item>
-
-         <item>
-          <widget class="QPushButton" name="btnPausarProducao">
-           <property name="text">
-            <string>⏸ Pausar</string>
-           </property>
-          </widget>
-         </item>
-
-        </layout>
-       </item>
-
-       <item>
-        <layout class="QHBoxLayout">
-
-         <item>
-          <widget class="QPushButton" name="btnFinalizarProducao">
-           <property name="text">
-            <string>✔ Finalizar</string>
-           </property>
-          </widget>
-         </item>
-
-         <item>
-          <widget class="QPushButton" name="btnAtrasarProducao">
-           <property name="text">
-            <string>⚠ Atraso</string>
-           </property>
-          </widget>
-         </item>
-
-        </layout>
-       </item>
-
-      </layout>
-     </widget>
-    </item>
-
-   </layout>
-  </item>
-
- </layout>
-</widget>
       <widget class="QWidget" name="pageProdutos">
        <layout class="QHBoxLayout">
         <item>
@@ -1319,138 +1439,196 @@ QHeaderView::section:hover {
        </layout>
       </widget>
       <widget class="QWidget" name="pageVendas">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxVendas">
-          <property name="title">
-           <string>Registro de Vendas</string>
-          </property>
-          <layout class="QFormLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="labelCliente">
-             <property name="text">
-              <string>Cliente:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="comboBoxCliente"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="labelProdutos">
-             <property name="text">
-              <string>Produtos:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QTableWidget" name="tableWidgetProdutos">
-             <property name="columnCount">
-              <number>5</number>
-             </property>
-             <property name="horizontalHeaderLabels" stdset="0">
-              <string>Produto;Quantidade;Tamanho;Sabor;Adicionais</string>
-             </property>
-             <column/>
-             <column/>
-             <column/>
-             <column/>
-             <column/>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QPushButton" name="btnAdicionarProduto">
-             <property name="text">
-              <string>Adicionar Produto</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="labelData">
-             <property name="text">
-              <string>Data da Venda:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QDateEdit" name="dateEditVenda"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="labelTotal">
-             <property name="text">
-              <string>Total:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEditTotal"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="labelStatus">
-             <property name="text">
-              <string>Status:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QComboBox" name="comboBoxStatus">
-             <item>
-              <property name="text">
-               <string>Pago</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Pendente</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Parcial</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QPushButton" name="btnRegistrarVenda">
-             <property name="text">
-              <string>Registrar Venda</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QPushButton" name="btnEditarVenda">
-             <property name="text">
-              <string>Editar Venda</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QPushButton" name="btnExcluirVenda">
-             <property name="text">
-              <string>Excluir Venda</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <widget class="QLineEdit" name="lineEditPesquisaVendas">
-            <property name="placeholderText">
-             <string>Pesquisar venda...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableView" name="tableViewVendas"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
+ <layout class="QHBoxLayout">
+
+  <!-- ================= ESQUERDA (CADASTRO) ================= -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxVendas">
+    <property name="title">
+     <string>Registro de Vendas</string>
+    </property>
+
+    <layout class="QVBoxLayout">
+
+     <!-- DADOS DA VENDA -->
+     <item>
+      <layout class="QFormLayout">
+
+       <item row="0" column="0">
+        <widget class="QLabel">
+         <property name="text"><string>Cliente:</string></property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboClienteVenda"/>
+       </item>
+
+       <item row="1" column="0">
+        <widget class="QLabel">
+         <property name="text"><string>Data:</string></property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QDateEdit" name="dateVenda"/>
+       </item>
+
+       <item row="2" column="0">
+        <widget class="QLabel">
+         <property name="text"><string>Status:</string></property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboStatusVenda">
+         <item><property name="text"><string>Pago</string></property></item>
+         <item><property name="text"><string>Pendente</string></property></item>
+         <item><property name="text"><string>Parcial</string></property></item>
+        </widget>
+       </item>
+
+       <item row="3" column="0">
+        <widget class="QLabel">
+         <property name="text"><string>Pagamento:</string></property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="comboPagamento">
+         <item><property name="text"><string>Dinheiro</string></property></item>
+         <item><property name="text"><string>Pix</string></property></item>
+         <item><property name="text"><string>Cartão</string></property></item>
+        </widget>
+       </item>
+
+      </layout>
+     </item>
+
+     <!-- ITENS -->
+     <item>
+      <widget class="QTableWidget" name="tableItensVenda">
+       <property name="columnCount"><number>4</number></property>
+       <column><property name="text"><string>Produto</string></property></column>
+       <column><property name="text"><string>Qtd</string></property></column>
+       <column><property name="text"><string>Preço</string></property></column>
+       <column><property name="text"><string>Total</string></property></column>
       </widget>
+     </item>
+
+     <!-- BOTÕES ITEM -->
+     <item>
+      <layout class="QHBoxLayout">
+       <item>
+        <widget class="QPushButton" name="btnAddItemVenda">
+         <property name="text"><string>Adicionar</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnRemoverItemVenda">
+         <property name="text"><string>Remover</string></property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+
+     <!-- TOTAL -->
+     <item>
+      <widget class="QLabel" name="lblTotalVenda">
+       <property name="text">
+        <string>Total: R$ 0,00</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- BOTÕES -->
+     <item>
+      <layout class="QHBoxLayout">
+       <item>
+        <widget class="QPushButton" name="btnSalvarVenda">
+         <property name="text"><string>Salvar</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnEditarVenda">
+         <property name="text"><string>Editar</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnExcluirVenda">
+         <property name="text"><string>Excluir</string></property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+
+    </layout>
+   </widget>
+  </item>
+
+  <!-- ================= DIREITA (LISTA + RESUMO) ================= -->
+  <item>
+   <layout class="QVBoxLayout">
+
+    <!-- PESQUISA -->
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QLineEdit" name="linePesquisaVenda">
+        <property name="placeholderText">
+         <string>Pesquisar venda...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnPesquisarVenda">
+        <property name="text"><string>🔎</string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnAtualizarVenda">
+        <property name="text"><string>🔄</string></property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+    <!-- MAIS VENDIDOS -->
+    <item>
+     <widget class="QGroupBox" name="groupBoxMaisVendidos">
+      <property name="title">
+       <string>Produtos Mais Vendidos</string>
+      </property>
+      <layout class="QVBoxLayout">
+       <item>
+        <widget class="QLabel" name="lblMaisVendidos">
+         <property name="text">
+          <string>Sem dados ainda</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <!-- TABELA -->
+    <item>
+     <widget class="QTableWidget" name="tableVendas">
+      <property name="columnCount"><number>8</number></property>
+
+      <column><property name="text"><string>ID</string></property></column>
+      <column><property name="text"><string>Cliente</string></property></column>
+      <column><property name="text"><string>Data</string></property></column>
+      <column><property name="text"><string>Total</string></property></column>
+      <column><property name="text"><string>Pago</string></property></column>
+      <column><property name="text"><string>Restante</string></property></column>
+      <column><property name="text"><string>Pagamento</string></property></column>
+      <column><property name="text"><string>Status</string></property></column>
+
+     </widget>
+    </item>
+
+   </layout>
+  </item>
+
+ </layout>
+</widget>
       <widget class="QWidget" name="pageControleFinanceiro">
        <layout class="QHBoxLayout">
         <item>
