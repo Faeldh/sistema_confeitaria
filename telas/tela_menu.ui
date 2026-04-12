@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>7</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1982,84 +1982,59 @@ QHeaderView::section:hover {
        </layout>
       </widget>
       <widget class="QWidget" name="pageControleFinanceiro">
-       <layout class="QHBoxLayout">
+       <layout class="QVBoxLayout">
         <item>
-         <widget class="QGroupBox" name="groupBoxEntradas">
+         <widget class="QGroupBox" name="groupBoxDashboard">
           <property name="title">
-           <string>Registrar Entrada</string>
+           <string>📊 Painel Financeiro</string>
           </property>
-          <layout class="QFormLayout">
+          <layout class="QGridLayout">
            <item row="0" column="0">
-            <widget class="QLabel" name="labelCliente">
+            <widget class="QLabel" name="lblEntradas">
              <property name="text">
-              <string>Cliente / Pedido:</string>
+              <string>💰 Entradas: R$ 0,00</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLineEdit" name="txtClienteFinanceiro"/>
+            <widget class="QLabel" name="lblRecebido">
+             <property name="text">
+              <string>💵 Recebido: R$ 0,00</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="lblAReceber">
+             <property name="text">
+              <string>⏳ A receber: R$ 0,00</string>
+             </property>
+            </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QLabel" name="labelSinal">
+            <widget class="QLabel" name="lblDespesas">
              <property name="text">
-              <string>Sinal Recebido:</string>
+              <string>💸 Despesas: R$ 0,00</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QDoubleSpinBox" name="spinSinal">
-             <property name="prefix">
-              <string>R$ </string>
-             </property>
-             <property name="decimals">
-              <number>2</number>
-             </property>
-             <property name="maximum">
-              <double>1000000.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="labelRestante">
+            <widget class="QLabel" name="lblContas">
              <property name="text">
-              <string>Restante a Receber:</string>
+              <string>📅 Contas: R$ 0,00</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QDoubleSpinBox" name="spinRestante">
-             <property name="prefix">
-              <string>R$ </string>
-             </property>
-             <property name="decimals">
-              <number>2</number>
-             </property>
-             <property name="maximum">
-              <double>1000000.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="labelDataEntrada">
+           <item row="1" column="2">
+            <widget class="QLabel" name="lblLucro">
              <property name="text">
-              <string>Data:</string>
+              <string>📊 Lucro: R$ 0,00</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="1">
-            <widget class="QDateEdit" name="dateEntrada"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QPushButton" name="btnAdicionarEntrada">
+           <item row="2" column="0" colspan="3">
+            <widget class="QLabel" name="lblSaldoFinal">
              <property name="text">
-              <string>Adicionar Entrada</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QPushButton" name="btnExcluirEntrada">
-             <property name="text">
-              <string>Excluir</string>
+              <string>🏁 Saldo Final: R$ 0,00</string>
              </property>
             </widget>
            </item>
@@ -2067,50 +2042,48 @@ QHeaderView::section:hover {
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout">
+         <layout class="QHBoxLayout">
           <item>
-           <widget class="QLineEdit" name="linePesquisarFinanceiro">
-            <property name="placeholderText">
-             <string>Pesquisar entrada...</string>
+           <widget class="QGroupBox" name="groupBoxControl">
+            <property name="title">
+             <string>➕ Lançamentos</string>
             </property>
+            <layout class="QVBoxLayout">
+             <item>
+              <widget class="QPushButton" name="btnAddDespesa">
+               <property name="text">
+                <string>💸 Adicionar Despesa</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAddConta">
+               <property name="text">
+                <string>📅 Adicionar Conta</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAtualizar">
+               <property name="text">
+                <string>🔄 Atualizar</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item>
-           <widget class="QTableView" name="tableFinanceiro"/>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBoxTotais">
+           <widget class="QGroupBox" name="groupBoxTabela">
             <property name="title">
-             <string>Totais</string>
+             <string>📋 Movimentações</string>
             </property>
-            <layout class="QFormLayout">
-             <item row="0" column="0">
-              <widget class="QLabel" name="labelTotalDia">
-               <property name="text">
-                <string>Total do Dia:</string>
-               </property>
-              </widget>
+            <layout class="QVBoxLayout">
+             <item>
+              <widget class="QLineEdit" name="txtPesquisar"/>
              </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="lblTotalDia">
-               <property name="text">
-                <string>R$ 0,00</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="labelTotalMes">
-               <property name="text">
-                <string>Total do Mês:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="lblTotalMes">
-               <property name="text">
-                <string>R$ 0,00</string>
-               </property>
-              </widget>
+             <item>
+              <widget class="QTableView" name="tableFinanceiro"/>
              </item>
             </layout>
            </widget>
