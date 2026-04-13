@@ -1,6 +1,33 @@
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtCore import QDate
 from conexao import conectar
+
+
+def pesquisa(self):
+
+    pesquisa = self.txt_pesquisa.text().strip()
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    sql = 'SELECT id, nome, cpf FROM cliente WHRE nome LIKE %s OR cpf LIKE %s'
+
+    like = f'%{pesquisa}'
+    cursor.execute(sql, (like, like))
+
+    resultado = cursor.fetchall()
+
+    self.tableWidgetClientes.setRowCount(0)
+
+    for row_num, row_data in enumerate(resultado):
+        self.tableWidgetClientes.insertRow(row_num)
+
+        for col_num, dado in enumerate(row_data):
+            self.tableWidgetClientes.setItem(
+                row_num,
+                col_num,
+                QtWidgets.QTableWidgetItem(str(dado))
+            )
     
 def buscar_por_id(self, id_cliente):
     conexao = conectar()
