@@ -257,6 +257,13 @@ QTableView { background-color: white; border-radius: 10px; }
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="btn_limpar">
+               <property name="text">
+                <string>Limpar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="btn_excluir">
                <property name="text">
                 <string>Excluir</string>
