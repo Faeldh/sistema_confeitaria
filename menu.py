@@ -14,6 +14,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.tableWidgetClientes.itemDoubleClicked.connect(self.carregar_cliente)
         self.tableWidgetClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
+        
+
         self.btn_clientes.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
         )
@@ -47,7 +49,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         )
 
 
-        
+        self.btn_pesquisa.clicked.connect(self.pesquisar)
         self.btn_salvar.clicked.connect(self.salvar_cliente)
         self.btn_atualizar.clicked.connect(self.atualizar_lista)
 
@@ -58,6 +60,9 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
     
     def atualizar_lista(self):
         cadastro_cliente.atualizar(self)
+    
+    def pesquisar(self):
+        cadastro_cliente.pesquisa(self)
 
     
 
