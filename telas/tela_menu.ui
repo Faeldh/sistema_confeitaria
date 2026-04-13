@@ -280,7 +280,7 @@ QTableView { background-color: white; border-radius: 10px; }
           <item>
            <layout class="QHBoxLayout">
             <item>
-             <widget class="QLineEdit" name="lineEditPesquisaCliente">
+             <widget class="QLineEdit" name="txt_pesquisa">
               <property name="placeholderText">
                <string>Pesquisar cliente...</string>
               </property>
