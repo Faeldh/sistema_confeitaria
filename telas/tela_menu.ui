@@ -257,6 +257,13 @@ QTableView { background-color: white; border-radius: 10px; }
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="btn_limpar">
+               <property name="text">
+                <string>Limpar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="btn_excluir">
                <property name="text">
                 <string>Excluir</string>
@@ -1485,6 +1492,13 @@ QScrollBar::handle:horizontal:hover {
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="btn_limparProduto">
+               <property name="text">
+                <string>Limpar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="btn_excluirProduto">
                <property name="text">
                 <string>Excluir</string>
@@ -2285,6 +2299,13 @@ QScrollBar::handle:horizontal:hover {
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="btn_limparPedido">
+               <property name="text">
+                <string>Limpar</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QPushButton" name="btn_excluirFornecedor">
                <property name="text">
                 <string>Excluir</string>
@@ -2469,6 +2490,22 @@ QScrollBar::handle:horizontal:hover {
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1303</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+   </widget>
+   <addaction name="menuMenu"/>
+  </widget>
  </widget>
  <resources/>
  <connections/>
