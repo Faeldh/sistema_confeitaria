@@ -10,7 +10,7 @@ def pesquisa(self):
     conexao = conectar()
     cursor = conexao.cursor()
     
-    sql = 'SELECT id, nome, cpf FROM cliente WHRE nome LIKE %s OR cpf LIKE %s'
+    sql = 'SELECT id, nome, cpf FROM cliente WHERE nome LIKE %s OR cpf LIKE %s'
 
     like = f'%{pesquisa}'
     cursor.execute(sql, (like, like))
@@ -71,8 +71,6 @@ def buscar_por_id(self, id_cliente):
 
         self.id_cliente = id_cliente
 
-
-
 def atualizar(self):
     conexao = conectar()
     cursor = conexao.cursor()
@@ -94,9 +92,6 @@ def atualizar(self):
             )
     self.tableWidgetClientes.resizeColumnsToContents()
     self.tableWidgetClientes.horizontalHeader().setStretchLastSection(True)
-
-
-
 
 def validar_cpf(cpf):
     if len(cpf) != 11 or cpf == cpf[0] * 11:
