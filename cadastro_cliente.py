@@ -107,6 +107,59 @@ def validar_cpf(cpf):
 
     return cpf[-2:] == f"{dig1}{dig2}"
 
+def editar(self):
+    if not hasattr(self, "id_cliente"):
+        QtWidgets.QMessageBox.warning(self, 'Atenção', 'Selecione um cliente na tabela')
+        return
+
+    nome = self.txt_nome.text().strip()
+    telefone = self.txt_telefone.text()
+    cpf = self.txt_cpf.text().replace(".", "").replace("-", "")
+    email = self.txt_email.text()
+    cidade = self.txt_cidade.text()
+    observcoes = self.txt_obs.toPlainText()
+
+    # data
+    data = self.dateEditNascimento.date()
+    data_format = data.toString('yyyy-MM-dd')
+
+    if not nome or not cpf:
+        QtWidgets.QMessageBox.warning(self, 'Erro', 'Nome e CPF são obrigatórios')
+        return
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = """
+    UPDATE cliente
+    SET nome=%s, telefone=%s, cpf=%s, data_format=%s,
+        cidade=%s, email=%s, observcoes=%s
+    WHERE id=%s
+    """
+
+    dados = (
+        nome,
+        telefone,
+        cpf,
+        data_format,
+        cidade,
+        email,
+        observcoes,
+        self.id_cliente
+    )
+
+    cursor.execute(sql, dados)
+    conexao.commit()
+
+    if cursor.rowcount > 0:
+        QtWidgets.QMessageBox.information(self, 'Sucesso', 'Cliente atualizado com sucesso!')
+
+        # 🔥 atualiza tabela automaticamente
+        atualizar(self)
+
+    else:
+        QtWidgets.QMessageBox.warning(self, 'Aviso', 'Nenhuma alteração foi feita')
+
 def configurar_campos(self):
     # máscara CPF
     self.txt_cpf.setInputMask("000.000.000-00")

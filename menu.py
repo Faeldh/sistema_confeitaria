@@ -48,6 +48,10 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: self.stackedWidget.setCurrentWidget(self.pageFornecedores)
         )
 
+        self.btn_editar.clicked.connect(
+            lambda: cadastro_cliente.editar(self)
+        )
+
 
         self.btn_pesquisa.clicked.connect(self.pesquisar)
         self.btn_salvar.clicked.connect(self.salvar_cliente)
@@ -63,6 +67,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
     
     def pesquisar(self):
         cadastro_cliente.pesquisa(self)
+    
+    
 
     
 
