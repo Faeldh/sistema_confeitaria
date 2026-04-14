@@ -137,16 +137,7 @@ def editar(self):
     WHERE id=%s
     """
 
-    dados = (
-        nome,
-        telefone,
-        cpf,
-        data_format,
-        cidade,
-        email,
-        observcoes,
-        self.id_cliente
-    )
+    dados = (nome, telefone, cpf, data_format, cidade, email, observcoes, self.id_cliente)
 
     cursor.execute(sql, dados)
     conexao.commit()
