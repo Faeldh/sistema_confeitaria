@@ -373,16 +373,16 @@ QScrollBar::handle:horizontal:hover {
              <number>0</number>
             </property>
             <property name="columnCount">
-             <number>12</number>
+             <number>4</number>
             </property>
             <column>
              <property name="text">
-              <string>Nome</string>
+              <string>ID</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Telefone</string>
+              <string>NOME</string>
              </property>
             </column>
             <column>
@@ -392,47 +392,7 @@ QScrollBar::handle:horizontal:hover {
             </column>
             <column>
              <property name="text">
-              <string>Nascimento</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>CEP</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Rua</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Bairro</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>N°</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Complemento</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Cidade</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>E-mail</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Observações</string>
+              <string>TEL</string>
              </property>
             </column>
            </widget>
@@ -2496,7 +2456,7 @@ QScrollBar::handle:horizontal:hover {
      <x>0</x>
      <y>0</y>
      <width>1303</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

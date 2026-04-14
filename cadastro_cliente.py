@@ -2,6 +2,69 @@ from PyQt5 import uic, QtWidgets
 from PyQt5.QtCore import QDate
 from conexao import conectar
 
+def limpar(self):
+
+    self.txt_nome.setText('')
+    self.txt_telefone.setText('')
+    self.dateEditNascimento.setDate(QDate.currentDate())
+    self.txt_cpf.setText('')
+    self.txt_cep.setText('')
+    self.txt_rua.setText('')
+    self.txt_bairro.setText('')
+    self.txt_n.setText('')
+    self.txt_complemento.setText('')
+    self.txt_cidade.setText('')
+    self.txt_email.setText('')
+    self.txt_obs.clear()
+
+
+
+
+def deletar(self):
+    if not hasattr(self, "id_cliente"):
+        QtWidgets.QMessageBox.warning(self, 'Atenção', 'Selecione um cliente para excluir')
+        return
+
+    # 🔥 confirmação (IMPORTANTE)
+    confirmacao = QtWidgets.QMessageBox.question(
+        self,
+        'Confirmar exclusão',
+        'Tem certeza que deseja excluir este cliente?',
+        QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
+    )
+
+    if confirmacao == QtWidgets.QMessageBox.No:
+        return
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = "DELETE FROM cliente WHERE id = %s"
+    cursor.execute(sql, (self.id_cliente,))
+    conexao.commit()
+
+    if cursor.rowcount > 0:
+        QtWidgets.QMessageBox.information(self, 'Sucesso', 'Cliente excluído com sucesso!')
+
+        # 🔥 limpa campos
+        self.txt_nome.setText('')
+        self.txt_telefone.setText('')
+        self.txt_cpf.setText('')
+        self.txt_email.setText('')
+        self.txt_cidade.setText('')
+        self.txt_obs.clear()
+
+        from PyQt5.QtCore import QDate
+        self.dateEditNascimento.setDate(QDate.currentDate())
+
+        # 🔥 remove ID (IMPORTANTE)
+        del self.id_cliente
+
+        # 🔥 atualiza tabela
+        atualizar(self)
+
+    else:
+        QtWidgets.QMessageBox.warning(self, 'Erro', 'Não foi possível excluir')
 
 def pesquisa(self):
 

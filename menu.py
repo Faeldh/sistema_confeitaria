@@ -52,10 +52,16 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: cadastro_cliente.editar(self)
         )
 
+        self.btn_excluir.clicked.connect(
+            lambda: cadastro_cliente.deletar(self)
+        )
+
 
         self.btn_pesquisa.clicked.connect(self.pesquisar)
         self.btn_salvar.clicked.connect(self.salvar_cliente)
         self.btn_atualizar.clicked.connect(self.atualizar_lista)
+        self.btn_limpar.clicked.connect(self.limpar_info)
+        
 
         cadastro_cliente.atualizar(self)
 
@@ -68,10 +74,10 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
     def pesquisar(self):
         cadastro_cliente.pesquisa(self)
     
+    def limpar_info(self):
+        cadastro_cliente.limpar(self)
     
-
     
-
     def carregar_cliente(self):
         linha = self.tableWidgetClientes.currentRow()
 
