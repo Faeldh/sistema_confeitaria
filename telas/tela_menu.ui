@@ -106,7 +106,7 @@ QTableView { background-color: white; border-radius: 10px; }
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1359,18 +1359,12 @@ QScrollBar::handle:horizontal:hover {
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="txt_produto"/>
-             </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>Categoria:</string>
                </property>
               </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="txt_categoria"/>
              </item>
              <item row="2" column="0">
               <widget class="QLabel" name="label">
@@ -1432,6 +1426,12 @@ QScrollBar::handle:horizontal:hover {
                 </property>
                </item>
               </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="comboBox"/>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="comboBox_2"/>
              </item>
             </layout>
            </item>
@@ -2456,7 +2456,7 @@ QScrollBar::handle:horizontal:hover {
      <x>0</x>
      <y>0</y>
      <width>1303</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
