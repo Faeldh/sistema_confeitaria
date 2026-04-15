@@ -25,7 +25,7 @@ def deletar(self):
         QtWidgets.QMessageBox.warning(self, 'Atenção', 'Selecione um cliente para excluir')
         return
 
-    # 🔥 confirmação (IMPORTANTE)
+    
     confirmacao = QtWidgets.QMessageBox.question(
         self,
         'Confirmar exclusão',
@@ -46,7 +46,7 @@ def deletar(self):
     if cursor.rowcount > 0:
         QtWidgets.QMessageBox.information(self, 'Sucesso', 'Cliente excluído com sucesso!')
 
-        # 🔥 limpa campos
+        
         self.txt_nome.setText('')
         self.txt_telefone.setText('')
         self.txt_cpf.setText('')
@@ -57,10 +57,10 @@ def deletar(self):
         from PyQt5.QtCore import QDate
         self.dateEditNascimento.setDate(QDate.currentDate())
 
-        # 🔥 remove ID (IMPORTANTE)
+        # remove ID (IMPORTANTE)
         del self.id_cliente
 
-        # 🔥 atualiza tabela
+        
         atualizar(self)
 
     else:
@@ -182,7 +182,7 @@ def editar(self):
     cidade = self.txt_cidade.text()
     observcoes = self.txt_obs.toPlainText()
 
-    # data
+    
     data = self.dateEditNascimento.date()
     data_format = data.toString('yyyy-MM-dd')
 
@@ -208,7 +208,7 @@ def editar(self):
     if cursor.rowcount > 0:
         QtWidgets.QMessageBox.information(self, 'Sucesso', 'Cliente atualizado com sucesso!')
 
-        # 🔥 atualiza tabela automaticamente
+        
         atualizar(self)
 
     else:

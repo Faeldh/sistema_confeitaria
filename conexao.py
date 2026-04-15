@@ -2,7 +2,7 @@ import pymysql
 
 def conectar():
     try:
-        print("🔄 Conectando com PyMySQL...")
+        print("Conectando com PyMySQL...")
 
         conexao = pymysql.connect(
             host='localhost',
@@ -12,9 +12,9 @@ def conectar():
             #port=3306
         )
 
-        print("✅ Conectado com sucesso!")
+        print("Conectado com sucesso!")
         return conexao
 
     except Exception as erro:
-        print("❌ Erro ao conectar:", erro)
+        print(" Erro ao conectar:", erro)
         raise
