@@ -28,9 +28,9 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: self.stackedWidget.setCurrentWidget(self.pageReceitas)
         )
 
-        self.btn_producao.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.pageControleProducao)
-        )
+        #self.btn_producao.clicked.connect(
+            #lambda: self.stackedWidget.setCurrentWidget(self.pageControleProducao)
+        #)
 
         self.btn_produtos.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageProdutos)
