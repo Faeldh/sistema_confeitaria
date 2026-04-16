@@ -150,7 +150,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -507,7 +507,7 @@ QScrollBar::handle:horizontal:hover {
              <item row="0" column="1">
               <widget class="QLineEdit" name="lineEdit_2"/>
              </item>
-             <item row="0" column="2">btn_produtos
+             <item row="0" column="2">
               <widget class="QPushButton" name="btnBuscaProduto">
                <property name="text">
                 <string>🔎</string>
@@ -1997,8 +1997,13 @@ QScrollBar::handle:horizontal:hover {
 }</string>
             </property>
             <property name="columnCount">
-             <number>11</number>
+             <number>5</number>
             </property>
+            <column>
+             <property name="text">
+              <string>ID</string>
+             </property>
+            </column>
             <column>
              <property name="text">
               <string>Nome</string>
@@ -2017,41 +2022,6 @@ QScrollBar::handle:horizontal:hover {
             <column>
              <property name="text">
               <string>Telefone</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>E-mail</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Rua</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>N°</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Bairro</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Cidade</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Complemento</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Informações</string>
              </property>
             </column>
            </widget>
