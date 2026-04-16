@@ -41,7 +41,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         )
 
         self.btn_controle_financeiro.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.pageControleProducao)
+            lambda: self.stackedWidget.setCurrentWidget(self.pageControleFinanceiro)
         )
 
         self.btn_fornecedores.clicked.connect(
