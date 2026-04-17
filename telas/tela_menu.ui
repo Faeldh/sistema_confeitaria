@@ -150,7 +150,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -455,6 +455,38 @@ QScrollBar::handle:horizontal:hover {
              <string>Dados do Pedido</string>
             </property>
             <layout class="QGridLayout">
+             <item row="1" column="4">
+              <widget class="QComboBox" name="comboCliente_2">
+               <item>
+                <property name="text">
+                 <string>Pendente</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Em Produção</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Cancelado</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Finalizado</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Pausado</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QComboBox" name="comboCliente"/>
+             </item>
              <item row="0" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
@@ -462,15 +494,15 @@ QScrollBar::handle:horizontal:hover {
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
-              <widget class="QComboBox" name="comboCliente"/>
-             </item>
              <item row="0" column="1">
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>Data Pedido</string>
                </property>
               </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QDateEdit" name="dateEntrega"/>
              </item>
              <item row="1" column="1">
               <widget class="QDateEdit" name="datePedido"/>
@@ -482,8 +514,12 @@ QScrollBar::handle:horizontal:hover {
                </property>
               </widget>
              </item>
-             <item row="1" column="2">
-              <widget class="QDateEdit" name="dateEntrega"/>
+             <item row="0" column="4">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Status</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
