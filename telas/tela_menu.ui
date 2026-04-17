@@ -456,7 +456,7 @@ QScrollBar::handle:horizontal:hover {
             </property>
             <layout class="QGridLayout">
              <item row="1" column="4">
-              <widget class="QComboBox" name="comboCliente_2">
+              <widget class="QComboBox" name="comboStatus_Pedido">
                <item>
                 <property name="text">
                  <string>Pendente</string>
