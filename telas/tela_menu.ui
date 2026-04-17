@@ -958,164 +958,233 @@ QScrollBar::handle:horizontal:hover {
        </layout>
       </widget>
       <widget class="QWidget" name="pageProdutos">
-       <layout class="QHBoxLayout">
-        <item>
-         <widget class="QGroupBox" name="groupBoxProdutos">
-          <property name="title">
-           <string>Cadastro de Produtos</string>
+ <layout class="QHBoxLayout">
+
+  <!-- LADO ESQUERDO -->
+  <item>
+   <widget class="QGroupBox" name="groupBoxProdutos">
+    <property name="title">
+     <string>Cadastro de Produtos</string>
+    </property>
+
+    <layout class="QVBoxLayout">
+
+     <item>
+      <layout class="QFormLayout">
+
+       <!-- PRODUTO -->
+       <item row="0" column="0">
+        <widget class="QLabel">
+         <property name="text">
+          <string>Produto:</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_3"/>
+       </item>
+
+       <!-- CATEGORIA COM BOTÕES -->
+       <item row="1" column="0">
+        <widget class="QLabel">
+         <property name="text">
+          <string>Categoria:</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="1" column="1">
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+
+         <item>
+          <widget class="QComboBox" name="comboBox_2"/>
+         </item>
+
+         <!-- 🔎 -->
+         <item>
+          <widget class="QPushButton" name="btnBuscaCategoria">
+           <property name="text">
+            <string>🔎</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>28</width>
+             <height>28</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>28</width>
+             <height>28</height>
+            </size>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed"/>
+           </property>
+          </widget>
+         </item>
+
+         <!-- + -->
+         <item>
+          <widget class="QPushButton" name="btnAddCategoria">
+           <property name="text">
+            <string>+</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>28</width>
+             <height>28</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>28</width>
+             <height>28</height>
+            </size>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed"/>
+           </property>
+          </widget>
+         </item>
+
+        </layout>
+       </item>
+
+       <!-- TAMANHO -->
+       <item row="2" column="0">
+        <widget class="QLabel">
+         <property name="text">
+          <string>Tamanho:</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="txt_tamanho"/>
+       </item>
+
+       <!-- PREÇO -->
+       <item row="3" column="0">
+        <widget class="QLabel">
+         <property name="text">
+          <string>Preço (R$):</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="txt_preco"/>
+       </item>
+
+       <!-- SABORES -->
+       <item row="4" column="0">
+        <widget class="QLabel">
+         <property name="text">
+          <string>Sabores:</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="4" column="1">
+        <widget class="QTextEdit" name="txt_sabores"/>
+       </item>
+
+       <!-- DESCRIÇÃO -->
+       <item row="5" column="0">
+        <widget class="QLabel">
+         <property name="text">
+          <string>Descrição:</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="5" column="1">
+        <widget class="QTextEdit" name="txt_descricao"/>
+       </item>
+
+       <!-- ATIVO -->
+       <item row="6" column="0">
+        <widget class="QLabel">
+         <property name="text">
+          <string>Ativo:</string>
+         </property>
+        </widget>
+       </item>
+
+       <item row="6" column="1">
+        <widget class="QComboBox" name="combo_ativo">
+         <item>
+          <property name="text">
+           <string>Sim</string>
           </property>
-          <layout class="QVBoxLayout">
-           <item>
-            <layout class="QFormLayout">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Produto:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Categoria:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Tamanho:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="txt_tamanho"/>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Preço (R$):</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="txt_preco"/>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Sabores:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QTextEdit" name="txt_sabores"/>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Descrição:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QTextEdit" name="txt_descricao"/>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Ativo:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QComboBox" name="combo_ativo">
-               <item>
-                <property name="text">
-                 <string>Sim</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Não</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QComboBox" name="comboBox_2"/>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="lineEdit_3"/>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout">
-             <item>
-              <widget class="QPushButton" name="btn_salvarProduto">
-               <property name="text">
-                <string>Salvar</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btn_editarProduto">
-               <property name="text">
-                <string>Editar</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btn_limparProduto">
-               <property name="text">
-                <string>Limpar</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btn_excluirProduto">
-               <property name="text">
-                <string>Excluir</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout">
-          <item>
-           <layout class="QHBoxLayout">
-            <item>
-             <widget class="QLineEdit" name="lineEditPesquisaProduto">
-              <property name="placeholderText">
-               <string>Pesquisar produto...</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btnPesquisarProduto">
-              <property name="text">
-               <string>🔎</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btnAtualizarProduto">
-              <property name="text">
-               <string>🔄</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QTableWidget" name="tableViewProdutos">
-            <property name="styleSheet">
-             <string notr="true">QTableWidget {
+         </item>
+         <item>
+          <property name="text">
+           <string>Não</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+
+      </layout>
+     </item>
+
+     <!-- BOTÕES CRUD -->
+     <item>
+      <layout class="QHBoxLayout">
+       <item><widget class="QPushButton" name="btn_salvarProduto"><property name="text"><string>Salvar</string></property></widget></item>
+       <item><widget class="QPushButton" name="btn_editarProduto"><property name="text"><string>Editar</string></property></widget></item>
+       <item><widget class="QPushButton" name="btn_limparProduto"><property name="text"><string>Limpar</string></property></widget></item>
+       <item><widget class="QPushButton" name="btn_excluirProduto"><property name="text"><string>Excluir</string></property></widget></item>
+      </layout>
+     </item>
+
+    </layout>
+   </widget>
+  </item>
+
+  <!-- LADO DIREITO (TABELA INTACTA) -->
+  <item>
+   <layout class="QVBoxLayout">
+
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QLineEdit" name="lineEditPesquisaProduto">
+        <property name="placeholderText">
+         <string>Pesquisar produto...</string>
+        </property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QPushButton" name="btnPesquisarProduto">
+        <property name="text">
+         <string>🔎</string>
+        </property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QPushButton" name="btnAtualizarProduto">
+        <property name="text">
+         <string>🔄</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+
+    <!-- TABELA ORIGINAL COM STYLE PRESERVADO -->
+    <item>
+     <widget class="QTableWidget" name="tableViewProdutos">
+      <property name="styleSheet">
+       <string notr="true">QTableWidget {
     background-color: white;
     border: 2px solid #3F4A2F;
     border-radius: 10px;
@@ -1142,10 +1211,6 @@ QHeaderView::section:hover {
     background-color: #2E3723;
 }
 
-
-
-
-
 QScrollBar:vertical {
     background: #F5F5F5;
     width: 10px;
@@ -1161,7 +1226,6 @@ QScrollBar::handle:vertical:hover {
     background: #2E3723;
 }
 
-
 QScrollBar:horizontal {
     background: #F5F5F5;
     height: 10px;
@@ -1176,51 +1240,28 @@ QScrollBar::handle:horizontal {
 QScrollBar::handle:horizontal:hover {
     background: #2E3723;
 }</string>
-            </property>
-            <property name="columnCount">
-             <number>7</number>
-            </property>
-            <column>
-             <property name="text">
-              <string>ID</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Produto</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Categoria</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Tamanho</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Preço</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Sabores</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Status</string>
-             </property>
-            </column>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
+      </property>
+
+      <property name="columnCount">
+       <number>7</number>
+      </property>
+
+      <column><property name="text"><string>ID</string></property></column>
+      <column><property name="text"><string>Produto</string></property></column>
+      <column><property name="text"><string>Categoria</string></property></column>
+      <column><property name="text"><string>Tamanho</string></property></column>
+      <column><property name="text"><string>Preço</string></property></column>
+      <column><property name="text"><string>Sabores</string></property></column>
+      <column><property name="text"><string>Status</string></property></column>
+
+     </widget>
+    </item>
+
+   </layout>
+  </item>
+
+ </layout>
+</widget>
       <widget class="QWidget" name="pageVendas">
        <layout class="QHBoxLayout">
         <item>
