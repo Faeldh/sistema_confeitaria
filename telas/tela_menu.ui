@@ -469,12 +469,12 @@ QScrollBar::handle:horizontal:hover {
                </item>
                <item>
                 <property name="text">
-                 <string>Cancelado</string>
+                 <string>Finalizado</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>Finalizado</string>
+                 <string>Atrasado</string>
                 </property>
                </item>
                <item>
@@ -695,12 +695,19 @@ QScrollBar::handle:horizontal:hover {
             </property>
             <layout class="QHBoxLayout">
              <item>
+              <widget class="QLabel" name="lblProducao_2">
+               <property name="text">
+                <string>🔵 Em Produção: 0</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QLabel" name="lblPendentes"/>
              </item>
              <item>
               <widget class="QLabel" name="lblPendentes_2">
                <property name="text">
-                <string>Pendentes: 0</string>
+                <string>🟡 Pendentes: 0</string>
                </property>
               </widget>
              </item>
@@ -708,9 +715,9 @@ QScrollBar::handle:horizontal:hover {
               <widget class="QLabel" name="lblProducao"/>
              </item>
              <item>
-              <widget class="QLabel" name="lblProducao_2">
+              <widget class="QLabel" name="lblFinalizados_2">
                <property name="text">
-                <string>Produção: 0</string>
+                <string>🟢 Finalizados: 0</string>
                </property>
               </widget>
              </item>
@@ -720,19 +727,12 @@ QScrollBar::handle:horizontal:hover {
              <item>
               <widget class="QLabel" name="lblAtrasados_2">
                <property name="text">
-                <string>Atrasados: 0</string>
+                <string>🔴 Atrasados: 0</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="lblAtrasados"/>
-             </item>
-             <item>
-              <widget class="QLabel" name="lblFinalizados_2">
-               <property name="text">
-                <string>Finalizados: 0</string>
-               </property>
-              </widget>
              </item>
             </layout>
            </widget>
