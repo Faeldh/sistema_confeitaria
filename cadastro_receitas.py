@@ -2,9 +2,9 @@ from PyQt5 import uic, QtWidgets
 from conexao import conectar
 
 def salvar(self):
-    nome = self.txt_nome.text()
-    ingrediente = self.txt_ingrediente.text()
-    preparo = self.txt_preparo.text()
+    nome = self.txt_nomeReceita.text()
+    ingrediente = self.txt_ingredientes.text()
+    preparo = self.txt_modoPreparo.text()
 
 
     conexao = conectar()
@@ -19,9 +19,9 @@ def salvar(self):
         print('Cadastro OK')
         QtWidgets.QMessageBox.information(self, 'Cadas', 'Cadastro realizado com sucesso!')
 
-        self.txt_nome.setText('')
-        self.txt_ingrediente.setText('')
-        self.txt_preparo.setText('')
+        self.txt_nomeReceita.setText('')
+        self.txt_ingredientes.setText('')
+        self.txt_modoPreparo.setText('')
 
     else:
         QtWidgets.QMessageBox.information(self, 'Erro', 'Usuário não cadastrado')
