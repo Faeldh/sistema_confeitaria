@@ -530,30 +530,16 @@ QScrollBar::handle:horizontal:hover {
              <string>Produto</string>
             </property>
             <layout class="QGridLayout">
-             <item row="3" column="2" colspan="2">
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="lineEdit_2"/>
+             </item>
+             <item row="4" column="2" colspan="2">
               <widget class="QLabel" name="lblPrecoProduto">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
                <property name="text">
                 <string>R$ 0,00</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="lineEdit_2"/>
-             </item>
-             <item row="0" column="2">
-              <widget class="QPushButton" name="btnBuscaProduto">
-               <property name="text">
-                <string>🔎</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3">
-              <widget class="QPushButton" name="btnAddProduto">
-               <property name="text">
-                <string>+</string>
                </property>
               </widget>
              </item>
@@ -564,18 +550,15 @@ QScrollBar::handle:horizontal:hover {
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QComboBox" name="comboTamanho"/>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label">
+             <item row="0" column="3">
+              <widget class="QPushButton" name="btnAddProduto">
                <property name="text">
-                <string>Tamanho</string>
+                <string>+</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="2">
-              <widget class="QPushButton" name="btnBuscaTamanho">
+             <item row="0" column="2">
+              <widget class="QPushButton" name="btnBuscaProduto">
                <property name="text">
                 <string>🔎</string>
                </property>
@@ -584,67 +567,77 @@ QScrollBar::handle:horizontal:hover {
              <item row="2" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
-                <string>Sabor</string>
+                <string>Tamanho</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="3">
-              <widget class="QPushButton" name="btnAddTamanho">
-               <property name="text">
-                <string>+</string>
-               </property>
-              </widget>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="lineQuantidade"/>
              </item>
-             <item row="2" column="1">
-              <widget class="QComboBox" name="comboSabor"/>
-             </item>
-             <item row="3" column="0">
+             <item row="4" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>Quantidade</string>
                </property>
               </widget>
              </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="lineQuantidade"/>
-             </item>
-             <item row="2" column="2">
-              <widget class="QPushButton" name="btnBuscaSabor">
-               <property name="text">
-                <string>🔎</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="3">
-              <widget class="QPushButton" name="btnAddSabor">
-               <property name="text">
-                <string>+</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
+             <item row="5" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>Observações</string>
                </property>
               </widget>
              </item>
-             <item row="5" column="0" colspan="4">
-              <widget class="QPushButton" name="btnAddCarrinho">
-               <property name="text">
-                <string>Adicionar ao Carrinho</string>
-               </property>
-              </widget>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="inputObs"/>
              </item>
-             <item row="4" column="2" colspan="2">
+             <item row="5" column="2" colspan="2">
               <widget class="QPushButton" name="btnVisualizarObs">
                <property name="text">
                 <string>Visualizar</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="1">
-              <widget class="QLineEdit" name="inputObs"/>
+             <item row="6" column="0" colspan="4">
+              <widget class="QPushButton" name="btnAddCarrinho">
+               <property name="text">
+                <string>Adicionar ao Carrinho</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="comboSabor"/>
+             </item>
+             <item row="1" column="2">
+              <widget class="QPushButton" name="btnBuscaSabor">
+               <property name="text">
+                <string>🔎</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QPushButton" name="btnAddSabor">
+               <property name="text">
+                <string>+</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Sabor</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QComboBox" name="comboTamanho"/>
+             </item>
+             <item row="2" column="2" colspan="2">
+              <widget class="QPushButton" name="btnAddTamanho">
+               <property name="text">
+                <string>+</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -1011,7 +1004,11 @@ QScrollBar::handle:horizontal:hover {
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLineEdit" name="lineEdit_3"/>
+              <layout class="QHBoxLayout">
+               <item>
+                <widget class="QLineEdit" name="lineEdit_3"/>
+               </item>
+              </layout>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label">
@@ -1022,45 +1019,11 @@ QScrollBar::handle:horizontal:hover {
              </item>
              <item row="1" column="1">
               <layout class="QHBoxLayout">
-               <property name="spacing">
-                <number>4</number>
-               </property>
                <item>
                 <widget class="QComboBox" name="comboBox_2"/>
                </item>
                <item>
-                <widget class="QPushButton" name="btnBuscaCategoria">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>🔎</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QPushButton" name="btnAddCategoria">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>28</width>
@@ -1208,7 +1171,8 @@ QScrollBar::handle:horizontal:hover {
           <item>
            <widget class="QTableWidget" name="tableViewProdutos">
             <property name="styleSheet">
-             <string notr="true">QTableWidget {
+             <string notr="true">
+QTableWidget {
     background-color: white;
     border: 2px solid #3F4A2F;
     border-radius: 10px;
@@ -1263,7 +1227,8 @@ QScrollBar::handle:horizontal {
 
 QScrollBar::handle:horizontal:hover {
     background: #2E3723;
-}</string>
+}
+       </string>
             </property>
             <property name="columnCount">
              <number>7</number>
