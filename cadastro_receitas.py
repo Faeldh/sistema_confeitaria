@@ -3,8 +3,8 @@ from conexao import conectar
 
 def salvar(self):
     nome = self.txt_nomeReceita.text()
-    ingrediente = self.txt_ingredientes.text()
-    preparo = self.txt_modoPreparo.text()
+    ingrediente = self.txt_ingredientes.toPlainText()
+    preparo = self.txt_modoPreparo.toPlainText()
 
 
     conexao = conectar()
@@ -13,11 +13,12 @@ def salvar(self):
     sql = 'INSERT INTO receitas(nome, ingrediente, preparo) VALUES (%s,%s,%s)'
     dados = (nome, ingrediente, preparo)
 
+    cursor.execute(sql, dados)
     conexao.commit()
 
     if cursor.rowcount > 0:
         print('Cadastro OK')
-        QtWidgets.QMessageBox.information(self, 'Cadas', 'Cadastro realizado com sucesso!')
+        QtWidgets.QMessageBox.information(self, 'Cadastro', 'Cadastro realizado com sucesso!')
 
         self.txt_nomeReceita.setText('')
         self.txt_ingredientes.setText('')
