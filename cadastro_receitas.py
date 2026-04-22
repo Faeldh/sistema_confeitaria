@@ -1,4 +1,4 @@
-from PyQt5 import uic, QtWindgets
+from PyQt5 import uic, QtWidgets
 from conexao import conectar
 
 def salvar(self):
@@ -17,11 +17,11 @@ def salvar(self):
 
     if cursor.rowcount > 0:
         print('Cadastro OK')
-        QtWindgets.QMessageBox.information(self, 'Cadas', 'Cadastro realizado com sucesso!')
+        QtWidgets.QMessageBox.information(self, 'Cadas', 'Cadastro realizado com sucesso!')
 
         self.txt_nome.setText('')
         self.txt_ingrediente.setText('')
         self.txt_preparo.setText('')
 
     else:
-        QtWindgets.QMessageBox.information(self, 'Erro', 'Usuário não cadastrado')
+        QtWidgets.QMessageBox.information(self, 'Erro', 'Usuário não cadastrado')
