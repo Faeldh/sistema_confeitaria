@@ -1,6 +1,7 @@
 from PyQt5 import uic, QtWidgets
 
 import cadastro_cliente 
+import cadastro_receitas
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
@@ -87,3 +88,6 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         id_cliente = self.tableWidgetClientes.item(linha, 0).text()
 
         cadastro_cliente.buscar_por_id(self, id_cliente)
+    
+    def salvar_receitas(self):
+        cadastro_receitas.salvar(self)
