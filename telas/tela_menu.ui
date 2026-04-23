@@ -80,20 +80,22 @@ QLabel {
     <item>
      <layout class="QHBoxLayout">
       <item>
-       <widget class="QLabel" name="labelLogo">
-        <property name="styleSheet">
-         <string>border: 1px dashed #3F4A2F; min-width:80px; min-height:60px;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
        <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>Segoe Script</family>
+            <pointsize>24</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Mira Confeitaria  </string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QPushButton" name="btn_clientes">
           <property name="text">
@@ -143,6 +145,13 @@ QLabel {
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>                                                                      </string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
      </layout>
@@ -150,7 +159,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
