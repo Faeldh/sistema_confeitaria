@@ -63,9 +63,13 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_atualizar.clicked.connect(self.atualizar_lista)
         self.btn_limpar.clicked.connect(self.limpar_info)
         self.btn_salvarReceitas.clicked.connect(self.salvar_receitas)
+        self.btn_AtualizarReceita.clicked.connect(self.atualizar_receitas)
         
 
         cadastro_cliente.atualizar(self)
+
+    def atualizar_receitas(self):
+        cadastro_receitas.atualizar(self)
 
     def salvar_cliente(self):
         cadastro_cliente.salvar(self)
