@@ -10,7 +10,13 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         super().__init__()
         self.setupUi(self)
 
+        #Esconde a coluna lateral da tabela (números das linhas)
         self.tableWidgetClientes.verticalHeader().setVisible(False)
+        self.tableWidgetReceitas.verticalHeader().setVisible(False)
+
+
+
+
         self.tableWidgetClientes.itemSelectionChanged.connect(self.carregar_cliente)
         self.tableWidgetClientes.itemDoubleClicked.connect(self.carregar_cliente)
         self.tableWidgetClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)

@@ -148,7 +148,7 @@ QLabel {
         <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>                                                                      </string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -159,7 +159,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -975,17 +975,17 @@ QScrollBar::handle:horizontal:hover {
             </property>
             <column>
              <property name="text">
-              <string>Nome</string>
+              <string>ID</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Ingredientes</string>
+              <string>NOME</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Modo de Preparo</string>
+              <string/>
              </property>
             </column>
            </widget>
@@ -2136,7 +2136,7 @@ QScrollBar::handle:horizontal:hover {
      <x>0</x>
      <y>0</y>
      <width>1283</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
