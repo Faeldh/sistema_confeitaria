@@ -61,7 +61,7 @@ def atualizar(self):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    sql = 'SELECT id, nome, ingrediente, preparo FROM receitas'
+    sql = 'SELECT id, nome FROM receitas'
     cursor.execute(sql)
     resultado = cursor.fetchall()
 

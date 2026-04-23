@@ -971,7 +971,7 @@ QScrollBar::handle:horizontal:hover {
 }</string>
             </property>
             <property name="columnCount">
-             <number>3</number>
+             <number>2</number>
             </property>
             <column>
              <property name="text">
@@ -981,11 +981,6 @@ QScrollBar::handle:horizontal:hover {
             <column>
              <property name="text">
               <string>NOME</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string/>
              </property>
             </column>
            </widget>
