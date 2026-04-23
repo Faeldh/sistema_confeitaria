@@ -150,7 +150,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -903,7 +903,6 @@ QScrollBar::handle:horizontal:hover {
     border-radius: 10px;
     selection-background-color: #3F4A2F;
     selection-color: #E6D2A2;
-    font-size: 12px;
     alternate-background-color: #F0F0F0;
 }
 
@@ -1177,7 +1176,6 @@ QTableWidget {
     border: 2px solid #3F4A2F;
     border-radius: 10px;
     gridline-color: #3F4A2F;
-    font-size: 12px;
     alternate-background-color: #F5F5F5;
     selection-background-color: #3F4A2F;
     selection-color: #E6D2A2;
@@ -1420,7 +1418,6 @@ QTableWidget {
     border: 2px solid #3F4A2F;
     border-radius: 10px;
     gridline-color: #3F4A2F;
-    font-size: 12px;
     alternate-background-color: #F5F5F5;
     selection-background-color: #3F4A2F;
     selection-color: #E6D2A2;
@@ -1592,7 +1589,6 @@ QTableWidget {
     border: 2px solid #3F4A2F;
     border-radius: 10px;
     gridline-color: #3F4A2F;
-    font-size: 12px;
     alternate-background-color: #F5F5F5;
     selection-background-color: #3F4A2F;
     selection-color: #E6D2A2;
@@ -2033,7 +2029,6 @@ QTableWidget {
     border-radius: 10px;
     selection-background-color: #3F4A2F;
     selection-color: #E6D2A2;
-    font-size: 12px;
     alternate-background-color: #F0F0F0;
 }
 
