@@ -1,6 +1,8 @@
 from PyQt5 import uic, QtWidgets
 from conexao import conectar
 
+
+
 def salvar(self):
     nome = self.txt_nomeReceita.text()
     ingrediente = self.txt_ingredientes.toPlainText()
