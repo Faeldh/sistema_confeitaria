@@ -16,8 +16,13 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
 
 
-
+        #SELECIONAR NA TABELA
         self.tableWidgetClientes.itemSelectionChanged.connect(self.carregar_cliente)
+        self.tableWidgetReceitas.itemSelectionChanged.connect(self.carregar_receita)
+
+
+
+
         self.tableWidgetClientes.itemDoubleClicked.connect(self.carregar_cliente)
         self.tableWidgetClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 

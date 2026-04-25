@@ -29,6 +29,8 @@ def salvar(self):
     else:
         QtWidgets.QMessageBox.information(self, 'Erro', 'Usuário não cadastrado')
 
+    atualizar(self)
+
 
 def editar(self):
     if not hasattr(self, 'id_receita'):
@@ -57,6 +59,8 @@ def editar(self):
     
     else:
         QtWidgets.QMessageBox.waning(self, "Aviso", 'Nenhuma alteração foi feita')
+    
+    atualizar(self)
     
 
 def atualizar(self):
