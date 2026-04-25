@@ -868,7 +868,7 @@ QScrollBar::handle:horizontal:hover {
           <item>
            <layout class="QHBoxLayout">
             <item>
-             <widget class="QLineEdit" name="lineEditPesquisaReceita">
+             <widget class="QLineEdit" name="txt_pesquisaReceita">
               <property name="placeholderText">
                <string>Pesquisar receita...</string>
               </property>

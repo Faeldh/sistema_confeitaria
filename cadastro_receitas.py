@@ -82,8 +82,8 @@ def atualizar(self):
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
             )
-    self.tableWidgetClientes.resizeColumnsToContents()
-    self.tableWidgetClientes.horizontalHeader().setStretchLastSection(True)      
+    self.tableWidgetReceitas.resizeColumnsToContents()
+    self.tableWidgetReceitas.horizontalHeader().setStretchLastSection(True)      
 
 def buscar_por_id(self, id_receita):
     conexao = conectar()
@@ -101,3 +101,28 @@ def buscar_por_id(self, id_receita):
 
         self.id_receita = id_receita
 
+
+def pesquisar(self):
+    pesquisa = self.txt_pesquisaReceita.text().strip()
+    
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = 'SELECT id, nome FROM receitas WHERE id LIKE %s OR nome LIKE %s'
+
+    like = f'%{pesquisa}'
+    cursor.execute(sql, (like, like))
+
+    resultado = cursor.fetchall()
+
+    self.tableWidgetReceitas.setRowCount(0)
+
+    for row_num, row_data in enumerate(resultado):
+        self.tableWidgetReceitas.insertRow(row_num)
+
+        for col_num, dado in enumerate(row_data):
+            self.tableWidgetReceitas.setItem(
+                row_num,
+                col_num,
+                QtWidgets.QTableWidgetItem(str(dado))
+            )
