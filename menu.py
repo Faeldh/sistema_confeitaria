@@ -102,12 +102,12 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         cadastro_cliente.buscar_por_id(self, id_cliente)
 
     def carregar_receita(self):
-        linha = self.tableWidgetReceita.currentRow()
+        linha = self.tableWidgetReceitas.currentRow()
 
         if linha == -1:
             return
         
-        id_receita = self.tableWidgetReceita.item(linha, 0).text()
+        id_receita = self.tableWidgetReceitas.item(linha, 0).text()
         cadastro_receitas.buscar_por_id(self, id_receita)
     
     def salvar_receitas(self):
