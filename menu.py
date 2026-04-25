@@ -22,7 +22,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.tableWidgetClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         
-
+        #Chamar as paginas
         self.btn_clientes.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
         )
@@ -34,10 +34,6 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_receitas.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageReceitas)
         )
-
-        #self.btn_producao.clicked.connect(
-            #lambda: self.stackedWidget.setCurrentWidget(self.pageControleProducao)
-        #)
 
         self.btn_produtos.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageProdutos)
@@ -63,7 +59,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: cadastro_cliente.deletar(self)
         )
 
-
+        #Botões
         self.btn_pesquisa.clicked.connect(self.pesquisar)
         self.btn_salvar.clicked.connect(self.salvar_cliente)
         self.btn_atualizar.clicked.connect(self.atualizar_lista)
@@ -99,6 +95,15 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         id_cliente = self.tableWidgetClientes.item(linha, 0).text()
 
         cadastro_cliente.buscar_por_id(self, id_cliente)
+
+    def carregar_receita(self):
+        linha = self.tableWidgetReceita.currentRow()
+
+        if linha == -1:
+            return
+        
+        id_receita = self.tableWidgetReceita.item(linha, 0).text()
+        cadastro_receitas.buscar_por_id(self, id_receita)
     
     def salvar_receitas(self):
         cadastro_receitas.salvar(self)

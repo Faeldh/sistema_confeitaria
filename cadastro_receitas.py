@@ -31,7 +31,7 @@ def salvar(self):
 
 
 def editar(self):
-    if not hasattr(self, 'id_cliente'):
+    if not hasattr(self, 'id_receita'):
         QtWidgets.QMessageBox.warning(self, 'Atenção', 'Selecione uma receita na tabela')
         return
     
@@ -80,3 +80,20 @@ def atualizar(self):
             )
     self.tableWidgetClientes.resizeColumnsToContents()
     self.tableWidgetClientes.horizontalHeader().setStretchLastSection(True)      
+
+def buscar_por_id(self, id_receita):
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = 'SELECT nome, ingrediente, preparo FROM receitas WHERE id = %s'
+
+    cursor.execute(sql, (id_receita))
+    resultado = cursor.fetchone()
+
+    if resultado:
+        nome = self.txt_nomeReceita.setText(resultado[0])
+        ingrediente = self.txt_ingredientes.setText(resultado[1])
+        preparo = self.txt_modoPreparo.setText(resultado[2])
+
+        self.id_receita = id_receita
+
