@@ -875,7 +875,7 @@ QScrollBar::handle:horizontal:hover {
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btnPesquisarReceita">
+             <widget class="QPushButton" name="btn_pesquisarReceita">
               <property name="text">
                <string>🔎</string>
               </property>

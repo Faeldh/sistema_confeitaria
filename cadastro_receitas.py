@@ -126,3 +126,44 @@ def pesquisar(self):
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
             )
+
+def deletar(self):
+    if not hasattr(self, "id_receita"):
+        QtWidgets.QMessageBox.warning(self, 'Atenção', 'Selecione uma receita para excluir')
+        return
+
+    
+    confirmacao = QtWidgets.QMessageBox.question(
+        self,
+        'Confirmar exclusão',
+        'Tem certeza que deseja excluir este receita?',
+        QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
+    )
+
+    if confirmacao == QtWidgets.QMessageBox.No:
+        return
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = "DELETE FROM receitas WHERE id = %s"
+    cursor.execute(sql, (self.id_receita,))
+    conexao.commit()
+
+    if cursor.rowcount > 0:
+        QtWidgets.QMessageBox.information(self, 'Sucesso', 'Receita excluído com sucesso!')
+
+        
+        self.txt_nomeReceita.setText('')
+        self.txt_ingredientes.setText('')
+        self.txt_modoPreparo.setText('')
+
+
+        # remove ID (IMPORTANTE)
+        del self.id_receita
+
+        
+        atualizar(self)
+
+    else:
+        QtWidgets.QMessageBox.warning(self, 'Erro', 'Não foi possível excluir')  

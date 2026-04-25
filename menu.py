@@ -71,6 +71,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_limpar.clicked.connect(self.limpar_info)
         self.btn_salvarReceitas.clicked.connect(self.salvar_receitas)
         self.btn_AtualizarReceita.clicked.connect(self.atualizar_receitas)
+        self.btn_pesquisarReceita.clicked.connect(self.pesquisar_receita)
+        self.btn_excluirReceita.clicked.connect(self.deletar_receita)
         
 
         cadastro_cliente.atualizar(self)
@@ -112,3 +114,9 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
     
     def salvar_receitas(self):
         cadastro_receitas.salvar(self)
+
+    def pesquisar_receita(self):
+        cadastro_receitas.pesquisar(self)
+    
+    def deletar_receita(self):
+        cadastro_receitas.deletar(self)
