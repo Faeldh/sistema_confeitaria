@@ -2,6 +2,7 @@ from PyQt5 import uic, QtWidgets
 
 import cadastro_cliente 
 import cadastro_receitas
+import cadastro_fornecedor
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
@@ -13,13 +14,13 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         #Esconde a coluna lateral da tabela (números das linhas)
         self.tableWidgetClientes.verticalHeader().setVisible(False)
         self.tableWidgetReceitas.verticalHeader().setVisible(False)
-
+        self.tableWidgetFornecedores.verticalHeader().setVisible(False)
 
 
         #SELECIONAR NA TABELA
         self.tableWidgetClientes.itemSelectionChanged.connect(self.carregar_cliente)
         self.tableWidgetReceitas.itemSelectionChanged.connect(self.carregar_receita)
-
+        self.tableWidgetFornecedores.itemSelectionChanged.connect(self.carregar_fornecedor)
 
 
 
@@ -27,6 +28,10 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.tableWidgetClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         
+        self.tableWidgetFornecedores.itemSelectionChanged.connect(self.carregar_fornecedor)
+        self.tableWidgetFornecedores.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+
+
         #Chamar as paginas
         self.btn_clientes.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
@@ -73,9 +78,15 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_AtualizarReceita.clicked.connect(self.atualizar_receitas)
         self.btn_pesquisarReceita.clicked.connect(self.pesquisar_receita)
         self.btn_excluirReceita.clicked.connect(self.deletar_receita)
-        
+        self.btn_salvarFornecedor.clicked.connect(self.salvar_fornecedor)
+        self.btn_atualizarFornecedor.clicked.connect(self.atualizar_fornecedores)
+        self.btn_pesquisaFornecedor.clicked.connect(self.pesquisar_fornecedor)
+        self.btn_excluirFornecedor.clicked.connect(self.deletar_fornecedor)
+        self.btn_editarFornecedor.clicked.connect(lambda: cadastro_fornecedor.editar(self))
+        self.btn_limparFornecedor.clicked.connect(lambda: cadastro_fornecedor.limpar(self))
 
         cadastro_cliente.atualizar(self)
+        cadastro_fornecedor.atualizar(self)
 
     def atualizar_receitas(self):
         cadastro_receitas.atualizar(self)
@@ -120,3 +131,24 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
     
     def deletar_receita(self):
         cadastro_receitas.deletar(self)
+
+    # Fornecedores
+    def salvar_fornecedor(self):
+        cadastro_fornecedor.salvar(self)
+
+    def atualizar_fornecedores(self):
+        cadastro_fornecedor.atualizar(self)
+
+    def pesquisar_fornecedor(self):
+        cadastro_fornecedor.pesquisa(self)
+
+    def deletar_fornecedor(self):
+        cadastro_fornecedor.deletar(self)
+
+    def carregar_fornecedor(self):
+        linha = self.tableWidgetFornecedores.currentRow()
+        if linha == -1:
+            return
+
+        id_fornecedor = self.tableWidgetFornecedores.item(linha, 0).text()
+        cadastro_fornecedor.buscar_por_id(self, id_fornecedor)

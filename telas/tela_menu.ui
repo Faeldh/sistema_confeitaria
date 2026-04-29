@@ -159,7 +159,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1994,7 +1994,7 @@ QScrollBar::handle:horizontal:hover {
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btn_limparPedido">
+              <widget class="QPushButton" name="btn_limparFornecedor">
                <property name="text">
                 <string>Limpar</string>
                </property>

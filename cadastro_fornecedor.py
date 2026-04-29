@@ -40,7 +40,7 @@ def salvar(self):
 
     sql = """
     INSERT INTO fornecedor
-    (nome, tipo, cpf_cnpj, telefone, email, rua, numero, bairro, cidade, complemento, info)
+    (nome, tipo, cpf_cnpj, telefone, email, rua, numero, bairro, cidade, complemento, informacoes)
     VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
     """
 
@@ -62,7 +62,10 @@ def atualizar(self):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    sql = "SELECT id, nome, tipo, cpf_cnpj, telefone FROM fornecedor"
+    sql = """
+    SELECT id_fornecedor, nome, tipo, cpf_cnpj, telefone
+    FROM fornecedor
+    """
     cursor.execute(sql)
 
     resultado = cursor.fetchall()
@@ -89,7 +92,7 @@ def pesquisa(self):
     cursor = conexao.cursor()
 
     sql = """
-    SELECT id, nome, tipo, cpf_cnpj, telefone
+    SELECT id_fornecedor, nome, tipo, cpf_cnpj, telefone
     FROM fornecedor
     WHERE nome LIKE %s OR cpf_cnpj LIKE %s
     """
@@ -117,9 +120,9 @@ def buscar_por_id(self, id_fornecedor):
 
     sql = """
     SELECT nome, tipo, cpf_cnpj, telefone, email,
-           rua, numero, bairro, cidade, complemento, info
+           rua, numero, bairro, cidade, complemento, informacoes
     FROM fornecedor
-    WHERE id = %s
+    WHERE id_fornecedor = %s
     """
 
     cursor.execute(sql, (id_fornecedor,))
@@ -152,7 +155,13 @@ def editar(self):
     cpf_cnpj = self.txt_cpfCnpj.text()
     telefone = self.txt_telefoneFornecedor.text()
     email = self.txt_emailFornecedor.text()
+
+    rua = self.txt_ruaFornecedor.text()
+    numero = self.txt_numFornecedor.text()
+    bairro = self.txt_bairroFornecedor.text()
     cidade = self.txt_cidadeFornecedor.text()
+    complemento = self.txt_complementoFornecedor.text()
+
     info = self.txt_infoAdicionais.toPlainText()
 
     conexao = conectar()
@@ -160,12 +169,16 @@ def editar(self):
 
     sql = """
     UPDATE fornecedor
-    SET nome=%s, tipo=%s, cpf_cnpj=%s, telefone=%s,
-        email=%s, cidade=%s, info=%s
-    WHERE id=%s
+    SET nome=%s, tipo=%s, cpf_cnpj=%s, telefone=%s, email=%s, rua=%s,
+        numero=%s, bairro=%s, cidade=%s, complemento=%s,informacoes=%s
+        WHERE id_fornecedor=%s
     """
 
-    dados = (nome, tipo, cpf_cnpj, telefone, email, cidade, info, self.id_fornecedor)
+    dados = (
+        nome, tipo, cpf_cnpj, telefone, email,
+        rua, numero, bairro, cidade, complemento,
+        info, self.id_fornecedor
+    )
 
     cursor.execute(sql, dados)
     conexao.commit()
@@ -195,7 +208,7 @@ def deletar(self):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    sql = "DELETE FROM fornecedor WHERE id = %s"
+    sql = "DELETE FROM fornecedor WHERE id_fornecedor = %s"
     cursor.execute(sql, (self.id_fornecedor,))
     conexao.commit()
 
@@ -203,4 +216,4 @@ def deletar(self):
         QtWidgets.QMessageBox.information(self, 'Sucesso', 'Excluído!')
         limpar(self)
         atualizar(self)
-        del self.id_fornecedorS
+        del self.id_fornecedor
