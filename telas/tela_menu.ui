@@ -159,7 +159,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1286,13 +1286,6 @@ QScrollBar::handle:horizontal:hover {
           <layout class="QVBoxLayout">
            <item>
             <layout class="QFormLayout">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Cliente:</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="1">
               <layout class="QHBoxLayout">
                <item>
@@ -1319,24 +1312,24 @@ QScrollBar::handle:horizontal:hover {
                </item>
               </layout>
              </item>
-             <item row="1" column="0">
+             <item row="2" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>Data:</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
+             <item row="2" column="1">
               <widget class="QDateEdit" name="dateVenda"/>
              </item>
-             <item row="2" column="0">
+             <item row="3" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>Pagamento:</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
+             <item row="3" column="1">
               <widget class="QComboBox" name="comboPagamento">
                <item>
                 <property name="text">
@@ -1353,16 +1346,21 @@ QScrollBar::handle:horizontal:hover {
                  <string>Cartão</string>
                 </property>
                </item>
+               <item>
+                <property name="text">
+                 <string>Parcelado</string>
+                </property>
+               </item>
               </widget>
              </item>
-             <item row="3" column="0">
+             <item row="4" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
                 <string>Status:</string>
                </property>
               </widget>
              </item>
-             <item row="3" column="1">
+             <item row="4" column="1">
               <layout class="QHBoxLayout">
                <item>
                 <widget class="QComboBox" name="comboStatusVenda">
@@ -1403,6 +1401,23 @@ QScrollBar::handle:horizontal:hover {
                 </widget>
                </item>
               </layout>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="txt_pedidoVendas"/>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Cliente:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>Pedido</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -1503,6 +1518,20 @@ QScrollBar::handle:horizontal:hover {
             <widget class="QLabel" name="lblTotalVenda">
              <property name="text">
               <string>Total: R$ 0,00</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblTotalVenda_2">
+             <property name="text">
+              <string>Valor Pago: R$ 0,00</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblTotalVenda_3">
+             <property name="text">
+              <string>Restante: R$ 0,00</string>
              </property>
             </widget>
            </item>
@@ -2131,7 +2160,7 @@ QScrollBar::handle:horizontal:hover {
      <x>0</x>
      <y>0</y>
      <width>1283</width>
-     <height>18</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
