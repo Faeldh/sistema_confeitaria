@@ -87,6 +87,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
         cadastro_cliente.atualizar(self)
         cadastro_fornecedor.atualizar(self)
+        cadastro_receitas.atualizar(self)
 
     def atualizar_receitas(self):
         cadastro_receitas.atualizar(self)

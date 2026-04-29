@@ -294,6 +294,7 @@ def salvar(self):
         self.txt_email.setText('')
         self.txt_obs.clear()
 
+        atualizar(self)
 
     else:
         QtWidgets.QMessageBox.information(self, 'Erro', 'Usuário não cadastrado')
