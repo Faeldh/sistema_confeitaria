@@ -91,6 +91,9 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
     def atualizar_receitas(self):
         cadastro_receitas.atualizar(self)
+    
+    def limpar_rceita(self):
+        cadastro_receitas.limpar(self)
 
     def salvar_cliente(self):
         cadastro_cliente.salvar(self)

@@ -82,8 +82,16 @@ def atualizar(self):
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
             )
-    self.tableWidgetReceitas.resizeColumnsToContents()
-    self.tableWidgetReceitas.horizontalHeader().setStretchLastSection(True)      
+    #self.tableWidgetReceitas.resizeColumnsToContents()
+    #self.tableWidgetReceitas.horizontalHeader().setStretchLastSection(True)  
+
+    header = self.tableWidgetReceitas.horizontalHeader()
+
+    #header.setStretchLastSection(True)
+    # Coluna 0 = ID (pequena)
+    header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+    # Coluna 1 = Nome (ocupa o resto)
+    header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)    
 
 def buscar_por_id(self, id_receita):
     conexao = conectar()
@@ -167,3 +175,9 @@ def deletar(self):
 
     else:
         QtWidgets.QMessageBox.warning(self, 'Erro', 'Não foi possível excluir')  
+
+
+def limpar(self):
+        self.txt_nomeReceita.setText('')
+        self.txt_ingredientes.setText('')
+        self.txt_modoPreparo.setText('')
