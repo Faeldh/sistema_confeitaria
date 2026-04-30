@@ -46,7 +46,7 @@ def editar(self):
 
     sql = 'UPDATE receitas SET nome =%s, ingrediente=%s, preparo=%s WHERE id=%s'
 
-    dados = (nome, ingrediente, preparo)
+    dados = (nome, ingrediente, preparo, self.id_receita)
 
     cursor.execute(sql, dados)
     conexao.commit()
@@ -58,7 +58,7 @@ def editar(self):
         atualizar(self)
     
     else:
-        QtWidgets.QMessageBox.waning(self, "Aviso", 'Nenhuma alteração foi feita')
+        QtWidgets.QMessageBox.warning(self, "Aviso", 'Nenhuma alteração foi feita')
     
     atualizar(self)
     
@@ -181,3 +181,27 @@ def limpar(self):
         self.txt_nomeReceita.setText('')
         self.txt_ingredientes.setText('')
         self.txt_modoPreparo.setText('')
+    
+def pesquisar(self):
+    pesquisa = self.txt_pesquisaReceita.text().strip()
+    like = f"%{pesquisa.lower()}%"
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql =  'SELECT id, nome FROM receitas WHERE id LIKE %s OR nome LIKE %s'
+    cursor.execute(sql, (like, like))
+
+    resultado = cursor.fetchall()
+
+    self.tableWidgetReceitas.setRowCount(0)
+
+    for row_num, row_data in enumerate(resultado):
+        self.tableWidgetReceitas.insertRow(row_num)
+
+        for col_num, dado in enumerate(row_data):
+            self.tableWidgetReceitas.setItem(
+                row_num,
+                col_num,
+                QtWidgets.QTableWidgetItem(str(dado))
+            )

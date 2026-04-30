@@ -77,18 +77,23 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_salvarReceitas.clicked.connect(self.salvar_receitas)
         self.btn_AtualizarReceita.clicked.connect(self.atualizar_receitas)
         self.btn_pesquisarReceita.clicked.connect(self.pesquisar_receita)
+        self.btn_limparReceita.clicked.connect(self.limpar_rceita)
         self.btn_excluirReceita.clicked.connect(self.deletar_receita)
+        self.btn_editarReceita.clicked.connect(self.editar_receita)
         self.btn_salvarFornecedor.clicked.connect(self.salvar_fornecedor)
         self.btn_atualizarFornecedor.clicked.connect(self.atualizar_fornecedores)
         self.btn_pesquisaFornecedor.clicked.connect(self.pesquisar_fornecedor)
         self.btn_excluirFornecedor.clicked.connect(self.deletar_fornecedor)
         self.btn_editarFornecedor.clicked.connect(lambda: cadastro_fornecedor.editar(self))
         self.btn_limparFornecedor.clicked.connect(lambda: cadastro_fornecedor.limpar(self))
-        self.btn_limparReceita.clicked.connect(self.limpar_rceita)
+
 
         cadastro_cliente.atualizar(self)
         cadastro_fornecedor.atualizar(self)
         cadastro_receitas.atualizar(self)
+    
+    def editar_receita(self):
+        cadastro_receitas.editar(self)
 
     def atualizar_receitas(self):
         cadastro_receitas.atualizar(self)
