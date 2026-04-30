@@ -104,23 +104,16 @@ QLabel {
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btn_pedidos">
-          <property name="text">
-           <string>Pedidos</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_receitas">
-          <property name="text">
-           <string>Receitas</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="btn_produtos">
           <property name="text">
            <string>Produtos</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_pedidos">
+          <property name="text">
+           <string>Pedidos</string>
           </property>
          </widget>
         </item>
@@ -132,9 +125,9 @@ QLabel {
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btn_controle_financeiro">
+         <widget class="QPushButton" name="btn_receitas">
           <property name="text">
-           <string>Controle Financeiro</string>
+           <string>Receitas</string>
           </property>
          </widget>
         </item>
@@ -142,6 +135,13 @@ QLabel {
          <widget class="QPushButton" name="btn_fornecedores">
           <property name="text">
            <string>Fornecedores</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_controle_financeiro">
+          <property name="text">
+           <string>Controle Financeiro</string>
           </property>
          </widget>
         </item>
