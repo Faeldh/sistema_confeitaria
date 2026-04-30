@@ -84,6 +84,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_excluirFornecedor.clicked.connect(self.deletar_fornecedor)
         self.btn_editarFornecedor.clicked.connect(lambda: cadastro_fornecedor.editar(self))
         self.btn_limparFornecedor.clicked.connect(lambda: cadastro_fornecedor.limpar(self))
+        self.btn_limparRceita.clicked.connect(self.limpar_rceita)
 
         cadastro_cliente.atualizar(self)
         cadastro_fornecedor.atualizar(self)
