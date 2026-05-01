@@ -8,6 +8,32 @@ def salvar(self):
     ingrediente = self.txt_ingredientes.toPlainText()
     preparo = self.txt_modoPreparo.toPlainText()
 
+    self.txt_nomeReceita.setStyleSheet("")
+    self.txt_ingredientes.setStyleSheet("")
+    self.txt_modoPreparo.setStyleSheet("")
+
+    erros = []
+
+    if not nome:
+        erros.append("Nome da receita é obrigatório")
+        self.txt_nomeReceita.setStyleSheet("border: 2px solid red;")
+
+    if not ingrediente:
+        erros.append("Ingredientes são obrigatórios")
+        self.txt_ingredientes.setStyleSheet("border: 2px solid red;")
+
+    if not preparo:
+        erros.append("Modo de preparo é obrigatório")
+        self.txt_modoPreparo.setStyleSheet("border: 2px solid red;")
+
+    # Se tiver erro, para tudo aqui
+    if erros:
+        QtWidgets.QMessageBox.warning(self, 'Erro', '\n'.join(erros))
+        self.txt_nomeReceita.setStyleSheet("border: 2px solid red;")
+        self.txt_ingredientes.setStyleSheet("border: 2px solid red;")
+        self.txt_modoPreparo.setStyleSheet("border: 2px solid red;")
+
+        return
 
     conexao = conectar()
     cursor = conexao.cursor()
@@ -82,8 +108,7 @@ def atualizar(self):
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
             )
-    #self.tableWidgetReceitas.resizeColumnsToContents()
-    #self.tableWidgetReceitas.horizontalHeader().setStretchLastSection(True)  
+
 
     header = self.tableWidgetReceitas.horizontalHeader()
 

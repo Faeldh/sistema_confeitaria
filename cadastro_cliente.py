@@ -153,8 +153,21 @@ def atualizar(self):
                 col_num,
                 QtWidgets.QTableWidgetItem(str(dado))
             )
-    self.tableWidgetClientes.resizeColumnsToContents()
-    self.tableWidgetClientes.horizontalHeader().setStretchLastSection(True)
+    #self.tableWidgetClientes.resizeColumnsToContents()
+    #self.tableWidgetClientes.horizontalHeader().setStretchLastSection(True)
+    header = self.tableWidgetClientes.horizontalHeader()
+
+    #header.setStretchLastSection(True)
+    # Coluna 0 = ID (pequena)
+    header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+    # Coluna 1 = Nome (ocupa o resto)
+    header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+    header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch) 
+    header.setSectionResizeMode(3, QtWidgets.QHeaderView.Stretch)
+     
+
+
+
 
 def validar_cpf(cpf):
     if len(cpf) != 11 or cpf == cpf[0] * 11:
