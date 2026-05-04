@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1283</width>
-    <height>697</height>
+    <width>1356</width>
+    <height>760</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -159,7 +159,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1848,143 +1848,169 @@ QScrollBar::handle:horizontal:hover {
           <property name="title">
            <string>Cadastro de Fornecedores</string>
           </property>
-          <layout class="QVBoxLayout">
-           <item>
-            <layout class="QFormLayout">
-             <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
               <widget class="QLabel" name="label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="text">
-                <string>Nome:</string>
+                <string>Nome:                           </string>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="txt_nomeFornecedor"/>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Tipo de fornecedor:</string>
+             <item>
+              <widget class="QLineEdit" name="txt_nomeFornecedor">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QComboBox" name="combo_tipoFornecedor">
-               <item>
-                <property name="text">
-                 <string>Ingredientes</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Decoração</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Embalagens</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Outros</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label">
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="text">
-                <string>CPF/CNPJ:</string>
+                <string>+</string>
                </property>
               </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="txt_cpfCnpj"/>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Telefone:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="txt_telefoneFornecedor"/>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>E-mail:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QLineEdit" name="txt_emailFornecedor"/>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Rua:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QLineEdit" name="txt_ruaFornecedor"/>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>N°:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QLineEdit" name="txt_numFornecedor"/>
-             </item>
-             <item row="7" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Bairro:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="1">
-              <widget class="QLineEdit" name="txt_bairroFornecedor"/>
-             </item>
-             <item row="8" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Cidade:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="1">
-              <widget class="QLineEdit" name="txt_cidadeFornecedor"/>
-             </item>
-             <item row="9" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Complemento:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="9" column="1">
-              <widget class="QLineEdit" name="txt_complementoFornecedor"/>
-             </item>
-             <item row="10" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Informações adicionais:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="10" column="1">
-              <widget class="QTextEdit" name="txt_infoAdicionais"/>
              </item>
             </layout>
            </item>
-           <item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Tipo de fornecedor:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="combo_tipoFornecedor">
+             <item>
+              <property name="text">
+               <string>Ingredientes</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Decoração</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Embalagens</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Outros</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>CPF/CNPJ:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="txt_cpfCnpj"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Telefone:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="txt_telefoneFornecedor"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>E-mail:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="txt_emailFornecedor"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Rua:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="txt_ruaFornecedor"/>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>N°:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QLineEdit" name="txt_numFornecedor"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Bairro:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QLineEdit" name="txt_bairroFornecedor"/>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Cidade:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QLineEdit" name="txt_cidadeFornecedor"/>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Complemento:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QLineEdit" name="txt_complementoFornecedor"/>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Informações adicionais:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QTextEdit" name="txt_infoAdicionais"/>
+           </item>
+           <item row="11" column="0" colspan="2">
             <layout class="QHBoxLayout">
              <item>
               <widget class="QPushButton" name="btn_salvarFornecedor">
@@ -2166,7 +2192,7 @@ QScrollBar::handle:horizontal:hover {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1283</width>
+     <width>1356</width>
      <height>21</height>
     </rect>
    </property>
