@@ -10,6 +10,8 @@ class Login(QtWidgets.QMainWindow, tela_login):
         self.setupUi(self)
 
         self.btn_login.clicked.connect(self.verificar_login)
+        self.btn_login.setDefault(True)
+        self.txt_senha.returnPressed.connect(self.verificar_login)
     
     def verificar_login(self):
         nome = self.txt_nome.text()
