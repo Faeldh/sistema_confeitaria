@@ -75,7 +75,7 @@ def pesquisa(self):
     
     sql = 'SELECT id, nome, cpf FROM cliente WHERE nome LIKE %s OR cpf LIKE %s'
 
-    like = f'%{pesquisa}'
+    like = f'%{pesquisa}%'
     cursor.execute(sql, (like, like))
 
     resultado = cursor.fetchall()

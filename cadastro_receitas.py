@@ -143,7 +143,7 @@ def pesquisar(self):
 
     sql = 'SELECT id, nome FROM receitas WHERE id LIKE %s OR nome LIKE %s'
 
-    like = f'%{pesquisa}'
+    like = f'%{pesquisa}%'
     cursor.execute(sql, (like, like))
 
     resultado = cursor.fetchall()
