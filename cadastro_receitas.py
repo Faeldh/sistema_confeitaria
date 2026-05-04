@@ -26,7 +26,7 @@ def salvar(self):
         erros.append("Modo de preparo é obrigatório")
         self.txt_modoPreparo.setStyleSheet("border: 2px solid red;")
 
-    # Se tiver erro, para tudo aqui
+    
     if erros:
         QtWidgets.QMessageBox.warning(self, 'Erro', '\n'.join(erros))
         self.txt_nomeReceita.setStyleSheet("border: 2px solid red;")
