@@ -159,7 +159,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1003,120 +1003,139 @@ QScrollBar::handle:horizontal:hover {
           <property name="title">
            <string>Cadastro de Produtos</string>
           </property>
-          <layout class="QVBoxLayout">
-           <item>
-            <layout class="QFormLayout">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Produto:</string>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Produto:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QLineEdit" name="lineEdit_3"/>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Categoria:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QComboBox" name="comboBox_2"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAddCategoria">
+               <property name="minimumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
                </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <layout class="QHBoxLayout">
-               <item>
-                <widget class="QLineEdit" name="lineEdit_3"/>
-               </item>
-              </layout>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Categoria:</string>
+               <property name="maximumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
                </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <layout class="QHBoxLayout">
-               <item>
-                <widget class="QComboBox" name="comboBox_2"/>
-               </item>
-               <item>
-                <widget class="QPushButton" name="btnAddCategoria">
-                 <property name="minimumSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>+</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label">
                <property name="text">
-                <string>Tamanho:</string>
+                <string>+</string>
                </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="txt_tamanho"/>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Preço (R$):</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="txt_preco"/>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Sabores:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QTextEdit" name="txt_sabores"/>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Descrição:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QTextEdit" name="txt_descricao"/>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Ativo:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QComboBox" name="combo_ativo">
-               <item>
-                <property name="text">
-                 <string>Sim</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Não</string>
-                </property>
-               </item>
               </widget>
              </item>
             </layout>
            </item>
-           <item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Tamanho:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLineEdit" name="txt_tamanho"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnAddTamanho_2">
+               <property name="minimumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>+</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Preço (R$):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="txt_preco"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Sabores:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QTextEdit" name="txt_sabores"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Descrição:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QTextEdit" name="txt_descricao"/>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Ativo:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QComboBox" name="combo_ativo">
+             <item>
+              <property name="text">
+               <string>Sim</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Não</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="7" column="0" colspan="2">
             <layout class="QHBoxLayout">
              <item>
               <widget class="QPushButton" name="btn_salvarProduto">
@@ -1889,12 +1908,59 @@ QScrollBar::handle:horizontal:hover {
              </item>
             </layout>
            </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>N°:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QLineEdit" name="txt_numFornecedor"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Rua:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="txt_ruaFornecedor"/>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="txt_emailFornecedor"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Telefone:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>CPF/CNPJ:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>E-mail:</string>
+             </property>
+            </widget>
+           </item>
            <item row="1" column="0">
             <widget class="QLabel" name="label">
              <property name="text">
               <string>Tipo de fornecedor:</string>
              </property>
             </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="txt_cpfCnpj"/>
            </item>
            <item row="1" column="1">
             <widget class="QComboBox" name="combo_tipoFornecedor">
@@ -1920,55 +1986,8 @@ QScrollBar::handle:horizontal:hover {
              </item>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>CPF/CNPJ:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="txt_cpfCnpj"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Telefone:</string>
-             </property>
-            </widget>
-           </item>
            <item row="3" column="1">
             <widget class="QLineEdit" name="txt_telefoneFornecedor"/>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>E-mail:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="txt_emailFornecedor"/>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Rua:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="txt_ruaFornecedor"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>N°:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="txt_numFornecedor"/>
            </item>
            <item row="7" column="0">
             <widget class="QLabel" name="label">
@@ -1980,15 +1999,15 @@ QScrollBar::handle:horizontal:hover {
            <item row="7" column="1">
             <widget class="QLineEdit" name="txt_bairroFornecedor"/>
            </item>
+           <item row="8" column="1">
+            <widget class="QLineEdit" name="txt_cidadeFornecedor"/>
+           </item>
            <item row="8" column="0">
             <widget class="QLabel" name="label">
              <property name="text">
               <string>Cidade:</string>
              </property>
             </widget>
-           </item>
-           <item row="8" column="1">
-            <widget class="QLineEdit" name="txt_cidadeFornecedor"/>
            </item>
            <item row="9" column="0">
             <widget class="QLabel" name="label">
