@@ -159,7 +159,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1886,7 +1886,7 @@ QScrollBar::handle:horizontal:hover {
              <item>
               <widget class="QLineEdit" name="txt_nomeFornecedor">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
