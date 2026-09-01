@@ -8,7 +8,7 @@ def salvar(self):
 
     produto = self.txt_produto.text()
     categoria = self.combo_categoria.currentText()
-    tamanho = self.txt_tamanho.currentText()
+    tamanho = self.txt_tamanho.text()
     preco = self.txt_preco.text()
     sabores = self.txt_sabores.text()
     descricao = self.txt_descricao.text()
@@ -33,8 +33,8 @@ def salvar(self):
         QtWidgets.QMessageBox.information(self, 'Cadastro', 'Cadastro realizado com sucesso')
 
         self.txt_produto.setText('')
-        self.comboBox.currentText(0)
-        self.comboBoxcurrentText(0)
+        self.combo_categoria.currentText(0)
+        self.txt_tamanho.setText('')
         self.txt_preco.setText()
         self.txt_sabores.seText()
         self.txt_descricao.stText()
