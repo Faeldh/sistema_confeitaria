@@ -4,15 +4,19 @@ from conexao import conectar
 
 
 
-def cadastrar(self):
+def salvar(self):
 
     produto = self.txt_produto.text()
-    categoria = self.comboBox.currentText()
-    tamanho = self.comboBox.currentText()
+    categoria = self.combo_categoria.currentText()
+    tamanho = self.txt_tamanho.currentText()
     preco = self.txt_preco.text()
     sabores = self.txt_sabores.text()
     descricao = self.txt_descricao.text()
-    status = self.txt_status.text()
+    status = self.combo_status.currentText()
+
+    if not produto:
+        QtWidgets.QMessageBox.warning(self, 'Erro', 'Produto é obrigatório')
+        return
 
     conexao = conectar()
     cursor = conexao.cursor()
@@ -35,3 +39,6 @@ def cadastrar(self):
         self.txt_sabores.seText()
         self.txt_descricao.stText()
         self.txt_status.text()
+
+    else:
+        QtWidgets.QMessageBox.warning(self, 'Erro', 'Não foi possível salvar')    
