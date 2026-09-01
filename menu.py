@@ -3,6 +3,7 @@ from PyQt5 import uic, QtWidgets
 import cadastro_cliente 
 import cadastro_receitas
 import cadastro_fornecedor
+import cadastro_produtos
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
@@ -86,11 +87,12 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_excluirFornecedor.clicked.connect(self.deletar_fornecedor)
         self.btn_editarFornecedor.clicked.connect(lambda: cadastro_fornecedor.editar(self))
         self.btn_limparFornecedor.clicked.connect(lambda: cadastro_fornecedor.limpar(self))
-
+        self.btn_salvarProduto.clicked.connect(self.salvar_produto)
 
         cadastro_cliente.atualizar(self)
         cadastro_fornecedor.atualizar(self)
         cadastro_receitas.atualizar(self)
+        cadastro_produtos.atualizar(self)
     
     def editar_receita(self):
         cadastro_receitas.editar(self)
@@ -162,3 +164,6 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
         id_fornecedor = self.tableWidgetFornecedores.item(linha, 0).text()
         cadastro_fornecedor.buscar_por_id(self, id_fornecedor)
+
+    def salvar_produto(self):
+        cadastro_produtos.salvar(self)

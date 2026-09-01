@@ -3,7 +3,7 @@ from PyQt5.QtCore import QDate
 from conexao import conectar
 
 
-
+# ---------------- SALVAR ----------------
 def salvar(self):
 
     produto = self.txt_produto.text()
