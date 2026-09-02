@@ -5,6 +5,7 @@ import cadastro_receitas
 import cadastro_fornecedor
 import cadastro_produtos
 
+
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
 class Menu(QtWidgets.QMainWindow, tela_menu):
@@ -88,6 +89,16 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_editarFornecedor.clicked.connect(lambda: cadastro_fornecedor.editar(self))
         self.btn_limparFornecedor.clicked.connect(lambda: cadastro_fornecedor.limpar(self))
         self.btn_salvarProduto.clicked.connect(self.salvar_produto)
+        self.btn_salvarProduto.clicked.connect(lambda: cadastro_produtos.salvar(self))
+        self.btn_editarProduto.clicked.connect(lambda: cadastro_produtos.editar(self))
+        self.btn_limparProduto.clicked.connect(lambda: cadastro_produtos.limpar(self))
+        self.btn_excluirProduto.clicked.connect(lambda: cadastro_produtos.excluir(self))
+
+        # Botão de Atualizar a tabela (botão azul de refresh)
+        self.btnAtualizarProduto.clicked.connect(lambda: cadastro_produtos.listar(self))
+
+        # Ao clicar em uma linha da tabela, enviar os dados para os campos da esquerda
+        self.tableViewProdutos.itemSelectionChanged.connect(lambda: cadastro_produtos.pegar_dados(self))
 
         cadastro_cliente.atualizar(self)
         cadastro_fornecedor.atualizar(self)
