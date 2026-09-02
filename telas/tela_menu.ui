@@ -1389,7 +1389,7 @@ QScrollBar::handle:horizontal:hover {
              <item row="4" column="1">
               <layout class="QHBoxLayout">
                <item>
-                <widget class="QComboBox" name="comboStatusVenda">
+                <widget class="QComboBox" name="combo_statusVenda">
                  <item>
                   <property name="text">
                    <string>Pago</string>

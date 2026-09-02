@@ -12,7 +12,7 @@ def salvar(self):
     preco = self.txt_preco.text()
     sabores = self.txt_sabores.toPlainText()
     descricao = self.txt_descricao.toPlainText()
-    status = self.combo_status.currentText()
+    status = self.combo_ativo.currentText()
 
     if not produto:
         QtWidgets.QMessageBox.warning(self, 'Erro', 'Produto é obrigatório')
@@ -21,7 +21,7 @@ def salvar(self):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    sql = 'INSERT INTO produtos( produto, categoria, tamanho, preco, sabores, descricao, status) VALUES (%s,%s,%s,%s,%s,%s,%s)'
+    sql = 'INSERT INTO produto( produto, categoria, tamanho, preco, sabores, descricao, status) VALUES (%s,%s,%s,%s,%s,%s,%s)'
     dados = ( produto, categoria, tamanho, preco, sabores, descricao, status)
     cursor.execute(sql, dados)
 
