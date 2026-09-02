@@ -10,8 +10,8 @@ def salvar(self):
     categoria = self.combo_categoria.currentText()
     tamanho = self.txt_tamanho.text()
     preco = self.txt_preco.text()
-    sabores = self.txt_sabores.text()
-    descricao = self.txt_descricao.text()
+    sabores = self.txt_sabores.toPlainText()
+    descricao = self.txt_descricao.toPlainText()
     status = self.combo_status.currentText()
 
     if not produto:
