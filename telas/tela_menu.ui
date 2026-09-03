@@ -1389,7 +1389,7 @@ QScrollBar::handle:horizontal:hover {
              <item row="4" column="1">
               <layout class="QHBoxLayout">
                <item>
-                <widget class="QComboBox" name="combo_statusVenda">
+                <widget class="QComboBox" name="comboStatusVenda">
                  <item>
                   <property name="text">
                    <string>Pago</string>
@@ -1749,92 +1749,137 @@ QScrollBar::handle:horizontal:hover {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pageControleFinanceiro">
-       <layout class="QVBoxLayout">
+            <widget class="QWidget" name="pageControleFinanceiro">
+       <property name="styleSheet">
+        <string notr="true">QWidget#pageControleFinanceiro {
+    background-color: #F8FAFC; 
+}
+QFrame#cardFaturamento, 
+QFrame#cardVendasConcluidas,
+QFrame#cardTicketMedio,
+QFrame#cardItensVendidos,
+QFrame#cardCozinha, 
+QFrame#cardAtrasados, 
+QFrame#cardLargeResumo, 
+QFrame#cardLargeMaisVendidos {
+    background-color: #3F4A2F; 
+    border: 1px solid #000000;  
+    border-radius: 12px;
+}
+QLabel {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #E6D2A2; 
+}
+QLabel#lblTituloFat, QLabel#lblTituloVendas, QLabel#lblTituloTicket, 
+QLabel#lblTituloItens, QLabel#lblTituloCoz, QLabel#lblTituloAtr, 
+QLabel#lblSecaoResumo, QLabel#lblSecaoMaisVendidos {
+    font-size: 11px;
+    color: #E6D2A2; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+QLabel#lblValorFat, QLabel#lblValorVendas, QLabel#lblValorTicket, 
+QLabel#lblValorItens, QLabel#lblValorCoz, QLabel#lblValorAtr {
+    font-size: 22px; 
+    color: #E6D2A2; 
+    font-weight: bold;
+}
+QLabel#lblSubFat, QLabel#lblSubVendas, QLabel#lblSubTicket, 
+QLabel#lblSubItens, QLabel#lblSubCoz, QLabel#lblSubAtr {
+    font-size: 11px;
+    color: #E6D2A2;
+    opacity: 0.8;
+}
+QLabel#lblMainTitle {
+    color: #3F4A2F; 
+    font-size: 20px;
+    font-weight: bold;
+}
+QLabel#lblMainSub {
+    color: #3F4A2F;
+    font-size: 12px;
+}</string>
+       </property>
+       <layout class="QVBoxLayout" name="mainLayout">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="leftMargin">
+         <number>24</number>
+        </property>
+        <property name="topMargin">
+         <number>24</number>
+        </property>
+        <property name="rightMargin">
+         <number>24</number>
+        </property>
+        <property name="bottomMargin">
+         <number>24</number>
+        </property>
         <item>
-         <widget class="QGroupBox" name="groupBoxDashboard">
-          <property name="title">
-           <string>📊 Painel Financeiro</string>
-          </property>
-          <layout class="QGridLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="lblEntradas">
-             <property name="text">
-              <string>💰 Entradas: R$ 0,00</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="lblRecebido">
-             <property name="text">
-              <string>💵 Recebido: R$ 0,00</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="lblAReceber">
-             <property name="text">
-              <string>⏳ A receber: R$ 0,00</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="lblDespesas">
-             <property name="text">
-              <string>💸 Despesas: R$ 0,00</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLabel" name="lblContas">
-             <property name="text">
-              <string>📅 Contas: R$ 0,00</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="QLabel" name="lblLucro">
-             <property name="text">
-              <string>📊 Lucro: R$ 0,00</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" colspan="3">
-            <widget class="QLabel" name="lblSaldoFinal">
-             <property name="text">
-              <string>🏁 Saldo Final: R$ 0,00</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QHBoxLayout" name="rowHeader">
+          <item>
+           <layout class="QVBoxLayout" name="headerTexts">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lblMainTitle">
+              <property name="text">
+               <string>Bem-vindo ao Mira Confeitaria!</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblMainSub">
+              <property name="text">
+               <string>Aqui está o resumo do que acontece no seu negócio hoje.</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="spcH">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout">
+         <layout class="QHBoxLayout" name="rowCardsTop1">
+          <property name="spacing">
+           <number>15</number>
+          </property>
           <item>
-           <widget class="QGroupBox" name="groupBoxControl">
-            <property name="title">
-             <string>➕ Lançamentos</string>
+           <widget class="QFrame" name="cardFaturamento">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height> <!-- Nova altura mínima aumentada -->
+             </size>
             </property>
-            <layout class="QVBoxLayout">
+            <layout class="QVBoxLayout" name="lytFat">
              <item>
-              <widget class="QPushButton" name="btnAddDespesa">
+              <widget class="QLabel" name="lblTituloFat">
                <property name="text">
-                <string>💸 Adicionar Despesa</string>
+                <string>Faturamento Total</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnAddConta">
+              <widget class="QLabel" name="lblValorFat">
                <property name="text">
-                <string>📅 Adicionar Conta</string>
+                <string>R$ 2.890,00</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnAtualizar">
+              <widget class="QLabel" name="lblSubFat">
                <property name="text">
-                <string>🔄 Atualizar</string>
+                <string>Dinheiro em Caixa</string>
                </property>
               </widget>
              </item>
@@ -1842,21 +1887,239 @@ QScrollBar::handle:horizontal:hover {
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="groupBoxTabela">
-            <property name="title">
-             <string>📋 Movimentações</string>
+           <widget class="QFrame" name="cardVendasConcluidas">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
             </property>
-            <layout class="QVBoxLayout">
+            <layout class="QVBoxLayout" name="lytVendas">
              <item>
-              <widget class="QLineEdit" name="txtPesquisar"/>
+              <widget class="QLabel" name="lblTituloVendas">
+               <property name="text">
+                <string>Vendas Concluídas</string>
+               </property>
+              </widget>
              </item>
              <item>
-              <widget class="QTableView" name="tableFinanceiro"/>
+              <widget class="QLabel" name="lblValorVendas">
+               <property name="text">
+                <string>38</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblSubVendas">
+               <property name="text">
+                <string>Faturadas no PDV</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="cardTicketMedio">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="lytTicket">
+             <item>
+              <widget class="QLabel" name="lblTituloTicket">
+               <property name="text">
+                <string>Ticket Médio</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblValorTicket">
+               <property name="text">
+                <string>R$ 76,05</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblSubTicket">
+               <property name="text">
+                <string>Valor médio por cliente</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="rowCardsTop2">
+          <property name="spacing">
+           <number>15</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="cardItensVendidos">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height> <!-- Altura aumentada para simetria -->
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="lytItens">
+             <item>
+              <widget class="QLabel" name="lblTituloItens">
+               <property name="text">
+                <string>Itens Vendidos</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblValorItens">
+               <property name="text">
+                <string>48</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblSubItens">
+               <property name="text">
+                <string>Total de doces cobrados</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="cardCozinha">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="lytCoz">
+             <item>
+              <widget class="QLabel" name="lblTituloCoz">
+               <property name="text">
+                <string>Pedidos na Cozinha</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblValorCoz">
+               <property name="text">
+                <string>5</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblSubCoz">
+               <property name="text">
+                <string>Prontos para produção</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="cardAtrasados">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="lytAtr">
+             <item>
+              <widget class="QLabel" name="lblTituloAtr">
+               <property name="text">
+                <string>Pedidos Atrasados</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblValorAtr">
+               <property name="text">
+                <string>19</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblSubAtr">
+               <property name="text">
+                <string>Atenção imediata</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="rowChartsMiddle">
+          <property name="spacing">
+           <number>15</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="cardLargeResumo">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>480</height> <!-- Aumentado de 380 para 480 preenchendo o vazio inferior -->
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="lytLeftChart">
+             <item>
+              <widget class="QLabel" name="lblSecaoResumo">
+               <property name="text">
+                <string>Resumo Financeiro</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="cardLargeMaisVendidos">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>480</height> <!-- Aumentado de 380 para 480 preenchendo o vazio inferior -->
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="lytRightChart">
+             <item>
+              <widget class="QLabel" name="lblSecaoMaisVendidos">
+               <property name="text">
+                <string>Produtos Mais Vendidos</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacerFinal">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum> <!-- Mudado para Fixed com altura menor para tirar o vazio -->
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
