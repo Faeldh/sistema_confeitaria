@@ -221,3 +221,53 @@ def excluir(self):
             limpar(self)
         except Exception as e:
             QtWidgets.QMessageBox.warning(self, 'Erro', f'Erro ao excluir: {e}')
+
+# ---------------- ADICIONAR NOVA CATEGORIA ----------------
+def adicionar_categoria(self):
+    """Abre um popup para o usuário digitar a nova categoria e a salva no banco"""
+    # Abre uma janelinha nativa do PyQt5 pedindo o nome da categoria
+    nova_categoria, ok = QtWidgets.QInputDialog.getText(self, 'Nova Categoria', 'Digite o nome da nova categoria:')
+    
+    # Se o usuário clicou em OK e digitou algo válido
+    if ok and nova_categoria.strip():
+        conexao = conectar()
+        cursor = conexao.cursor()
+        
+        try:
+            # Insere a nova categoria na tabela 'categoria'
+            sql = "INSERT INTO categoria (nome) VALUES (%s)"
+            cursor.execute(sql, (nova_categoria.strip(),))
+            conexao.commit()
+            
+            QtWidgets.QMessageBox.information(self, 'Sucesso', f'Categoria "{nova_categoria.strip()}" adicionada com sucesso!')
+            
+            # Recarrega a caixa de seleção para a nova categoria aparecer lá
+            carregar_categorias(self)
+            
+            # Já deixa a nova categoria selecionada para facilitar para o usuário
+            self.combo_categoria.setCurrentText(nova_categoria.strip())
+            
+        except Exception as e:
+            QtWidgets.QMessageBox.warning(self, 'Erro', f'Erro ao adicionar categoria: {e}')
+
+
+# ---------------- CARREGAR CATEGORIAS NO COMBOBOX ----------------
+def carregar_categorias(self):
+    """Busca as categorias no banco e preenche a caixa de seleção combo_categoria"""
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    try:
+        # Busca todas as categorias em ordem alfabética
+        cursor.execute("SELECT nome FROM categoria ORDER BY nome")
+        categorias = cursor.fetchall()
+        
+        # Limpa o combobox atual antes de preencher
+        self.combo_categoria.clear()
+        
+        # Preenche com as categorias do banco
+        for categoria in categorias:
+            self.combo_categoria.addItem(categoria[0])
+            
+    except Exception as e:
+        print(f"Erro ao carregar categorias: {e}")

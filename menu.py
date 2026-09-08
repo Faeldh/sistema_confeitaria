@@ -99,10 +99,14 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
         # Ao clicar em uma linha da tabela, enviar os dados para os campos da esquerda
         self.tableViewProdutos.itemSelectionChanged.connect(lambda: cadastro_produtos.pegar_dados(self))
+        # Botão de Adicionar Categoria telas casdastro de produtos
+        self.btnAddCategoria.clicked.connect(lambda: cadastro_produtos.adicionar_categoria(self))
 
         cadastro_cliente.atualizar(self)
         cadastro_fornecedor.atualizar(self)
         cadastro_receitas.atualizar(self)
+        # para que o sistema puxe as categorias do banco de dados logo ao iniciar o programa!
+        cadastro_produtos.carregar_categorias(self)
         
     
     def editar_receita(self):
