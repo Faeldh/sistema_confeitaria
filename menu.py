@@ -4,6 +4,7 @@ import cadastro_cliente
 import cadastro_receitas
 import cadastro_fornecedor
 import cadastro_produtos
+import pedidos
 
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
@@ -97,6 +98,14 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_editarProduto.clicked.connect(lambda: cadastro_produtos.editar(self))
         self.btn_limparProduto.clicked.connect(lambda: cadastro_produtos.limpar(self))
         self.btn_excluirProduto.clicked.connect(lambda: cadastro_produtos.excluir(self))
+        # Conecta o botão de pesquisar produto (Lupa azul) na tela de pedidos
+        self.btnBuscaProduto.clicked.connect(lambda: pedidos.buscar_produto(self))
+
+        self.btnAddCarrinho.clicked.connect(lambda: pedidos.adicionar_carrinho(self))
+
+        # Conecta o botão de "Gerar Pedido" 
+        # Lembre-se: no seu UI este botão se chama 'btnExcluirPedido', apesar de mostrar o texto "Gerar Pedido"
+        self.btnExcluirPedido.clicked.connect(lambda: pedidos.gerar_pedido(self))
 
 
         # Quando clicar em "SAIR DO APLICATIVO" no menu superior, chama a função de deslogar
@@ -124,6 +133,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         # para que o sistema puxe as categorias do banco de dados logo ao iniciar o programa!
         cadastro_produtos.carregar_categorias(self)
         cadastro_produtos.listar(self)
+        # Inicializa os dados da tela de pedidos (combobox de clientes, etc.)
+        pedidos.inicializar_pedidos(self)
         
     
     def editar_receita(self):
