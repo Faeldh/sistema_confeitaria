@@ -160,7 +160,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1476,6 +1476,17 @@ QScrollBar::handle:horizontal:hover {
              <number>8</number>
             </property>
             <item>
+             <widget class="QLabel" name="label_5">
+              <property name="styleSheet">
+               <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
+              </property>
+              <property name="text">
+               <string>CLIENTE: CONSUMIDOR FINAL  
+ 🛒 Itens da Compra</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLineEdit" name="txt_pedidoVendas">
               <property name="placeholderText">
                <string>Digite ou selecione o nome do cliente...</string>
@@ -1516,53 +1527,16 @@ QTableWidget {
     selection-background-color: #3F4A2F;
     selection-color: #E6D2A2;
 }
-
-QTableWidget::item {
-    padding: 6px;
-}
-
-QHeaderView::section {
-    background-color: #3F4A2F;
-    color: #E6D2A2;
-    padding: 6px;
-    font-weight: bold;
-    border: none;
-}
-
-QHeaderView::section:hover {
-    background-color: #2E3723;
-}
-
-QScrollBar:vertical {
-    background: #F5F5F5;
-    width: 10px;
-    border-radius: 5px;
-}
-
-QScrollBar::handle:vertical {
-    background: #3F4A2F;
-    border-radius: 5px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: #2E3723;
-}
-
-QScrollBar:horizontal {
-    background: #F5F5F5;
-    height: 10px;
-    border-radius: 5px;
-}
-
-QScrollBar::handle:horizontal {
-    background: #3F4A2F;
-    border-radius: 5px;
-}
-
-QScrollBar::handle:horizontal:hover {
-    background: #2E3723;
-}
-       </string>
+QTableWidget::item { padding: 6px; }
+QHeaderView::section { background-color: #3F4A2F; color: #E6D2A2; padding: 6px; font-weight: bold; border: none; }
+QHeaderView::section:hover { background-color: #2E3723; }
+QScrollBar:vertical { background: #F5F5F5; width: 10px; border-radius: 5px; }
+QScrollBar::handle:vertical { background: #3F4A2F; border-radius: 5px; }
+QScrollBar::handle:vertical:hover { background: #2E3723; }
+QScrollBar:horizontal { background: #F5F5F5; height: 10px; border-radius: 5px; }
+QScrollBar::handle:horizontal { background: #3F4A2F; border-radius: 5px; }
+QScrollBar::handle:horizontal:hover { background: #2E3723; }
+             </string>
             </property>
             <property name="editTriggers">
              <set>QAbstractItemView::NoEditTriggers</set>
@@ -1619,26 +1593,143 @@ QScrollBar::handle:horizontal:hover {
            <widget class="QGroupBox" name="boxResumo">
             <property name="minimumSize">
              <size>
-              <width>380</width>
+              <width>280</width>
               <height>0</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>310</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="title">
-             <string>Resumo da Compra</string>
+             <string>🛒 Resumo da Compra</string>
             </property>
             <layout class="QVBoxLayout" name="layoutInternoBox">
              <property name="spacing">
               <number>15</number>
              </property>
              <item>
-              <widget class="QLabel" name="labelData">
+              <layout class="QHBoxLayout" name="layoutTotalItens">
+               <item>
+                <widget class="QLabel" name="lblTextoItens">
+                 <property name="text">
+                  <string>Total de Itens:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lblQtdItensResumo">
+                 <property name="font">
+                  <font>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="layoutSubtotal">
+               <item>
+                <widget class="QLabel" name="lblTextoSubtotal">
+                 <property name="text">
+                  <string>Subtotal:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lblValorSubtotal">
+                 <property name="font">
+                  <font>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>R$ 0,00</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="lblTextoDesconto">
                <property name="text">
-                <string>Data da Venda:</string>
+                <string>Desconto (R$):</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QDateEdit" name="dateVenda"/>
+              <widget class="QLineEdit" name="txt_descontoVenda">
+               <property name="text">
+                <string>0,00</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frameTotalDestaque">
+               <property name="styleSheet">
+                <string notr="true">
+                 QFrame#frameTotalDestaque {
+                     background-color: #F7FAFC;
+                     border: 1px solid #E2E8F0;
+                     border-radius: 8px;
+                     padding: 10px;
+                 }
+                </string>
+               </property>
+               <layout class="QHBoxLayout" name="layoutFrameTotal">
+                <item>
+                 <widget class="QLabel" name="lblTextoTotal">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>TOTAL:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblTotalVenda">
+                  <property name="font">
+                   <font>
+                    <pointsize>18</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #2F855A; font-weight: bold;</string>
+                  </property>
+                  <property name="text">
+                   <string>R$ 0,00</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
              <item>
               <widget class="QLabel" name="labelPagamento">
@@ -1651,7 +1742,7 @@ QScrollBar::handle:horizontal:hover {
               <widget class="QComboBox" name="comboPagamento">
                <item>
                 <property name="text">
-                 <string>Pix</string>
+                 <string>PIX</string>
                 </property>
                </item>
                <item>
@@ -1672,32 +1763,6 @@ QScrollBar::handle:horizontal:hover {
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="labelStatus">
-               <property name="text">
-                <string>Status do Pagamento:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboStatusVenda">
-               <item>
-                <property name="text">
-                 <string>Pago</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Pendente</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Parcial</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item>
               <spacer name="espacadorVertical">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
@@ -1711,65 +1776,6 @@ QScrollBar::handle:horizontal:hover {
               </spacer>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="layoutTotal">
-               <item>
-                <widget class="QLabel" name="lblTextoTotal">
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>TOTAL</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="lblTotalVenda">
-                 <property name="font">
-                  <font>
-                   <pointsize>18</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: #2E3723;</string>
-                 </property>
-                 <property name="text">
-                  <string>R$ 0,00</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="layoutRestante">
-               <item>
-                <widget class="QLabel" name="lblTextoRestante">
-                 <property name="text">
-                  <string>Restante:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="lblTotalVenda_3">
-                 <property name="text">
-                  <string>R$ 0,00</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
               <widget class="QPushButton" name="btnSalvarVenda">
                <property name="minimumSize">
                 <size>
@@ -1781,13 +1787,6 @@ QScrollBar::handle:horizontal:hover {
                 <string>✓ Finalizar Venda</string>
                </property>
               </widget>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="layoutBotoesSecundarios">
-               <property name="spacing">
-                <number>5</number>
-               </property>
-              </layout>
              </item>
             </layout>
            </widget>
