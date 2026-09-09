@@ -25,6 +25,62 @@ def inicializar_pedidos(self):
             
     except Exception as e:
         print(f"Erro ao carregar clientes: {e}")
+# ---------------- LISTAR PEDIDOS (TABELA DA DIREITA) ----------------
+def listar_pedidos(self):
+    """Busca os pedidos no banco e preenche a tabela de detalhes na direita"""
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    try:
+        # Configura as colunas da tabela, já que elas não foram definidas no Qt Designer
+        self.tableWidget.setColumnCount(6)
+        self.tableWidget.setHorizontalHeaderLabels(["ID", "Cliente", "Data Pedido", "Entrega", "Total", "Status"])
+        
+        # Ajusta o tamanho das colunas para o conteúdo caber melhor
+        header = self.tableWidget.horizontalHeader()
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents) # ID
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)          # Cliente
+        header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents) # Data Pedido
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents) # Entrega
+        
+        # Faz um JOIN entre pedido e cliente para pegar o nome do cliente em vez do ID
+        sql = '''
+            SELECT p.id_pedido, c.nome, p.data_pedido, p.data_entrega, p.total, p.status 
+            FROM pedido p
+            LEFT JOIN cliente c ON p.id_cliente = c.id
+            ORDER BY p.id_pedido DESC
+        '''
+        cursor.execute(sql)
+        lista_pedidos = cursor.fetchall()
+        
+        # Zera a tabela antes de preencher
+        self.tableWidget.setRowCount(0)
+        
+        for linha, dados in enumerate(lista_pedidos):
+            self.tableWidget.insertRow(linha)
+            
+            # Tratamento dos dados retornados do banco
+            id_pedido = str(dados[0])
+            cliente = str(dados[1]) if dados[1] else "Cliente não encontrado"
+            
+            # Formatação de datas (DD/MM/YYYY)
+            data_ped = dados[2].strftime('%d/%m/%Y') if dados[2] else ""
+            data_ent = dados[3].strftime('%d/%m/%Y') if dados[3] else ""
+            
+            # Formatação do Total
+            total = f"R$ {dados[4]:.2f}".replace('.', ',') if dados[4] else "R$ 0,00"
+            status = str(dados[5])
+            
+            # Preenche cada coluna
+            self.tableWidget.setItem(linha, 0, QtWidgets.QTableWidgetItem(id_pedido))
+            self.tableWidget.setItem(linha, 1, QtWidgets.QTableWidgetItem(cliente))
+            self.tableWidget.setItem(linha, 2, QtWidgets.QTableWidgetItem(data_ped))
+            self.tableWidget.setItem(linha, 3, QtWidgets.QTableWidgetItem(data_ent))
+            self.tableWidget.setItem(linha, 4, QtWidgets.QTableWidgetItem(total))
+            self.tableWidget.setItem(linha, 5, QtWidgets.QTableWidgetItem(status))
+            
+    except Exception as e:
+        QtWidgets.QMessageBox.warning(self, 'Erro', f'Erro ao carregar lista de pedidos: {e}')
 
 # ---------------- BUSCAR PRODUTO (LUPA) ----------------
 def buscar_produto(self):
@@ -199,6 +255,7 @@ def gerar_pedido(self):
         self.tableItens.setRowCount(0)
         atualizar_total(self)
         self.comboCliente.setCurrentIndex(0)
+        listar_pedidos(self)
         
     except Exception as e:
         conexao.rollback() # Cancela a operação se deu erro no meio do caminho

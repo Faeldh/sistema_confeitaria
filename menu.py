@@ -135,6 +135,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         cadastro_produtos.listar(self)
         # Inicializa os dados da tela de pedidos (combobox de clientes, etc.)
         pedidos.inicializar_pedidos(self)
+        pedidos.listar_pedidos(self)
         
     
     def editar_receita(self):
