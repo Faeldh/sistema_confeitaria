@@ -3020,7 +3020,7 @@ QPushButton.btnAcaoCard:hover {
   </widget>
   <action name="actionCONGIGUR_ES">
    <property name="text">
-    <string>CONGIGURAÇÕES</string>
+    <string>CONFIGURAÇÕES</string>
    </property>
   </action>
   <action name="actionSAIR_DO_APLICATIVO">
