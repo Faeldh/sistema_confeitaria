@@ -71,6 +71,10 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
             lambda: cadastro_cliente.deletar(self)
         )
 
+        self.actionCONGIGUR_ES.triggered.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.pageConfiguracoes)
+        )
+
         #Botões
         self.btn_pesquisa.clicked.connect(self.pesquisar)
         self.btn_salvar.clicked.connect(self.salvar_cliente)
@@ -93,6 +97,12 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_editarProduto.clicked.connect(lambda: cadastro_produtos.editar(self))
         self.btn_limparProduto.clicked.connect(lambda: cadastro_produtos.limpar(self))
         self.btn_excluirProduto.clicked.connect(lambda: cadastro_produtos.excluir(self))
+
+
+        # Quando clicar em "SAIR DO APLICATIVO" no menu superior, chama a função de deslogar
+        self.actionSAIR_DO_APLICATIVO.triggered.connect(self.voltar_para_login)
+
+
 
         # Botão de Atualizar a tabela (botão azul de refresh)
         self.btnAtualizarProduto.clicked.connect(lambda: cadastro_produtos.listar(self))
@@ -189,3 +199,17 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
     def salvar_produto(self):
         cadastro_produtos.salvar(self)
+
+
+    # Botão sair do aplicativo
+    def voltar_para_login(self):
+        # Importa o arquivo login e a classe Login aqui dentro para não dar erro no Python
+        from login import Login
+        
+        # 1. Cria e mostra a tela de login novamente
+        self.tela_de_login = Login()
+        self.tela_de_login.show()
+        
+        # 2. Fecha a tela de menu atual da confeitaria
+        self.close()
+
