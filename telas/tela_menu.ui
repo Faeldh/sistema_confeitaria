@@ -1797,54 +1797,34 @@ QScrollBar::handle:horizontal:hover { background: #2E3723; }
       </widget>
       <widget class="QWidget" name="pageControleFinanceiro">
        <property name="styleSheet">
-        <string notr="true">QWidget#pageControleFinanceiro {
+        <string notr="true">
+QWidget#pageControleFinanceiro {
     background-color: #F8FAFC; 
 }
-QFrame#cardFaturamento, 
+QFrame#cardFaturamento {
+    background-color: #3F4A2F; 
+    border: 1px solid #3F4A2F;  
+    border-radius: 16px;
+}
 QFrame#cardVendasConcluidas,
 QFrame#cardTicketMedio,
 QFrame#cardItensVendidos,
 QFrame#cardCozinha, 
-QFrame#cardAtrasados, 
 QFrame#cardLargeResumo, 
 QFrame#cardLargeMaisVendidos {
-    background-color: #3F4A2F; 
-    border: 1px solid #000000;  
-    border-radius: 12px;
+    background-color: #FFFFFF; 
+    border: 1px solid #E2E8F0;  
+    border-radius: 16px;
+}
+QFrame#cardAtrasados {
+    background-color: #FFF1F2; 
+    border: 1px solid #FFE4E6;  
+    border-radius: 16px;
 }
 QLabel {
     font-family: 'Segoe UI', Arial, sans-serif;
-    color: #E6D2A2; 
 }
-QLabel#lblTituloFat, QLabel#lblTituloVendas, QLabel#lblTituloTicket, 
-QLabel#lblTituloItens, QLabel#lblTituloCoz, QLabel#lblTituloAtr, 
-QLabel#lblSecaoResumo, QLabel#lblSecaoMaisVendidos {
-    font-size: 11px;
-    color: #E6D2A2; 
-    font-weight: bold;
-    text-transform: uppercase;
-}
-QLabel#lblValorFat, QLabel#lblValorVendas, QLabel#lblValorTicket, 
-QLabel#lblValorItens, QLabel#lblValorCoz, QLabel#lblValorAtr {
-    font-size: 22px; 
-    color: #E6D2A2; 
-    font-weight: bold;
-}
-QLabel#lblSubFat, QLabel#lblSubVendas, QLabel#lblSubTicket, 
-QLabel#lblSubItens, QLabel#lblSubCoz, QLabel#lblSubAtr {
-    font-size: 11px;
-    color: #E6D2A2;
-    opacity: 0.8;
-}
-QLabel#lblMainTitle {
-    color: #3F4A2F; 
-    font-size: 20px;
-    font-weight: bold;
-}
-QLabel#lblMainSub {
-    color: #3F4A2F;
-    font-size: 12px;
-}</string>
+        </string>
        </property>
        <layout class="QVBoxLayout" name="mainLayout">
         <property name="spacing">
@@ -1870,25 +1850,32 @@ QLabel#lblMainSub {
              <number>4</number>
             </property>
             <item>
-             <widget class="QLabel" name="label_6">
-              <property name="styleSheet">
-               <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(109, 109, 109);</string>
-              </property>
-              <property name="text">
-               <string>Olá,</string>
-              </property>
-             </widget>
-            </item>
-            <item>
              <widget class="QLabel" name="lblMainTitle">
+              <property name="font">
+               <font>
+                <pointsize>18</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #3F4A2F;</string>
+              </property>
               <property name="text">
-               <string>Bem-vindo ao Mira Confeitaria!</string>
+               <string>Olá, Bem-vindo ao Mira Confeitaria! 👋</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QLabel" name="lblMainSub">
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: #64748B;</string>
+              </property>
               <property name="text">
                <string>Aqui está o resumo do que acontece no seu negócio hoje.</string>
               </property>
@@ -1914,7 +1901,7 @@ color: rgb(109, 109, 109);</string>
         <item>
          <layout class="QHBoxLayout" name="rowCardsTop1">
           <property name="spacing">
-           <number>15</number>
+           <number>16</number>
           </property>
           <item>
            <widget class="QFrame" name="cardFaturamento">
@@ -1925,8 +1912,14 @@ color: rgb(109, 109, 109);</string>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytFat">
+             <property name="spacing">
+              <number>4</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblTituloFat">
+               <property name="styleSheet">
+                <string notr="true">color: #E6D2A2; font-size: 11px; font-weight: bold; text-transform: uppercase;</string>
+               </property>
                <property name="text">
                 <string>Faturamento Total</string>
                </property>
@@ -1934,15 +1927,21 @@ color: rgb(109, 109, 109);</string>
              </item>
              <item>
               <widget class="QLabel" name="lblValorFat">
+               <property name="styleSheet">
+                <string notr="true">color: #E6D2A2; font-size: 22px; font-weight: bold;</string>
+               </property>
                <property name="text">
-                <string>R$ 2.890,00</string>
+                <string>R$ 2.759,78</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="lblSubFat">
+               <property name="styleSheet">
+                <string notr="true">color: #E6D2A2; font-size: 11px; opacity: 0.8;</string>
+               </property>
                <property name="text">
-                <string>Dinheiro em Caixa</string>
+                <string>Dinheiro em Caixa (PDV)</string>
                </property>
               </widget>
              </item>
@@ -1958,8 +1957,14 @@ color: rgb(109, 109, 109);</string>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytVendas">
+             <property name="spacing">
+              <number>4</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblTituloVendas">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px; font-weight: bold; text-transform: uppercase;</string>
+               </property>
                <property name="text">
                 <string>Vendas Concluídas</string>
                </property>
@@ -1967,13 +1972,19 @@ color: rgb(109, 109, 109);</string>
              </item>
              <item>
               <widget class="QLabel" name="lblValorVendas">
+               <property name="styleSheet">
+                <string notr="true">color: #3F4A2F; font-size: 22px; font-weight: bold;</string>
+               </property>
                <property name="text">
-                <string>38</string>
+                <string>34</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="lblSubVendas">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px;</string>
+               </property>
                <property name="text">
                 <string>Faturadas no PDV</string>
                </property>
@@ -1991,8 +2002,14 @@ color: rgb(109, 109, 109);</string>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytTicket">
+             <property name="spacing">
+              <number>4</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblTituloTicket">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px; font-weight: bold; text-transform: uppercase;</string>
+               </property>
                <property name="text">
                 <string>Ticket Médio</string>
                </property>
@@ -2000,13 +2017,19 @@ color: rgb(109, 109, 109);</string>
              </item>
              <item>
               <widget class="QLabel" name="lblValorTicket">
+               <property name="styleSheet">
+                <string notr="true">color: #3F4A2F; font-size: 22px; font-weight: bold;</string>
+               </property>
                <property name="text">
-                <string>R$ 76,05</string>
+                <string>R$ 81,17</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="lblSubTicket">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px;</string>
+               </property>
                <property name="text">
                 <string>Valor médio por cliente</string>
                </property>
@@ -2020,7 +2043,7 @@ color: rgb(109, 109, 109);</string>
         <item>
          <layout class="QHBoxLayout" name="rowCardsTop2">
           <property name="spacing">
-           <number>15</number>
+           <number>16</number>
           </property>
           <item>
            <widget class="QFrame" name="cardItensVendidos">
@@ -2031,8 +2054,14 @@ color: rgb(109, 109, 109);</string>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytItens">
+             <property name="spacing">
+              <number>4</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblTituloItens">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px; font-weight: bold; text-transform: uppercase;</string>
+               </property>
                <property name="text">
                 <string>Itens Vendidos</string>
                </property>
@@ -2040,13 +2069,19 @@ color: rgb(109, 109, 109);</string>
              </item>
              <item>
               <widget class="QLabel" name="lblValorItens">
+               <property name="styleSheet">
+                <string notr="true">color: #3F4A2F; font-size: 22px; font-weight: bold;</string>
+               </property>
                <property name="text">
-                <string>48</string>
+                <string>47</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="lblSubItens">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px;</string>
+               </property>
                <property name="text">
                 <string>Total de doces cobrados</string>
                </property>
@@ -2064,8 +2099,14 @@ color: rgb(109, 109, 109);</string>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytCoz">
+             <property name="spacing">
+              <number>4</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblTituloCoz">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px; font-weight: bold; text-transform: uppercase;</string>
+               </property>
                <property name="text">
                 <string>Pedidos na Cozinha</string>
                </property>
@@ -2073,13 +2114,19 @@ color: rgb(109, 109, 109);</string>
              </item>
              <item>
               <widget class="QLabel" name="lblValorCoz">
+               <property name="styleSheet">
+                <string notr="true">color: #D97706; font-size: 22px; font-weight: bold;</string>
+               </property>
                <property name="text">
-                <string>5</string>
+                <string>9 ativos</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="lblSubCoz">
+               <property name="styleSheet">
+                <string notr="true">color: #64748B; font-size: 11px;</string>
+               </property>
                <property name="text">
                 <string>Prontos para produção</string>
                </property>
@@ -2097,8 +2144,14 @@ color: rgb(109, 109, 109);</string>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytAtr">
+             <property name="spacing">
+              <number>4</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblTituloAtr">
+               <property name="styleSheet">
+                <string notr="true">color: #991B1B; font-size: 11px; font-weight: bold; text-transform: uppercase;</string>
+               </property>
                <property name="text">
                 <string>Pedidos Atrasados</string>
                </property>
@@ -2106,13 +2159,19 @@ color: rgb(109, 109, 109);</string>
              </item>
              <item>
               <widget class="QLabel" name="lblValorAtr">
+               <property name="styleSheet">
+                <string notr="true">color: #DC2626; font-size: 22px; font-weight: bold;</string>
+               </property>
                <property name="text">
-                <string>19</string>
+                <string>0</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="lblSubAtr">
+               <property name="styleSheet">
+                <string notr="true">color: #991B1B; font-size: 11px;</string>
+               </property>
                <property name="text">
                 <string>Atenção imediata</string>
                </property>
@@ -2126,19 +2185,44 @@ color: rgb(109, 109, 109);</string>
         <item>
          <layout class="QHBoxLayout" name="rowChartsMiddle">
           <property name="spacing">
-           <number>15</number>
+           <number>16</number>
           </property>
           <item>
            <widget class="QFrame" name="cardLargeResumo">
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>480</height>
+              <height>400</height>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytLeftChart">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblSecaoResumo">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: #3F4A2F;</string>
+               </property>
                <property name="text">
                 <string>Resumo Financeiro</string>
                </property>
@@ -2152,12 +2236,37 @@ color: rgb(109, 109, 109);</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>480</height>
+              <height>400</height>
              </size>
             </property>
             <layout class="QVBoxLayout" name="lytRightChart">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
              <item>
               <widget class="QLabel" name="lblSecaoMaisVendidos">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: #3F4A2F;</string>
+               </property>
                <property name="text">
                 <string>Produtos Mais Vendidos</string>
                </property>
@@ -2186,6 +2295,7 @@ color: rgb(109, 109, 109);</string>
         </item>
        </layout>
       </widget>
+
       <widget class="QWidget" name="pageFornecedores">
        <layout class="QHBoxLayout">
         <item>
