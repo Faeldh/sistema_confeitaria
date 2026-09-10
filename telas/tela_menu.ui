@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1356</width>
-    <height>1026</height>
+    <height>1052</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1871,6 +1871,10 @@ QLabel#lblMainSub {
             </property>
             <item>
              <widget class="QLabel" name="label_6">
+              <property name="styleSheet">
+               <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(109, 109, 109);</string>
+              </property>
               <property name="text">
                <string>Olá,</string>
               </property>
