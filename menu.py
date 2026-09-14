@@ -5,6 +5,7 @@ import cadastro_receitas
 import cadastro_fornecedor
 import cadastro_produtos
 import pedidos
+import vendas
 
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
@@ -111,7 +112,17 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         # Quando clicar em "SAIR DO APLICATIVO" no menu superior, chama a função de deslogar
         self.actionSAIR_DO_APLICATIVO.triggered.connect(self.voltar_para_login)
 
-
+        # Adicionar produto pelo botão [+] ou simplesmente apertando "Enter" no campo
+        self.btnBuscaClienteVenda.clicked.connect(lambda: vendas.adicionar_produto_venda(self))
+        self.txt_pedidoVendas.returnPressed.connect(lambda: vendas.adicionar_produto_venda(self))
+        # Se o usuário clicar em qualquer célula da coluna "Ação" ("❌ Remover"), o item é deletado
+        self.tableVendas.cellClicked.connect(lambda row, col: vendas.remover_item_venda(self, row, col))
+        
+        # O total se atualiza em tempo real enquanto você digita um desconto
+        self.txt_descontoVenda.textChanged.connect(lambda: vendas.atualizar_resumo_venda(self))
+        
+        # Salvar no banco
+        self.btnSalvarVenda.clicked.connect(lambda: vendas.finalizar_venda(self))
 
         # Botão de Atualizar a tabela (botão azul de refresh)
         self.btnAtualizarProduto.clicked.connect(lambda: cadastro_produtos.listar(self))
@@ -136,7 +147,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         # Inicializa os dados da tela de pedidos (combobox de clientes, etc.)
         pedidos.inicializar_pedidos(self)
         pedidos.listar_pedidos(self)
-        
+        # Inicializa os dados da tela de vendas (combobox de clientes, etc.)
+        vendas.inicializar_vendas(self)
     
     def editar_receita(self):
         cadastro_receitas.editar(self)
