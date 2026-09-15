@@ -42,6 +42,10 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.tableWidgetFornecedores.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
 
+        # --- DEFINIR PÁGINA INICIAL PADRÃO ---
+        # Força o sistema a abrir direto na tela de Controle Financeiro (Home) após o login
+        self.stackedWidget.setCurrentWidget(self.pageControleFinanceiro)
+
 
         #Chamar as paginas
         self.btn_clientes.clicked.connect(
