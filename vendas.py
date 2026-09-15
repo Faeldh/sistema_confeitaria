@@ -1,125 +1,159 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from datetime import date
 from conexao import conectar
 
 # ---------------- INICIALIZAR VENDAS ----------------
 def inicializar_vendas(self):
     """Prepara a tela de vendas ao iniciar o sistema"""
-    self.tableVendas.setRowCount(0)
-    atualizar_resumo_venda(self)
+    self.pedido_selecionado = None # Variável para guardar qual pedido está sendo pago
+    carregar_pedidos_venda(self)
+    resetar_resumo_venda(self)
 
-# ---------------- ADICIONAR PRODUTO (CARRINHO PDV) ----------------
-def adicionar_produto_venda(self):
-    """Busca o produto digitado e joga na tabela da venda"""
-    pesquisa = self.txt_pedidoVendas.text().strip()
-    if not pesquisa:
-        return
-
+# ---------------- CARREGAR PEDIDOS NA TABELA ----------------
+def carregar_pedidos_venda(self):
+    """Busca pedidos que ainda não foram pagos e joga na tabela"""
     conexao = conectar()
     cursor = conexao.cursor()
     
     try:
-        # Busca o produto pelo ID exato ou pelo Nome (Apenas produtos ativos)
-        if pesquisa.isdigit():
-            sql = "SELECT id_produto, nome, preco FROM produto WHERE id_produto = %s AND ativo = 1"
-            cursor.execute(sql, (pesquisa,))
-        else:
-            sql = "SELECT id_produto, nome, preco FROM produto WHERE nome LIKE %s AND ativo = 1 LIMIT 1"
-            cursor.execute(sql, (f"%{pesquisa}%",))
+        # Busca pedidos que não estão marcados como 'Pago'
+        sql = '''
+            SELECT 
+                p.id_pedido, 
+                c.id,
+                c.nome, 
+                p.data_entrega, 
+                p.total, 
+                p.status,
+                (SELECT COALESCE(SUM(quantidade), 1) FROM item_pedido WHERE id_pedido = p.id_pedido) as qtd_itens
+            FROM pedido p
+            LEFT JOIN cliente c ON p.id_cliente = c.id
+            WHERE p.status != 'Pago'
+            ORDER BY p.data_entrega ASC
+        '''
+        cursor.execute(sql)
+        pedidos = cursor.fetchall()
         
-        produto = cursor.fetchone()
+        self.tableVendas.setRowCount(0) # Limpa a tabela
         
-        if produto:
-            id_prod = str(produto[0])
-            nome = produto[1]
-            preco = float(produto[2])
+        for linha, dados in enumerate(pedidos):
+            self.tableVendas.insertRow(linha)
             
-            # 1. Verifica se o produto já está na tabela
-            linha_existente = -1
-            for linha in range(self.tableVendas.rowCount()):
-                if self.tableVendas.item(linha, 0).text() == id_prod:
-                    linha_existente = linha
-                    break
+            id_pedido = dados[0]
+            id_cliente = dados[1]
+            nome_cliente = dados[2] if dados[2] else "Cliente Balcão"
+            data_entrega = dados[3].strftime('%d/%m/%Y') if dados[3] else "--/--/----"
+            total = float(dados[4]) if dados[4] else 0.0
+            status = dados[5] if dados[5] else "PRONTO"
+            qtd_itens = int(dados[6])
             
-            if linha_existente >= 0:
-                # Se já existe, apenas soma +1 na quantidade e atualiza o subtotal da linha
-                qtd_atual = int(self.tableVendas.item(linha_existente, 2).text())
-                nova_qtd = qtd_atual + 1
-                novo_subtotal = nova_qtd * preco
-                
-                self.tableVendas.setItem(linha_existente, 2, QtWidgets.QTableWidgetItem(str(nova_qtd)))
-                self.tableVendas.setItem(linha_existente, 4, QtWidgets.QTableWidgetItem(f"R$ {novo_subtotal:.2f}".replace('.', ',')))
-            else:
-                # Se não existe, adiciona uma nova linha
-                linha_atual = self.tableVendas.rowCount()
-                self.tableVendas.insertRow(linha_atual)
-                
-                self.tableVendas.setItem(linha_atual, 0, QtWidgets.QTableWidgetItem(id_prod))
-                self.tableVendas.setItem(linha_atual, 1, QtWidgets.QTableWidgetItem(nome))
-                self.tableVendas.setItem(linha_atual, 2, QtWidgets.QTableWidgetItem("1"))
-                self.tableVendas.setItem(linha_atual, 3, QtWidgets.QTableWidgetItem(f"R$ {preco:.2f}".replace('.', ',')))
-                self.tableVendas.setItem(linha_atual, 4, QtWidgets.QTableWidgetItem(f"R$ {preco:.2f}".replace('.', ',')))
-                
-                # Coloca a palavra "Remover" na coluna 5 (Ação)
-                self.tableVendas.setItem(linha_atual, 5, QtWidgets.QTableWidgetItem("❌ Remover"))
+            # Formatando os textos das colunas para ficar igual ao seu design
+            col_codigo = f"#{id_pedido}"
+            col_produto = f"👤 {nome_cliente}   📅 Entrega: {data_entrega}"
+            col_qtd = f"{qtd_itens} item(ns)"
+            col_vlr_unit = f"R$ {total:.2f}".replace('.', ',')
+            col_subtotal = str(status).upper() 
             
-            # Limpa a barra de pesquisa e atualiza a soma da lateral
-            self.txt_pedidoVendas.setText("")
-            atualizar_resumo_venda(self)
+            # Preenchendo a tabela
+            item_codigo = QtWidgets.QTableWidgetItem(col_codigo)
             
-        else:
-            QtWidgets.QMessageBox.warning(self, "Aviso", "Produto não encontrado ou inativo!")
+            # Escondemos os IDs do banco de dados na primeira coluna para usar na hora de salvar
+            item_codigo.setData(QtCore.Qt.UserRole, id_pedido) 
+            item_codigo.setData(QtCore.Qt.UserRole + 1, id_cliente) 
+            
+            self.tableVendas.setItem(linha, 0, item_codigo)
+            self.tableVendas.setItem(linha, 1, QtWidgets.QTableWidgetItem(col_produto))
+            self.tableVendas.setItem(linha, 2, QtWidgets.QTableWidgetItem(col_qtd))
+            self.tableVendas.setItem(linha, 3, QtWidgets.QTableWidgetItem(col_vlr_unit))
+            self.tableVendas.setItem(linha, 4, QtWidgets.QTableWidgetItem(col_subtotal))
+            self.tableVendas.setItem(linha, 5, QtWidgets.QTableWidgetItem("💵 Cobrar"))
             
     except Exception as e:
-        QtWidgets.QMessageBox.warning(self, "Erro", f"Erro ao buscar produto: {e}")
+        QtWidgets.QMessageBox.warning(self, "Erro", f"Erro ao listar pedidos aguardando pagamento: {e}")
 
-# ---------------- ATUALIZAR RESUMO LATERAL ----------------
-def atualizar_resumo_venda(self):
-    """Soma todos os itens e aplica o desconto automaticamente"""
-    subtotal = 0.0
-    qtd_itens = 0
-    
-    # Soma a tabela inteira
-    for linha in range(self.tableVendas.rowCount()):
-        qtd = int(self.tableVendas.item(linha, 2).text())
-        valor_str = self.tableVendas.item(linha, 4).text().replace("R$ ", "").replace(",", ".")
-        subtotal += float(valor_str)
-        qtd_itens += qtd
+# ---------------- AÇÃO AO CLICAR EM "COBRAR" ----------------
+def acao_tabela_vendas(self, row, column):
+    """Disparado quando o usuário clica em alguma célula da tabela"""
+    if column == 5: # Verifica se clicou na coluna "Ação"
+        try:
+            item_codigo = self.tableVendas.item(row, 0)
+            if not item_codigo:
+                return # Se a linha estiver vazia, não faz nada
+                
+            # Puxa os dados da linha clicada
+            id_pedido = item_codigo.data(QtCore.Qt.UserRole)
+            id_cliente = item_codigo.data(QtCore.Qt.UserRole + 1)
+            
+            nome_cliente = self.tableVendas.item(row, 1).text().split('📅')[0].replace('👤', '').strip()
+            qtd_itens = int(self.tableVendas.item(row, 2).text().split()[0])
+            total_str = self.tableVendas.item(row, 3).text().replace("R$ ", "").replace(",", ".")
+            total = float(total_str)
+            
+            # Salva o pedido selecionado na memória da tela para usar depois
+            self.pedido_selecionado = {
+                'id_pedido': id_pedido,
+                'id_cliente': id_cliente,
+                'total': total
+            }
+            
+            # Atualiza o quadro de "Resumo da Compra" na lateral direita
+            self.txt_pedidoVendas.setText(f"Recebendo Pedido #{id_pedido} - {nome_cliente}")
+            self.lblQtdItensResumo.setText(str(qtd_itens))
+            self.lblValorSubtotal.setText(f"R$ {total:.2f}".replace('.', ','))
+            
+            # Calcula total com desconto se houver
+            calcular_total_com_desconto(self)
+            
+        except Exception as e:
+            # Se der algum erro aqui, o sistema mostra esse aviso EM VEZ de fechar sozinho
+            QtWidgets.QMessageBox.critical(self, "Erro Fatal", f"Ocorreu um erro ao ler a linha da tabela: {e}")
 
-    # Pega o desconto digitado
-    desconto_str = self.txt_descontoVenda.text().replace(",", ".")
+# ---------------- CÁLCULO DE DESCONTO ----------------
+def calcular_total_com_desconto(self):
+    """Calcula o desconto em cima do pedido selecionado em tempo real"""
     try:
-        desconto = float(desconto_str) if desconto_str else 0.0
-    except ValueError:
-        desconto = 0.0
+        if getattr(self, 'pedido_selecionado', None) is None:
+            return
+            
+        subtotal = self.pedido_selecionado['total']
+        desconto_str = self.txt_descontoVenda.text().replace(",", ".")
+        
+        try:
+            desconto = float(desconto_str) if desconto_str else 0.0
+        except ValueError:
+            desconto = 0.0
+            
+        total = subtotal - desconto
+        if total < 0:
+            total = 0.0
+            
+        self.lblTotalVenda.setText(f"R$ {total:.2f}".replace('.', ','))
+    except Exception as e:
+        QtWidgets.QMessageBox.warning(self, "Erro", f"Erro no desconto: {e}")
 
-    # Aplica matemática final
-    total = subtotal - desconto
-    if total < 0: 
-        total = 0.0
-
-    # Atualiza as etiquetas na tela
-    self.lblQtdItensResumo.setText(str(qtd_itens))
-    self.lblValorSubtotal.setText(f"R$ {subtotal:.2f}".replace('.', ','))
-    self.lblTotalVenda.setText(f"R$ {total:.2f}".replace('.', ','))
-
-# ---------------- REMOVER ITEM DA TABELA ----------------
-def remover_item_venda(self, row, column):
-    """Se clicar na coluna 5 (Ação), exclui a linha"""
-    if column == 5: 
-        self.tableVendas.removeRow(row)
-        atualizar_resumo_venda(self)
+# ---------------- RESETAR RESUMO ----------------
+def resetar_resumo_venda(self):
+    """Limpa a lateral direita após uma venda"""
+    self.pedido_selecionado = None
+    self.txt_pedidoVendas.setText("")
+    self.lblQtdItensResumo.setText("0")
+    self.lblValorSubtotal.setText("R$ 0,00")
+    self.txt_descontoVenda.setText("0,00")
+    self.lblTotalVenda.setText("R$ 0,00")
 
 # ---------------- FINALIZAR VENDA (SALVAR NO BANCO) ----------------
 def finalizar_venda(self):
-    """Pega tudo que está na tela e envia pro banco de dados"""
-    if self.tableVendas.rowCount() == 0:
-        QtWidgets.QMessageBox.warning(self, "Aviso", "O carrinho está vazio!")
+    """Muda o status do pedido para 'Pago' e gera o registro da Venda"""
+    if getattr(self, 'pedido_selecionado', None) is None:
+        QtWidgets.QMessageBox.warning(self, "Aviso", "Selecione um pedido clicando em '💵 Cobrar' na tabela!")
         return
         
     forma_pagamento = self.comboPagamento.currentText()
     total_str = self.lblTotalVenda.text().replace("R$ ", "").replace(",", ".")
-    total = float(total_str)
+    total_pago = float(total_str)
+    
+    id_pedido = self.pedido_selecionado['id_pedido']
+    id_cliente = self.pedido_selecionado['id_cliente']
     
     conexao = conectar()
     cursor = conexao.cursor()
@@ -127,30 +161,19 @@ def finalizar_venda(self):
     try:
         hoje = date.today().strftime("%Y-%m-%d")
         
-        # 1. Insere a Venda principal
-        sql_venda = "INSERT INTO venda (data_venda, forma_pagamento, status_pagamento, total, valor_pago, valor_restante) VALUES (%s, %s, 'Pago', %s, %s, 0)"
-        cursor.execute(sql_venda, (hoje, forma_pagamento, total, total))
-        id_venda = cursor.lastrowid # Pega o ID da venda gerada
+        # 1. Registra a venda na tabela 'venda'
+        sql_venda = "INSERT INTO venda (id_pedido, id_cliente, data_venda, forma_pagamento, status_pagamento, total, valor_pago, valor_restante) VALUES (%s, %s, %s, %s, 'Pago', %s, %s, 0)"
+        cursor.execute(sql_venda, (id_pedido, id_cliente, hoje, forma_pagamento, self.pedido_selecionado['total'], total_pago))
         
-        # 2. Insere item a item
-        sql_item = "INSERT INTO item_venda (id_venda, produto_nome, quantidade, preco, subtotal) VALUES (%s, %s, %s, %s, %s)"
+        # 2. Atualiza o status do pedido para 'Pago' para que ele saia da tabela
+        sql_update_pedido = "UPDATE pedido SET status = 'Pago' WHERE id_pedido = %s"
+        cursor.execute(sql_update_pedido, (id_pedido,))
         
-        for linha in range(self.tableVendas.rowCount()):
-            nome = self.tableVendas.item(linha, 1).text()
-            qtd = int(self.tableVendas.item(linha, 2).text())
-            preco = float(self.tableVendas.item(linha, 3).text().replace("R$ ", "").replace(",", "."))
-            subtotal = float(self.tableVendas.item(linha, 4).text().replace("R$ ", "").replace(",", "."))
-            
-            cursor.execute(sql_item, (id_venda, nome, qtd, preco, subtotal))
-            
         conexao.commit()
-        QtWidgets.QMessageBox.information(self, "Sucesso", "Venda finalizada com sucesso!")
+        QtWidgets.QMessageBox.information(self, "Sucesso", "Pagamento registrado e venda finalizada!")
         
-        # Reseta o sistema para o próximo cliente
-        self.tableVendas.setRowCount(0)
-        self.txt_descontoVenda.setText("0,00")
-        atualizar_resumo_venda(self)
-        self.txt_pedidoVendas.setFocus() # Devolve o cursor para o campo de pesquisa
+        resetar_resumo_venda(self)
+        carregar_pedidos_venda(self) # Recarrega a tabela (o pedido pago vai sumir)
         
     except Exception as e:
         conexao.rollback()
