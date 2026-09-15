@@ -6,7 +6,7 @@ import cadastro_fornecedor
 import cadastro_produtos
 import pedidos
 import vendas
-
+import configuracoes
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
@@ -34,6 +34,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         
         self.tableWidgetFornecedores.itemSelectionChanged.connect(self.carregar_fornecedor)
         self.tableWidgetFornecedores.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+
 
 
         #Chamar as paginas
@@ -75,7 +76,15 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
         self.actionCONGIGUR_ES.triggered.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageConfiguracoes)
+            
         )
+
+        # Toda vez que abrir a página de configurações, recarrega os dados mais novos do banco!
+        self.actionCONGIGUR_ES.triggered.connect(
+            lambda: configuracoes.inicializar(self)
+
+        )
+
 
         #Botões
         self.btn_pesquisa.clicked.connect(self.pesquisar)
@@ -99,6 +108,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         self.btn_editarProduto.clicked.connect(lambda: cadastro_produtos.editar(self))
         self.btn_limparProduto.clicked.connect(lambda: cadastro_produtos.limpar(self))
         self.btn_excluirProduto.clicked.connect(lambda: cadastro_produtos.excluir(self))
+
         # Conecta o botão de pesquisar produto (Lupa azul) na tela de pedidos
         self.btnBuscaProduto.clicked.connect(lambda: pedidos.buscar_produto(self))
 
@@ -115,6 +125,7 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         # Adicionar produto pelo botão [+] ou simplesmente apertando "Enter" no campo
         self.btnBuscaClienteVenda.clicked.connect(lambda: vendas.adicionar_produto_venda(self))
         self.txt_pedidoVendas.returnPressed.connect(lambda: vendas.adicionar_produto_venda(self))
+
         # Se o usuário clicar em qualquer célula da coluna "Ação" ("❌ Remover"), o item é deletado
         self.tableVendas.cellClicked.connect(lambda row, col: vendas.remover_item_venda(self, row, col))
         
@@ -133,10 +144,22 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
         # Ao clicar em uma linha da tabela, enviar os dados para os campos da esquerda
         self.tableViewProdutos.itemSelectionChanged.connect(lambda: cadastro_produtos.pegar_dados(self))
+
         # Botão de Adicionar Categoria telas casdastro de produtos
         self.btnAddCategoria.clicked.connect(lambda: cadastro_produtos.adicionar_categoria(self))
+
         # Botão de Atualizar a tabela (botão azul de refresh)
         self.btnAtualizarProduto.clicked.connect(lambda: cadastro_produtos.listar(self))
+
+        # --- CONEXÃO DOS BOTÕES DE CONFIGURAÇÕES ---
+        self.btnSalvarAlteracoes.clicked.connect(lambda: configuracoes.salvar(self))
+        self.btnGerenciarUsuarios.clicked.connect(lambda: configuracoes.gerenciar_usuarios(self))
+        self.btnBaixarBanco.clicked.connect(lambda: configuracoes.fazer_backup_banco(self))
+        self.btnVerInformacoes.clicked.connect(lambda: configuracoes.exibir_sobre_sistema(self))
+
+        # --- CARREGAR OS DADOS DO BANCO ---
+        # Chamamos essa função por último para garantir que toda a tela já foi montada!
+        configuracoes.inicializar(self)
 
         cadastro_cliente.atualizar(self)
         cadastro_fornecedor.atualizar(self)
@@ -236,4 +259,9 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         
         # 2. Fecha a tela de menu atual da confeitaria
         self.close()
+
+
+
+
+    
 

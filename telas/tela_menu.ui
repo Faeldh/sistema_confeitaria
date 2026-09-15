@@ -160,7 +160,7 @@ QLabel {
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="pageClientes">
        <layout class="QHBoxLayout">
@@ -1853,9 +1853,7 @@ QLabel {
              <widget class="QLabel" name="lblMainTitle">
               <property name="font">
                <font>
-                <pointsize>18</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Segoe UI,Arial,sans-serif</family>
                </font>
               </property>
               <property name="styleSheet">
@@ -1870,7 +1868,7 @@ QLabel {
              <widget class="QLabel" name="lblMainSub">
               <property name="font">
                <font>
-                <pointsize>11</pointsize>
+                <family>Segoe UI,Arial,sans-serif</family>
                </font>
               </property>
               <property name="styleSheet">
@@ -2215,9 +2213,7 @@ QLabel {
               <widget class="QLabel" name="lblSecaoResumo">
                <property name="font">
                 <font>
-                 <pointsize>12</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <family>Segoe UI,Arial,sans-serif</family>
                 </font>
                </property>
                <property name="styleSheet">
@@ -2259,9 +2255,7 @@ QLabel {
               <widget class="QLabel" name="lblSecaoMaisVendidos">
                <property name="font">
                 <font>
-                 <pointsize>12</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
+                 <family>Segoe UI,Arial,sans-serif</family>
                 </font>
                </property>
                <property name="styleSheet">
@@ -2295,7 +2289,6 @@ QLabel {
         </item>
        </layout>
       </widget>
-
       <widget class="QWidget" name="pageFornecedores">
        <layout class="QHBoxLayout">
         <item>
@@ -2887,12 +2880,25 @@ QPushButton.btnAcaoCard:hover {
                  <item>
                   <widget class="QLabel" name="lblAte">
                    <property name="text">
-                    <string>às</string>
+                    <string> às</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QTimeEdit" name="timeFechamento"/>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                 </layout>
                </item>
@@ -3092,7 +3098,7 @@ QPushButton.btnAcaoCard:hover {
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="lblAvisoRodape">
+         <widget class="QLabel" name="label_6">
           <property name="text">
            <string>⚠️ As alterações serão aplicadas em todo o sistema após salvar.</string>
           </property>
