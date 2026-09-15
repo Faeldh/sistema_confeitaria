@@ -15,11 +15,17 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         super().__init__()
         self.setupUi(self)
 
+        # Faz a janela do menu principal abrir em tela cheia maximizada
+        self.showMaximized()
+
+
         #Esconde a coluna lateral da tabela (números das linhas)
         self.tableWidgetClientes.verticalHeader().setVisible(False)
         self.tableWidgetReceitas.verticalHeader().setVisible(False)
         self.tableWidgetFornecedores.verticalHeader().setVisible(False)
-
+        self.tableViewProdutos.verticalHeader().setVisible(False)
+        self.tableWidget.verticalHeader().setVisible(False)
+        
 
         #SELECIONAR NA TABELA
         self.tableWidgetClientes.itemSelectionChanged.connect(self.carregar_cliente)
