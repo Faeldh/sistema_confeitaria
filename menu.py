@@ -7,6 +7,7 @@ import cadastro_produtos
 import pedidos
 import vendas
 import configuracoes
+import dashboard
 
 tela_menu = uic.loadUiType('telas/tela_menu.ui')[0]
 
@@ -48,6 +49,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
 
 
         #Chamar as paginas
+
+        
         self.btn_clientes.clicked.connect(
             lambda: self.stackedWidget.setCurrentWidget(self.pageClientes)
         )
@@ -69,7 +72,8 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         )
 
         self.btn_controle_financeiro.clicked.connect(
-            lambda: self.stackedWidget.setCurrentWidget(self.pageControleFinanceiro)
+            lambda: (self.stackedWidget.setCurrentWidget(self.pageControleFinanceiro), 
+                     dashboard.atualizar_dashboard(self))
         )
 
         self.btn_fornecedores.clicked.connect(
@@ -181,7 +185,12 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         pedidos.listar_pedidos(self)
         # Inicializa os dados da tela de vendas (combobox de clientes, etc.)
         vendas.inicializar_vendas(self)
+<<<<<<< Updated upstream
         
+=======
+        # --- CARREGAR OS DADOS REAIS DO DASHBOARD AO ENTRAR ---
+        dashboard.atualizar_dashboard(self)
+>>>>>>> Stashed changes
     
     def editar_receita(self):
         cadastro_receitas.editar(self)
