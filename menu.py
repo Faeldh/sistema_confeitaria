@@ -185,12 +185,9 @@ class Menu(QtWidgets.QMainWindow, tela_menu):
         pedidos.listar_pedidos(self)
         # Inicializa os dados da tela de vendas (combobox de clientes, etc.)
         vendas.inicializar_vendas(self)
-<<<<<<< Updated upstream
         
-=======
         # --- CARREGAR OS DADOS REAIS DO DASHBOARD AO ENTRAR ---
         dashboard.atualizar_dashboard(self)
->>>>>>> Stashed changes
     
     def editar_receita(self):
         cadastro_receitas.editar(self)
