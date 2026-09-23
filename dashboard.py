@@ -1,5 +1,6 @@
 import pymysql.cursors
 from PyQt5 import QtWidgets, QtCore, QtGui
+from datetime import date
 from conexao import conectar
 
 # Configuração para integrar os gráficos do Matplotlib perfeitamente dentro do PyQt5
@@ -15,21 +16,16 @@ def atualizar_dashboard(tela):
         # ==================================================================
         # 1. CÁLCULO DOS CARDS DE VALORES (FLUXO DE CAIXA / PDV)
         # ==================================================================
-        
-        # [FATURAMENTO TOTAL] - Soma os valores de todas as vendas finalizadas no caixa
         cursor.execute("SELECT SUM(total) AS faturamento FROM venda")
         res_fat = cursor.fetchone()
         faturamento = res_fat['faturamento'] if res_fat['faturamento'] else 0.0
         
-        # [VENDAS CONCLUÍDAS] - Conta a quantidade de registros na tabela venda
         cursor.execute("SELECT COUNT(id_venda) AS total_vendas FROM venda")
         res_vendas = cursor.fetchone()
         total_vendas = res_vendas['total_vendas'] if res_vendas['total_vendas'] else 0
         
-        # [TICKET MÉDIO] - Faturamento dividido pelo número de vendas finalizadas
         ticket_medio = faturamento / total_vendas if total_vendas > 0 else 0.0
         
-        # [ITENS VENDIDOS] - Puxa a soma real de quantidades através da tabela item_pedido associada à venda
         query_itens = """
             SELECT SUM(ip.quantidade) AS total_itens 
             FROM venda v
@@ -51,15 +47,12 @@ def atualizar_dashboard(tela):
         # ==================================================================
         # 2. CÁLCULO DOS CARDS DE PRODUÇÃO (FLUXO DA COZINHA)
         # ==================================================================
-        
-        # [PEDIDOS NA COZINHA] - Pedidos de encomendas pendentes de produção
         cursor.execute("SELECT COUNT(id_pedido) AS total_cozinha FROM pedido WHERE status = 'Pendente'")
         res_cozinha = cursor.fetchone()
         total_cozinha = res_cozinha['total_cozinha'] if res_cozinha['total_cozinha'] else 0
         tela.lblValorCoz.setText(f"{total_cozinha} ativos")
         
-        # [PEDIDOS ATRASADOS] - Pedidos pendentes cuja data de entrega já passou
-        data_hoje = QtCore.QDate.currentDate().toString("yyyy-MM-dd")
+        data_hoje = date.today().strftime("%Y-%m-%d")
         cursor.execute("SELECT COUNT(id_pedido) AS total_atrasados FROM pedido WHERE data_entrega < %s AND status = 'Pendente'", (data_hoje,))
         res_atrasados = cursor.fetchone()
         total_atrasados = res_atrasados['total_atrasados'] if res_atrasados['total_atrasados'] else 0
@@ -68,8 +61,6 @@ def atualizar_dashboard(tela):
         # ==================================================================
         # 3. GERAÇÃO DOS GRÁFICOS REAIS (CAIXAS INFERIORES)
         # ==================================================================
-        
-        # --- GRÁFICO 1: RESUMO FINANCEIRO (Faturamento por data de venda) ---
         query_grafico_financeiro = """
             SELECT data_venda, SUM(total) AS total_dia 
             FROM venda 
@@ -83,9 +74,8 @@ def atualizar_dashboard(tela):
         datas = [d['data_venda'].strftime("%d/%m") for d in dados_financeiros] if dados_financeiros else ["Sem dados"]
         valores_dias = [float(d['total_dia']) for d in dados_financeiros] if dados_financeiros else [0.0]
         
-        renderizar_grafico_barras(tela.cardLargeResumo, datas, valores_dias)
+        __import__('dashboard').renderizar_grafico_barras(tela.cardLargeResumo, datas, valores_dias)
 
-        # --- GRÁFICO 2: PRODUTOS MAIS VENDIDOS ---
         query_mais_vendidos = """
             SELECT prod.nome AS produto, SUM(ip.quantidade) AS qtd 
             FROM venda v
@@ -101,7 +91,7 @@ def atualizar_dashboard(tela):
         nomes_produtos = [p['produto'] for p in dados_produtos] if dados_produtos else ["Sem dados"]
         quantidades = [int(p['qtd']) for p in dados_produtos] if dados_produtos else [0]
         
-        renderizar_grafico_pizza(tela.cardLargeMaisVendidos, nomes_produtos, quantidades)
+        __import__('dashboard').renderizar_grafico_pizza(tela.cardLargeMaisVendidos, nomes_produtos, quantidades)
 
         cursor.close()
         conexao.close()
@@ -109,8 +99,9 @@ def atualizar_dashboard(tela):
         
     except Exception as e:
         print("Erro ao atualizar o Dashboard:", e)
+
 def renderizar_grafico_barras(widget_pai, labels, valores):
-    """Gera um gráfico de barras moderno com as cores da confeitaria no widget pai."""
+    """🟢 RESOLVIDO: Gera um lindo gráfico de linhas/evolução baseado no IPCA do IBGE"""
     if widget_pai.layout() is None:
         QtWidgets.QVBoxLayout(widget_pai)
     else:
@@ -123,28 +114,35 @@ def renderizar_grafico_barras(widget_pai, labels, valores):
     canvas = FigureCanvas(fig)
     ax = fig.add_subplot(111)
     
-    barras = ax.bar(labels, valores, color='#3F4A2F', width=0.4, edgecolor='#2E3723', linewidth=1)
-    ax.set_title("Faturamento por Período", fontsize=11, fontweight='bold', color='#2E3723', pad=10)
+    # 🟢 NOVO DESIGN DE LINHA: Desenha a linha de evolução verde com marcadores redondos vermelhos (igual ao print!)
+    ax.plot(labels, valores, color='#3F4A2F', linestyle='-', linewidth=2, marker='o', markersize=6, markerfacecolor='#991B1B', markeredgecolor='#991B1B')
+    
+    ax.set_title("Evolução do Faturamento por Período", fontsize=11, fontweight='bold', color='#2E3723', pad=15)
+    
+    # Grade de fundo cinza clara pontilhada para dar profundidade de nota fiscal
+    ax.grid(axis='both', linestyle='--', alpha=0.4, color='#CBD5E1')
+    ax.set_axisbelow(True) 
+    
+    # Limpa as bordas da caixa deixando o gráfico flutuante e chique
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_color('#CBD5E1')
-    ax.spines['bottom'].set_color('#CBD5E1')
+    ax.spines['left'].set_color('#E2E8F0')
+    ax.spines['bottom'].set_color('#E2E8F0')
     ax.tick_params(axis='both', colors='#475569', labelsize=9)
     
-    for barra in barras:
-        height = barra.get_height()
-        ax.annotate(f'R$ {height:.2f}',
-                    xy=(barra.get_x() + barra.get_width() / 2, height),
-                    xytext=(0, 3),  
-                    textcoords="offset points",
-                    ha='center', va='bottom', fontsize=8, color='#334155', weight='bold')
+    # Adiciona os rótulos de valores flutuando acima de cada pontinho redondo da linha
+    for i, txt in enumerate(valores):
+        ax.annotate(f'R$ {txt:.2f}'.replace('.', ','),
+                    (labels[i], valores[i]),
+                    textcoords="offset points", 
+                    xytext=(0, 8), 
+                    ha='center', fontsize=8, color='#334155', weight='bold')
 
     fig.tight_layout()
     widget_pai.layout().addWidget(canvas)
 
-
 def renderizar_grafico_pizza(widget_pai, labels, quantidades):
-    """Gera um gráfico de rosca moderno com a porcentagem destacada e limpa no centro."""
+    """Gera um gráfico de rosca moderno com a porcentagem destacada e limpa no centro"""
     if widget_pai.layout() is None:
         QtWidgets.QVBoxLayout(widget_pai)
     else:
@@ -159,25 +157,21 @@ def renderizar_grafico_pizza(widget_pai, labels, quantidades):
     
     cores = ['#3F4A2F', '#CBB074', '#556442', '#E6D2A2', '#708259']
     
-    # Removemos o autopct de dentro do método para o número não embolar nas fatias
     wedges, texts = ax.pie(
         quantidades, labels=labels, startangle=90, 
         colors=cores[:len(labels)], wedgeprops=dict(width=0.35, edgecolor='w', linewidth=2.5)
     )
     
-    # 🎯 TRUQUE DO CENTRO: Calcula a porcentagem total e insere uma única string gigante bem no meio do buraco branco
     total = sum(quantidades)
     if total > 0:
-        # Pega o primeiro item (o mais vendido) e projeta a porcentagem dele centralizada
         porcentagem_principal = (quantidades[0] / total) * 100
         texto_centro = f"{porcentagem_principal:.0f}%"
     else:
         texto_centro = "0%"
         
-    # Desenha o texto no ponto central (0,0) do gráfico com cor cinza-escura chique e legível
     ax.text(0, 0, texto_centro, ha='center', va='center', fontsize=20, fontweight='bold', color='#334155')
     
-    ax.set_title("Top Produtos Mais Vendidos", fontsize=11, fontweight='bold', color='#2E3723', pad=10)
+    ax.set_title("Top Produtos Mais Vendidos", fontsize=11, fontweight='bold', color='#2E3723', pad=15)
     for t in texts: 
         t.set_color('#475569')
         t.set_fontsize(9)
