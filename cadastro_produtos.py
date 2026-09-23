@@ -32,29 +32,14 @@ def adicionar_variacao(self):
     """Pega o tamanho (novo ou existente), valida o preço e insere na mini tabela de grade"""
     tamanho = ""
     
-<<<<<<< HEAD
-    if hasattr(self, 'comboTamanho'):
-        widget_combo = self.comboTamanho
-=======
-    # 🎯 CORREÇÃO DE OURO: Tenta ler o comboTamanho criado no arquivo .ui
     if hasattr(self, 'comboTamanho'):
         widget_combo = self.comboTamanho
     elif hasattr(self, 'comboTamanhoProduto'):
         widget_combo = self.comboTamanhoProduto
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
     else:
         QMessageBox.warning(self, 'Erro Técnico', 'O campo de seleção de tamanho não foi localizado na interface!')
         return
 
-<<<<<<< HEAD
-    # 🛡️ CAPTURA REFORÇADA: Tenta ler pelo lineEdit, se falhar, pega o texto atual do combo
-    if widget_combo.lineEdit() and widget_combo.lineEdit().text().strip() != "":
-        tamanho = widget_combo.lineEdit().text().strip()
-    else:
-        tamanho = widget_combo.currentText().strip()
-
-    # Se mesmo assim o texto vier nulo ou o placeholder padrão do sistema, bloqueia
-=======
     # 🛡️ CAPTURA ULTRA ROBUSTA: Lê o texto real independente do motor QCompleter
     if widget_combo.lineEdit():
         tamanho = widget_combo.lineEdit().text().strip()
@@ -62,7 +47,6 @@ def adicionar_variacao(self):
     if not tamanho or tamanho == "":
         tamanho = widget_combo.currentText().strip()
 
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
     if not tamanho or tamanho == "" or "Selecione ou digite" in tamanho:
         QMessageBox.warning(self, 'Aviso', 'Por favor, digite ou selecione um tamanho para a grade!')
         return
@@ -88,10 +72,7 @@ def adicionar_variacao(self):
             QMessageBox.warning(self, 'Aviso', f"O tamanho '{tamanho}' já possui preço definido nesta grade!")
             return
 
-<<<<<<< HEAD
-    # =========================================================================
     # 🚀 BANCO DE DADOS: ADICIONA O TAMANHO SE ELE FOR INÉDITO
-    # =========================================================================
     conexao = conectar()
     cursor = conexao.cursor()
     try:
@@ -99,11 +80,8 @@ def adicionar_variacao(self):
         res_tam = cursor.fetchone()
         
         if not res_tam:
-            # Se digitou algo novo (ex: "XG", "2kg"), guarda imediatamente na tabela correta
             cursor.execute("INSERT INTO tamanho (nome) VALUES (%s)", (tamanho,))
             conexao.commit()
-            
-            # Atualiza a lista flutuante estilo chrome para já incluir o novo termo
             configurar_busca_chrome(self)
     except Exception as e:
         print(f"Erro ao verificar/salvar tamanho: {e}")
@@ -111,25 +89,16 @@ def adicionar_variacao(self):
         cursor.close()
         conexao.close()
 
-    # Insere visualmente na tabela de tamanhos da esquerda
-=======
     # Insere fisicamente na mini grade da esquerda
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
     self.tabela_tamanhos.insertRow(linhas)
     self.tabela_tamanhos.setItem(linhas, 0, QTableWidgetItem(tamanho))
     self.tabela_tamanhos.setItem(linhas, 1, QTableWidgetItem(f"{preco:.2f}"))
     
-<<<<<<< HEAD
     # Reseta os campos para a próxima inserção
     self.txt_preco.clear()
     widget_combo.setCurrentIndex(-1)
     if widget_combo.lineEdit():
         widget_combo.lineEdit().setText("")
-
-=======
-    # Reseta o preço para agilizar a próxima digitação
-    self.txt_preco.clear()
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
 
 def limpar(self):
     """Reseta todos os campos do formulário esquerdo do produto"""
@@ -142,10 +111,7 @@ def limpar(self):
     self.combo_ativo.setCurrentIndex(0)
     self.tableViewProdutos.clearSelection()
     gerenciar_botoes(self, modo_edicao=False)
-<<<<<<< HEAD
-=======
 
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
 def salvar(self):
     """Grava ou atualiza o doce multiplicando os tamanhos e sabores no banco de dados"""
     nome_produto = self.txt_produto.text().strip()
@@ -167,17 +133,13 @@ def salvar(self):
     try:
         cursor.execute("SELECT id_categoria FROM categoria WHERE nome = %s", (nome_categoria,))
         res_cat = cursor.fetchone()
-<<<<<<< HEAD
-        id_categoria = res_cat[0] if res_cat else None
-=======
         
-        # 🛡️ Suporte a tuplas (MariaDB/MySQL padrão) ou dicionários de cursores customizados
+        # 🛡️ Suporte a tuplas ou dicionários
         if res_cat:
             id_categoria = res_cat[0] if isinstance(res_cat, (tuple, list)) else res_cat.get('id_categoria')
         else:
             id_categoria = None
 
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
         if not id_categoria:
             cursor.execute("INSERT INTO categoria (nome) VALUES (%s)", (nome_categoria,))
             id_categoria = cursor.lastrowid
@@ -203,12 +165,8 @@ def salvar(self):
             cursor.execute("SELECT id_sabor FROM sabor WHERE nome = %s", (sab,))
             res_sab = cursor.fetchone()
             if res_sab: 
-<<<<<<< HEAD
-                ids_sabores.append(res_sab[0])
-=======
                 id_s = res_sab[0] if isinstance(res_sab, (tuple, list)) else res_sab.get('id_sabor')
                 ids_sabores.append(id_s)
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
             else:
                 cursor.execute("INSERT INTO sabor (nome) VALUES (%s)", (sab,))
                 ids_sabores.append(cursor.lastrowid)
@@ -219,16 +177,12 @@ def salvar(self):
 
             cursor.execute("SELECT id_tamanho FROM tamanho WHERE nome = %s", (nome_tam,))
             res_tam = cursor.fetchone()
-<<<<<<< HEAD
-            id_tamanho = res_tam[0] if res_tam else None
-=======
             
             if res_tam:
                 id_tamanho = res_tam[0] if isinstance(res_tam, (tuple, list)) else res_tam.get('id_tamanho')
             else:
                 id_tamanho = None
 
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
             if not id_tamanho:
                 cursor.execute("INSERT INTO tamanho (nome) VALUES (%s)", (nome_tam,))
                 id_tamanho = cursor.lastrowid
@@ -247,10 +201,7 @@ def salvar(self):
     except Exception as e:
         conexao.rollback()
         QMessageBox.critical(self, 'Erro', f'Erro ao salvar: {e}')
-<<<<<<< HEAD
-=======
 
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
 def listar(self):
     """Busca os produtos agregando as variações antigas e novas com preços em formato nacional"""
     conexao = conectar()
@@ -280,21 +231,16 @@ def listar(self):
         self.tableViewProdutos.setHorizontalHeaderLabels(["ID", "Produto", "Categoria", "Tamanho", "Preço", "Sabores", "Status", "Ação"])
         self.tableViewProdutos.setRowCount(0)
         
-        # 🟢 Mantém o preenchimento das linhas exatamente como estava funcionando!
         for linha, dados in enumerate(produtos):
             self.tableViewProdutos.insertRow(linha)
-<<<<<<< HEAD
-            id_prod = str(dados[0])
-=======
             
-            # 🛡️ CAPTURA VIA ÍNDICE DE TUPLA (Fiel à estrutura do seu phpMyAdmin)
+            # 🛡️ CAPTURA VIA ÍNDICE DE TUPLA
             id_prod = str(dados[0])
             nome_prod = str(dados[1])
             cat_prod = str(dados[2]) if dados[2] else "Geral"
             tam_prod = str(dados[3])
             sabor_prod = str(dados[5])
             status_prod = "Sim" if dados[6] == 1 else "Não"
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
             
             if dados[4] is not None:
                 preco_val = f"A partir de R$ {dados[4]:.2f}".replace('.', ',')
@@ -303,24 +249,6 @@ def listar(self):
             else:
                 preco_val = "Sob consulta"
 
-<<<<<<< HEAD
-            self.tableViewProdutos.setItem(linha, 0, QTableWidgetItem(id_prod))
-            self.tableViewProdutos.setItem(linha, 1, QTableWidgetItem(str(dados[1])))
-            self.tableViewProdutos.setItem(linha, 2, QTableWidgetItem(str(dados[2]) if dados[2] else "Geral"))
-            self.tableViewProdutos.setItem(linha, 3, QTableWidgetItem(str(dados[3])))
-            self.tableViewProdutos.setItem(linha, 4, QTableWidgetItem(preco_val))
-            self.tableViewProdutos.setItem(linha, 5, QTableWidgetItem(str(dados[5])))
-            self.tableViewProdutos.setItem(linha, 6, QTableWidgetItem("Sim" if dados[6] == 1 else "Não"))
-            
-            btn_excluir = QPushButton("x")
-            btn_excluir.setStyleSheet("background-color:transparent; color:#7F8C8D; font-size:14px; border:none; padding:0px;")
-            btn_excluir.clicked.connect(lambda _, id_p=id_prod, n_p=str(dados[1]): excluir_direto_tabela(self, id_p, n_p))
-            self.tableViewProdutos.setCellWidget(linha, 7, btn_excluir)
-
-        # =====================================================================
-        # 🎨 NOVO: CORES DO APP E ALINHAMENTO DAS COLUNAS (FIM DA BAGUNÇA!)
-        # =====================================================================
-=======
             item_id = QTableWidgetItem(id_prod)
             item_nome = QTableWidgetItem(nome_prod)
             item_cat = QTableWidgetItem(cat_prod)
@@ -339,7 +267,7 @@ def listar(self):
 
             self.tableViewProdutos.setItem(linha, 0, item_id)
             self.tableViewProdutos.setItem(linha, 1, item_nome)
-            self.tableViewProdutos.setItem(linha, 2, cat_prod)
+            self.tableViewProdutos.setItem(linha, 2, item_cat)
             self.tableViewProdutos.setItem(linha, 3, item_tam)
             self.tableViewProdutos.setItem(linha, 4, item_preco)
             self.tableViewProdutos.setItem(linha, 5, item_sabores)
@@ -350,7 +278,6 @@ def listar(self):
             btn_excluir.clicked.connect(lambda _, id_p=id_prod, n_p=nome_prod: excluir_direto_tabela(self, id_p, n_p))
             self.tableViewProdutos.setCellWidget(linha, 7, btn_excluir)
 
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
         self.tableViewProdutos.verticalHeader().setVisible(False)
         self.tableViewProdutos.setShowGrid(False)
         
@@ -362,10 +289,7 @@ def listar(self):
                 font-weight: bold; 
                 border: none;
                 font-size: 13px;
-<<<<<<< HEAD
-=======
                 text-align: center;
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
             }
         """
         if hasattr(self, 'tableViewProdutos'):
@@ -374,22 +298,6 @@ def listar(self):
         header = self.tableViewProdutos.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.Interactive)
         
-<<<<<<< HEAD
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents) # ID curto
-        header.setSectionResizeMode(1, QHeaderView.Stretch)          # Doce estica tudo
-        header.setSectionResizeMode(2, QHeaderView.ResizeToContents) # Categoria curta
-        header.setSectionResizeMode(3, QHeaderView.ResizeToContents) # Tamanho curto
-        header.setSectionResizeMode(4, QHeaderView.ResizeToContents) # Preço justo
-        header.setSectionResizeMode(5, QHeaderView.Stretch)          # Sabores estica tudo
-        header.setSectionResizeMode(6, QHeaderView.ResizeToContents) # Status curto
-        header.setSectionResizeMode(7, QHeaderView.ResizeToContents) # Botão X curto
-
-    except Exception as e:
-        print(f"Erro ao listar: {e}")
-
-
-
-=======
         header.resizeSection(0, 50)   # ID
         header.resizeSection(1, 160)  # Produto
         header.resizeSection(2, 95)   # Categoria
@@ -402,156 +310,6 @@ def listar(self):
     except Exception as e:
         print(f"Erro ao listar: {e}")
 
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
-def pegar_dados(self):
-    """Ao clicar na tabela geral, reconstrói a ficha técnica completa"""
-    linha = self.tableViewProdutos.currentRow()
-    if linha == -1: return
-    id_produto = self.tableViewProdutos.item(linha, 0).text()
-    conexao = conectar()
-    cursor = conexao.cursor()
-    try:
-        cursor.execute("""
-            SELECT p.nome, c.nome, p.descricao, p.ativo 
-            FROM produto p LEFT JOIN categoria c ON p.id_categoria = c.id_categoria WHERE p.id_produto = %s
-        """, (id_produto,))
-        prod = cursor.fetchone()
-        if prod:
-            self.txt_produto.setText(str(prod[0]))
-            self.combo_categoria.setCurrentText(str(prod[1]) if prod[1] else "")
-            self.txt_descricao.setText(str(prod[2]) if prod[2] else "")
-            self.combo_ativo.setCurrentText("Sim" if prod[3] == 1 else "Não")
-
-            self.list_sabores.clear()
-            self.tabela_tamanhos.setRowCount(0)
-
-            cursor.execute("""
-                SELECT DISTINCT s.nome FROM produto_variacao pv 
-                INNER JOIN sabor s ON pv.id_sabor = s.id_sabor WHERE pv.id_produto = %s
-            """, (id_produto,))
-<<<<<<< HEAD
-            for sab in cursor.fetchall(): self.list_sabores.addItem(sab[0])
-=======
-            for sab in cursor.fetchall():
-                self.list_sabores.addItem(str(sab[0]))
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
-
-            cursor.execute("""
-                SELECT DISTINCT t.nome, pv.preco FROM produto_variacao pv
-                INNER JOIN tamanho t ON pv.id_tamanho = t.id_tamanho WHERE pv.id_produto = %s
-            """, (id_produto,))
-            for idx, var in enumerate(cursor.fetchall()):
-                self.tabela_tamanhos.insertRow(idx)
-                self.tabela_tamanhos.setItem(idx, 0, QTableWidgetItem(str(var[0])))
-                self.tabela_tamanhos.setItem(idx, 1, QTableWidgetItem(f"{var[1]:.2f}"))
-            gerenciar_botoes(self, modo_edicao=True)
-    except Exception as e:
-        print(f"Erro ao pegar dados: {e}")
-
-def excluir_direto_tabela(self, id_produto, nome_produto):
-    """Deleta o doce do MySQL removendo também as variações órfãs"""
-    if QMessageBox.question(self, 'Confirmar', f'Deseja excluir "{nome_produto}"?', QMessageBox.Yes | QMessageBox.No) == QMessageBox.Yes:
-        conexao = conectar()
-        cursor = conexao.cursor()
-        try:
-            cursor.execute("DELETE FROM produto_variacao WHERE id_produto = %s", (id_produto,))
-            cursor.execute("DELETE FROM produto WHERE id_produto = %s", (id_produto,))
-            conexao.commit()
-            listar(self)
-            limpar(self)
-        except Exception as e:
-            QMessageBox.critical(self, 'Erro', f'Erro ao deletar: {e}')
-
-def configurar_busca_chrome(self):
-    """Busca as categorias e tamanhos no banco e gera a pesquisa inteligente estilo Chrome"""
-    conexao = conectar()
-    cursor = conexao.cursor()
-    try:
-<<<<<<< HEAD
-        # =====================================================================
-        # 1. CONFIGURAÇÃO DA CATEGORIA
-        # =====================================================================
-        cursor.execute("SELECT nome FROM categoria ORDER BY nome")
-        categorias = [str(cat[0]) for cat in cursor.fetchall() if cat and cat[0]]
-=======
-        cursor.execute("SELECT nome FROM categoria ORDER BY nome")
-        res_cat = cursor.fetchall()
-        
-        # Puxa estritamente a primeira coluna da tupla (nome da categoria)
-        categorias = [str(cat[0]) for cat in res_cat if cat and cat[0]]
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
-        
-        self.combo_categoria.clear()
-        self.combo_categoria.addItems(categorias)
-        self.combo_categoria.setEditable(True)
-        self.combo_categoria.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        
-        comp_cat = QCompleter(categorias, self)
-        comp_cat.setCaseSensitivity(Qt.CaseInsensitive)
-        comp_cat.setFilterMode(Qt.MatchContains)
-        self.combo_categoria.setCompleter(comp_cat)
-
-<<<<<<< HEAD
-        # =====================================================================
-        # 2. CONFIGURAÇÃO DO TAMANHO (CORRIGIDO E GARANTIDO)
-        # =====================================================================
-        if hasattr(self, 'comboTamanho'):
-            campo_tam = self.comboTamanho
-            
-            # 🔥 O SEGREDO: Força o combo box a ser editável para aceitar novos tamanhos digitados
-            campo_tam.setEditable(True)
-            campo_tam.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-            campo_tam.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-            campo_tam.setMinimumHeight(28)
-            
-            # Busca estritamente da tabela correta informada no phpMyAdmin
-            cursor.execute("SELECT nome FROM tamanho ORDER BY nome")
-            tamanhos = [str(tam[0]) for tam in cursor.fetchall() if tam and tam[0]]
-=======
-        if hasattr(self, 'comboTamanho'):
-            campo_tam = self.comboTamanho
-            campo_tam.setEditable(True)
-            campo_tam.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-            
-            cursor.execute("SELECT nome FROM tamanho ORDER BY nome")
-            res_tam = cursor.fetchall()
-            
-            # 🔥 O MAPEAMENTO QUE FALTAVA: Puxa o índice [0] da tupla, que é a coluna 'nome' da sua foto!
-            tamanhos = [str(tam[0]) for tam in res_tam if tam and tam[0]]
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
-            
-            campo_tam.clear()
-            campo_tam.addItems(tamanhos)
-            
-<<<<<<< HEAD
-            # Recria o motor de busca inteligente do Chrome
-=======
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
-            comp_tam = QCompleter(tamanhos, self)
-            comp_tam.setCaseSensitivity(Qt.CaseInsensitive)
-            comp_tam.setFilterMode(Qt.MatchContains)
-            comp_tam.setCompletionMode(QCompleter.PopupCompletion)
-            campo_tam.setCompleter(comp_tam)
-            
-<<<<<<< HEAD
-            # Mantém inicialmente limpo para digitação livre
-=======
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
-            campo_tam.setCurrentIndex(-1)
-            if campo_tam.lineEdit():
-                campo_tam.lineEdit().setText("")
-                campo_tam.lineEdit().setPlaceholderText("Selecione ou digite o tamanho...")
-                
-    except Exception as e:
-        print(f"Erro no Chrome Completer de Produtos: {e}")
-    finally:
-        cursor.close()
-        conexao.close()
-
-
-<<<<<<< HEAD
-
-=======
 def pegar_dados(self):
     """Ao clicar na tabela geral, reconstrói a ficha técnica completa"""
     linha = self.tableViewProdutos.currentRow()
@@ -646,30 +404,25 @@ def configurar_busca_chrome(self):
         self.combo_categoria.setCompleter(comp_cat)
 
         # =====================================================================
-        # 2. CARREGAMENTO REFORÇADO DE TAMANHOS (FIM DO BUG!)
+        # 2. CARREGAMENTO REFORÇADO DE TAMANHOS
         # =====================================================================
         if hasattr(self, 'comboTamanho'):
             campo_tam = self.comboTamanho
             campo_tam.setEditable(True)
             campo_tam.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
             
-            # Busca estritamente a coluna 'nome' da tabela 'tamanho' do seu phpMyAdmin
             cursor.execute("SELECT nome FROM tamanho ORDER BY nome")
             res_tam = cursor.fetchall()
             
             tamanhos = []
             for tam in res_tam:
                 if isinstance(tam, dict):
-                    # Se o banco retornar um dicionário, pega pela chave 'nome'
                     tamanhos.append(str(tam.get('nome', '')))
                 elif isinstance(tam, (tuple, list)):
-                    # Se o banco retornar uma tupla, pega pela posição 0
                     tamanhos.append(str(tam[0]))
                 else:
-                    # Caso seja um texto direto ou outro formato bruto
                     tamanhos.append(str(tam))
             
-            # Adiciona os tamanhos encontrados (1kg, 500g, G, etc.) no combo box da tela
             campo_tam.clear()
             campo_tam.addItems(tamanhos)
             
@@ -689,5 +442,3 @@ def configurar_busca_chrome(self):
     finally:
         cursor.close()
         conexao.close()
->>>>>>> 1430e3b50fbcc97a70392b314ff5b3452a578a6e
-
