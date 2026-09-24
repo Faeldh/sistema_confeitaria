@@ -1155,7 +1155,7 @@ QScrollBar::handle:horizontal:hover { background: #2E3723; }</string>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QComboBox" name="comboTamanho">
+               <widget class="QComboBox" name="comboTamanhoProduto">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
