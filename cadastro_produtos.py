@@ -406,8 +406,14 @@ def configurar_busca_chrome(self):
         # =====================================================================
         # 2. CARREGAMENTO REFORÇADO DE TAMANHOS
         # =====================================================================
+        # Usaremos comboTamanhoProduto pois é o nome usual no QT Designer para essa tela
+        campo_tam = None
         if hasattr(self, 'comboTamanho'):
             campo_tam = self.comboTamanho
+        elif hasattr(self, 'comboTamanhoProduto'):
+            campo_tam = self.comboTamanhoProduto
+            
+        if campo_tam:
             campo_tam.setEditable(True)
             campo_tam.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
             
@@ -435,7 +441,9 @@ def configurar_busca_chrome(self):
             campo_tam.setCurrentIndex(-1)
             if campo_tam.lineEdit():
                 campo_tam.lineEdit().setText("")
-                campo_tam.lineEdit().setPlaceholderText("Selecione ou digite o tamanho...")
+                campo_tam.lineEdit().setPlaceholderText("Selecione ou digite...")
+        else:
+            print("Aviso: ComboBox de Tamanho não encontrado na UI.")
                 
     except Exception as e:
         print(f"Erro no Chrome Completer de Produtos: {e}")
